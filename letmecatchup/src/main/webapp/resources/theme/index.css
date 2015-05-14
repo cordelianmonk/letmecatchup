@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+
+.login-area{
+	height:380px;
+	width:500px;
+	background:white;
+	margin:0 auto;
+	margin-bottom: 50px;
+}
