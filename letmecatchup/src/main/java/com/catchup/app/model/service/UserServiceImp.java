@@ -25,4 +25,18 @@ public class UserServiceImp implements UserService {
 		return user;
 	}
 
+	@Override
+	@Transactional
+	public boolean newUser(String firstName, String lastName, String email,
+			String password) {
+		
+		if( this.userDAO.userExists(email) ){
+			return false;
+		}
+		password=HashGeneratorUtils.generateSHA256(password);
+		User user = new User (firstName, lastName, email, password);
+		this.userDAO.addUser(user);
+		return true;
+	}
+
 }

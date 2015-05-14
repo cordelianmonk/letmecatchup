@@ -36,4 +36,28 @@ public class UserDaoImp implements UserDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean userExists(String email) {
+		Session session = factory.getCurrentSession(); 
+		List<User> users = new ArrayList<User>();
+		 
+		users = session.createQuery("from User where email=:email")
+			.setParameter("email", email)
+			.list();
+ 
+		if (users.size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	@Override
+	public void addUser(User user) {
+		Session session = factory.getCurrentSession();
+		session.persist(user);
+	}
+
 }
