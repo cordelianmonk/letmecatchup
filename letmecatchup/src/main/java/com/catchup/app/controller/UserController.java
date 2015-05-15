@@ -17,6 +17,11 @@ import com.catchup.app.model.user.User;
 public class UserController {
 	private UserService userService;
 	
+	@RequestMapping(value="account_settings.html")
+	public String allHome() {
+		return "userSettings";
+	}
+	
 	@Autowired(required=true)
     @Qualifier(value="userService")
 	public void setUserService(UserService userService) {

@@ -32,7 +32,7 @@
 				name="password" id="password"><br>
 
 			<button type="submit" class="btn btn-sm btn-primary" id="register">Submit</button>
-			<a href="index.html">Signed up alread?</a>
+			<a href="index.html">Signed up already?</a>
 		</form>
 	</div>
 
