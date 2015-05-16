@@ -66,28 +66,83 @@
 
 	<!-- MAIN BODY -->
 
-	<div class="search-area">
-		<div class="col-xs-12 col-md-6">
-			<div class="form-group">
-				<label for="mediatype">Select media type</label> <select
-					class="form-control" id="mediatype">
-					<option selected="selected">Media Type</option>
-					<option value="book">Book</option>
-					<option value="movie">Movie</option>
-				</select>
+	<h1 class="jumbotron">Look for media</h1>
+
+	<!-- SEARCH AREA -->
+	<div class="container">
+		<div class="search-area">
+			<h2>Search and add</h2>
+			<div class="col-xs-12 col-md-6">
+				<div class="form-group">
+					<label for="mediatype">Select media type</label> <select
+						class="form-control" id="mediatype">
+						<option selected="selected">Media Type</option>
+						<option value="book">Book</option>
+						<option value="movie">Movie</option>
+					</select>
+				</div>
 			</div>
-		</div>
-		<div class="col-xs-12 col-md-6">
-			<div class="form-group">
-				<label for="title">Title</label><br /> <input type="text"
-					name="title" id="title"></input>
-				<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+			<div class="col-xs-12 col-md-6">
+				<div class="form-group">
+					<label for="mediatype">Select status</label> <select
+						class="form-control" id="status">
+						<option selected="selected">Status</option>
+						<option value="catch">Catch</option>
+						<option value="caught">Caught</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<div class="form-group">
+					<label for="title">Title</label><br /> <input type="text"
+						name="title" id="title"></input>
+					<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+				</div>
 			</div>
 		</div>
 	</div>
-
-
-
+	<!-- ADD ONLY AREA -->
+	<div class="container">
+		<div class="add-only-area">
+			<h2>Add only</h2>
+			
+			<div class="col-xs-12 col-md-6">
+					<div class="form-group">
+						<label for="status">Select Status</label> <select
+							class="form-control" id="status" name="status">
+							<option selected="selected">Status</option>
+							<option value="book">Catch</option>
+							<option value="movie">Caught</option>
+						</select>
+					</div>
+				</div>
+			
+			<form action="addCatchMedia" method="post">
+				<div class="col-xs-12 col-md-6">
+					<div class="form-group">
+						<label for="mediatype">Select media type</label> <select
+							class="form-control" id="mediatype" name="mediatype">
+							<option selected="selected">Media Type</option>
+							<option value="book">Book</option>
+							<option value="movie">Movie</option>
+						</select>
+					</div>
+				</div>	
+				<div class="form-group">
+					<div class="col-xs-12">
+						<label for="title">Title</label><br /> <input type="text"
+							name="title" id="title"></input><br /> <label for="comment">Comment</label></br>
+						<textarea rows="5" cols="60" maxlength="300"
+							placeholder="(300 characters or less)" name="comment"
+							id="comment"></textarea>
+						<br />
+						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+					</div>
+				</div>
+				
+			</form>
+		</div>
+	</div>
 
 
 

@@ -1,7 +1,5 @@
 package com.catchup.app.model.service;
 
-import java.security.MessageDigest;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +18,6 @@ public class UserServiceImp implements UserService {
 	@Override
 	@Transactional
 	public User validateUser(String email, String password) {
-		password=HashGeneratorUtils.generateSHA256(password);
 		User user = this.userDAO.validateUser(email, password);
 		return user;
 	}
@@ -37,6 +34,12 @@ public class UserServiceImp implements UserService {
 		User user = new User (firstName, lastName, email, password);
 		this.userDAO.addUser(user);
 		return true;
+	}
+
+	@Override
+	@Transactional
+	public User getUserById(int uid) {
+		return this.userDAO.getUserById(uid);
 	}
 
 }

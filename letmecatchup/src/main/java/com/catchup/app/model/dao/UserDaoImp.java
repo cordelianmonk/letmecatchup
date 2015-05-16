@@ -3,6 +3,7 @@ package com.catchup.app.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,7 @@ public class UserDaoImp implements UserDAO {
 			.list();
  
 		if (users.size() > 0) {
+			User user = users.get(0);
 			return users.get(0);
 		} else {
 			return null;
@@ -48,16 +50,33 @@ public class UserDaoImp implements UserDAO {
  
 		if (users.size() > 0) {
 			return true;
-		} else {
-			return false;
 		}
-
+		
+		return false;
 	}
 
 	@Override
 	public void addUser(User user) {
 		Session session = factory.getCurrentSession();
 		session.persist(user);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public User getUserById(int uid) {
+		Session session = factory.getCurrentSession(); 
+		List<User> users = new ArrayList<User>();
+		
+		users = session.createQuery("from User where uid=:uid")
+				.setParameter("uid",uid).list();
+		
+		User user = users.get(0);
+		Hibernate.initialize( user.getCatchBookList() );
+		Hibernate.initialize( user.getCatchMovieList() );
+		Hibernate.initialize( user.getCaughtBookList() );
+		Hibernate.initialize( user.getCaughtMovieList() );
+		
+		return user;
 	}
 	
 

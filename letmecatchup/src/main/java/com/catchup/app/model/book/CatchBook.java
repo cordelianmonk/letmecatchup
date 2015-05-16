@@ -1,5 +1,7 @@
 package com.catchup.app.model.book;
 
+import java.sql.Date;
+
 import com.catchup.app.model.user.User;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -17,7 +20,8 @@ public class CatchBook {
 	
 	@Id
 	@Column
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="catchmovies_mid_seq")
+    @SequenceGenerator(name="catchmovies_mid_seq",  sequenceName="catchmovies_mid_seq", allocationSize=1)
 	private int bid;
 	
 	@Column
@@ -30,13 +34,20 @@ public class CatchBook {
 	private String comment;
 	
 	@Column
-	private String dateAdded; //TODO Should this be Data object?
+	private Date dateAdded; //TODO Should this be Data object?
 	
 	@ManyToOne
 	private User user;
 	
 	public CatchBook() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public CatchBook(User	user, Date date, String title, String comment) {
+		this.user = user;
+		this.dateAdded = date;
+		this.title = title;
+		this.comment=comment;
 	}
 
 	public int getBid() {
@@ -71,11 +82,11 @@ public class CatchBook {
 		this.comment = comment;
 	}
 
-	public String getDateAdded() {
+	public Date getDateAdded() {
 		return dateAdded;
 	}
 
-	public void setDateAdded(String dateAdded) {
+	public void setDateAdded(Date dateAdded) {
 		this.dateAdded = dateAdded;
 	}
 

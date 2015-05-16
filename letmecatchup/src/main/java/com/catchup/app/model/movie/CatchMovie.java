@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -18,7 +19,8 @@ public class CatchMovie {
 	
 	@Id
 	@Column
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="catchbooks_bid_seq")
+    @SequenceGenerator(name="catchbooks_bid_seq",  sequenceName="catchbooks_bid_seq", allocationSize=1)
 	private int mid;
 	
 	@Column

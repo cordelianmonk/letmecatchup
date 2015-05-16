@@ -15,23 +15,25 @@ import com.catchup.app.model.book.CatchBook;
 import com.catchup.app.model.book.CaughtBook;
 import com.catchup.app.model.movie.CatchMovie;
 import com.catchup.app.model.movie.CaughtMovie;
-import com.catchup.app.model.service.MediaService;
+import com.catchup.app.model.service.CatchBookService;
 import com.catchup.app.model.service.UserService;
 import com.catchup.app.model.user.User;
 
 @Controller
 public class DashboardController {
-	private MediaService mediaService;
+	UserService userService;
 	
 	@Autowired(required=true)
-    @Qualifier(value="mediaService")
-	public void setMediaService(MediaService mediaService) {
-		this.mediaService = mediaService;
+    @Qualifier(value="userService")
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
-
+	
 	@RequestMapping(value="dash.html")
 	public String allHome(HttpSession session, Model model) {
-		User user = (User) session.getAttribute("user");
+		System.out.println(session.getAttribute("uid"));
+		int uid = (int) session.getAttribute("uid");
+		User user = this.userService.getUserById( uid );
 		System.out.println( user.getFirstName() );
 		
 		List<String> mediaList = new ArrayList<String>();
@@ -53,6 +55,11 @@ public class DashboardController {
 		}
 		
 		model.addAttribute("mediaList", mediaList);
+		model.addAttribute( "userName", user.getFirstName() );
+		
+		for( String media : mediaList){ 
+			System.out.println(media);
+		}
 		
 		return "dashboard";
 	}

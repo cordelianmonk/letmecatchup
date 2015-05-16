@@ -72,12 +72,12 @@
         <beans:property name="userDAO" ref="userDAO"></beans:property>
     </beans:bean>
     
-    <beans:bean id="mediaDAO" class="com.catchup.app.model.dao.MediaDAOImp">
+    <beans:bean id="catchBookDAO" class="com.catchup.app.model.dao.CatchBookDAOImp">
         <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
-    <beans:bean id="mediaService" class="com.catchup.app.model.service.MediaServiceImp">
-        <beans:property name="mediaDAO" ref="mediaDAO"></beans:property>
+    <beans:bean id="catchBookService" class="com.catchup.app.model.service.CatchBookServiceImp">
+        <beans:property name="catchBookDAO" ref="catchBookDAO"></beans:property>
     </beans:bean>
 	
 	

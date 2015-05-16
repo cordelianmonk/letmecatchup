@@ -8,5 +8,7 @@ public interface UserDAO {
 	public boolean userExists(String email);
 
 	public void addUser(User user);
+
+	public User getUserById(int uid);
 	
 }
