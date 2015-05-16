@@ -41,7 +41,6 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
 					<ul class="dropdown-menu">
-						<li><a href="catch_all.html">All</a></li>
 						<li><a href="catch_books.html">Books</a></li>
 						<li><a href="catch_movies.html">Movies</a></li>
 					</ul></li>
@@ -49,7 +48,6 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Caught<span class="caret" /></a>
 					<ul class="dropdown-menu">
-						<li><a href="caught_all.html">All</a></li>
 						<li><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
 					</ul></li>
@@ -66,68 +64,79 @@
 
 	<!-- MAIN BODY -->
 
-	<h1 class="jumbotron">Look for media</h1>
+	<h1 class="jumbotron">Look up and add media</h1>
+	<div class="container">
+		<h2>What would you like to do</h2>
+		<div class="col-xs-12 col-md-12">
+			<div class="form-group">
+				<label for="select-action">Choose one from the selection</label> <select
+					class="form-control" id="select-action"  style="width: 250px">
+					<option selected="selected"></option>
+					<option value="search">Search and (maybe) save</option>
+					<option value="add">Just add</option>
+				</select>
+			</div>
+		</div>
+	</div>
 
 	<!-- SEARCH AREA -->
 	<div class="container">
-		<div class="search-area">
+		<div hidden class="search-area" id="search-area">
 			<h2>Search and add</h2>
 			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
+					<label for="search-status">Select status</label> <select
+						class="form-control" id="search-status" style="width: 150px">
+						<option value="catch">Catch</option>
+						<option value="caught">Caught</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-12">
+				<div class="form-group">
 					<label for="mediatype">Select media type</label> <select
-						class="form-control" id="mediatype">
-						<option selected="selected">Media Type</option>
+						class="form-control" name="mediatype" id="search-mediatype" style="width: 150px">
 						<option value="book">Book</option>
 						<option value="movie">Movie</option>
 					</select>
 				</div>
 			</div>
+			<div class="col-xs-12 col-md-12">
+				<div class="form-group">
+					<label for="title">Title</label><br /> <input type="text"
+						name="title" id="search-title"></input>
+					<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ADD ONLY AREA -->
+	<div class="container">
+		<div hidden class="add-only-area" id="add-only-area">
+			<h2>Add only</h2>
+
 			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
-					<label for="mediatype">Select status</label> <select
-						class="form-control" id="status">
+					<label for="status">Select Status</label> <select
+						class="form-control" id="add-status" name="status" style="width: 150px">
 						<option selected="selected">Status</option>
 						<option value="catch">Catch</option>
 						<option value="caught">Caught</option>
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-4">
-				<div class="form-group">
-					<label for="title">Title</label><br /> <input type="text"
-						name="title" id="title"></input>
-					<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- ADD ONLY AREA -->
-	<div class="container">
-		<div class="add-only-area">
-			<h2>Add only</h2>
-			
-			<div class="col-xs-12 col-md-6">
-					<div class="form-group">
-						<label for="status">Select Status</label> <select
-							class="form-control" id="status" name="status">
-							<option selected="selected">Status</option>
-							<option value="book">Catch</option>
-							<option value="movie">Caught</option>
-						</select>
-					</div>
-				</div>
-			
-			<form action="addCatchMedia" method="post">
-				<div class="col-xs-12 col-md-6">
+
+			<form hidden action="addCatchMedia" method="post" id="add-catch-form">
+				<div class="col-xs-12 col-md-12">
 					<div class="form-group">
 						<label for="mediatype">Select media type</label> <select
-							class="form-control" id="mediatype" name="mediatype">
-							<option selected="selected">Media Type</option>
+							class="form-control" id="mediatype" name="mediatype" style="width: 150px">
 							<option value="book">Book</option>
 							<option value="movie">Movie</option>
 						</select>
 					</div>
-				</div>	
+				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
 						<label for="title">Title</label><br /> <input type="text"
@@ -139,7 +148,44 @@
 						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
 					</div>
 				</div>
-				
+			</form>
+
+			<form hidden action="addCaughtMedia" method="post"
+				id="add-caught-form">
+				<div class="col-xs-12 col-md-12">
+					<div class="form-group">
+						<label for="mediatype">Select media type</label> <select
+							class="form-control" id="mediatype" name="mediatype" style="width: 150px">
+							<option value="book">Book</option>
+							<option value="movie">Movie</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-xs-12">
+						<label for="title">Title</label><br /> <input type="text"
+							name="title" id="title"></input><br /> <label for="comment">Comment</label><br />
+						<textarea rows="5" cols="60" maxlength="300"
+							placeholder="(300 characters or less)" name="comment"
+							id="comment"></textarea>
+						<br /> <label for="rating">Rate</label> <select
+							class="form-control" id="rating" name="rating"
+							style="width: 80px">
+							<option value="1">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select> <br />
+						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>

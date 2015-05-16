@@ -36,7 +36,7 @@ public class UserController {
 		User user = this.userService.validateUser(email, password);
 		
 		if(user != null){
-			session.setAttribute("uid", user.getUid() );
+			session.setAttribute("user", user );
 			
 			return "redirect:/dash.html";
 		}

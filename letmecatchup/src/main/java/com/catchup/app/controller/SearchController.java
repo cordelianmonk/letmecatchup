@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catchup.app.model.book.CatchBook;
 import com.catchup.app.model.service.CatchBookService;
+import com.catchup.app.model.service.CatchMovieService;
 import com.catchup.app.model.service.UserService;
 import com.catchup.app.model.user.User;
 
 @Controller
 public class SearchController {
 	private CatchBookService catchBookService;
+	private CatchMovieService catchMovieService;
 	private UserService userService;
 	
 	@RequestMapping(value = "searchmedia.html")
@@ -31,6 +33,12 @@ public class SearchController {
     @Qualifier(value="catchBookService")
 	public void setCatchBookService(CatchBookService catchBookService) {
 		this.catchBookService = catchBookService;
+	}
+	
+	@Autowired(required=true)
+    @Qualifier(value="catchMovieService")
+	public void setCatchMovieService(CatchMovieService catchMovieService) {
+		this.catchMovieService = catchMovieService;
 	}
 	
 	@Autowired(required=true)
@@ -47,23 +55,24 @@ public class SearchController {
 			HttpSession session
 			)
 	{
-		User user = this.userService.getUserById( (int) session.getAttribute("uid") );
+		User user = this.userService.getUserById( ((User) session.getAttribute("user")).getUid() );
 		java.sql.Date date = Date.valueOf( LocalDate.now() );
 		
 		switch(mediaType){
 		case "book":
-		
 			if( catchBookService.newCatchBook(user, date, title, comment) ){
 				System.out.println("Saved new to-read!");
 				return "search";
-			}
-			
+			};
+		case "movie":
+			if(catchMovieService.newCatchMovie(user, date, title, comment) ){
+				System.out.println("Saved new to-watch!");
+				return "search";
+			};
 		}
 		
-		System.out.println(mediaType);
-		System.out.println(title);
-		System.out.println(comment);
 		return "search";
+		
 	}
 
 }

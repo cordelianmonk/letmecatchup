@@ -1,5 +1,7 @@
 package com.catchup.app.model.movie;
 
+import java.sql.Date;
+
 import com.catchup.app.model.user.User;
 
 import javax.persistence.Column;
@@ -33,7 +35,7 @@ public class CatchMovie {
 	private String comment;
 	
 	@Column
-	private String dateAdded; //TODO Should this be Data object?
+	private Date dateAdded; //TODO Should this be Data object?
 	
 	@ManyToOne
 	private User user;
@@ -41,6 +43,13 @@ public class CatchMovie {
 	public CatchMovie() {
 	}
 	
+	public CatchMovie(User user, Date date, String title, String comment) {
+		this.user = user;
+		this.dateAdded = date;
+		this.title = title;
+		this.comment = comment;
+	}
+
 	public int getMid() {
 		return mid;
 	}
@@ -66,10 +75,10 @@ public class CatchMovie {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getDateAdded() {
+	public Date getDateAdded() {
 		return dateAdded;
 	}
-	public void setDateAdded(String dateAdded) {
+	public void setDateAdded(Date dateAdded) {
 		this.dateAdded = dateAdded;
 	}
 	public User getUser() {

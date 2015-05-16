@@ -30,7 +30,6 @@ public class UserDaoImp implements UserDAO {
 			.list();
  
 		if (users.size() > 0) {
-			User user = users.get(0);
 			return users.get(0);
 		} else {
 			return null;

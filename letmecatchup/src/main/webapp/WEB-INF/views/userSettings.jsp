@@ -38,7 +38,6 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
 					<ul class="dropdown-menu">
-						<li><a href="catch_all.html">All</a></li>
 						<li><a href="catch_books.html">Books</a></li>
 						<li><a href="catch_movies.html">Movies</a></li>
 					</ul></li>
@@ -46,7 +45,6 @@
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Caught<span class="caret" /></a>
 					<ul class="dropdown-menu">
-						<li><a href="caught_all.html">All</a></li>
 						<li><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
 					</ul></li>

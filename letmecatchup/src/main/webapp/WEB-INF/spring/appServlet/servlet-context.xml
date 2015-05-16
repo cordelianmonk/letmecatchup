@@ -79,6 +79,14 @@
     <beans:bean id="catchBookService" class="com.catchup.app.model.service.CatchBookServiceImp">
         <beans:property name="catchBookDAO" ref="catchBookDAO"></beans:property>
     </beans:bean>
+    
+     <beans:bean id="catchMovieDAO" class="com.catchup.app.model.dao.CatchMovieDAOImp">
+        <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="catchMovieService" class="com.catchup.app.model.service.CatchMovieServiceImp">
+        <beans:property name="catchMovieDAO" ref="catchMovieDAO"></beans:property>
+    </beans:bean>
 	
 	
 </beans:beans>

@@ -31,8 +31,7 @@ public class DashboardController {
 	
 	@RequestMapping(value="dash.html")
 	public String allHome(HttpSession session, Model model) {
-		System.out.println(session.getAttribute("uid"));
-		int uid = (int) session.getAttribute("uid");
+		int uid = (int)( (User) session.getAttribute("user") ).getUid();
 		User user = this.userService.getUserById( uid );
 		System.out.println( user.getFirstName() );
 		
