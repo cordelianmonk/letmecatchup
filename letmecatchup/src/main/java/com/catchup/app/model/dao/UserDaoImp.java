@@ -59,5 +59,6 @@ public class UserDaoImp implements UserDAO {
 		Session session = factory.getCurrentSession();
 		session.persist(user);
 	}
+	
 
 }

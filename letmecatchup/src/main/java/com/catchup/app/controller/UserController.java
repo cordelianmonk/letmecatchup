@@ -38,8 +38,8 @@ public class UserController {
 		
 		if(user != null){
 			session.setAttribute("user", user);
-			System.out.println( user.getFirstName()  );
-			return "dashboard";
+			
+			return "redirect:/dash.html";
 		}
 			return "redirect:/index.html";
 	}

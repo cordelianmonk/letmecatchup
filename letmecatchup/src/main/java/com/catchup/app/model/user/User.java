@@ -40,20 +40,20 @@ public class User {
 	@Column
 	private String password;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USERS_UID")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_uid")
 	private List<CatchBook> catchBookList;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USERS_UID")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_uid")
 	private List<CaughtBook> caughtBookList;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USERS_UID")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_uid")
 	private List<CatchMovie> catchMovieList;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="USERS_UID")
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_uid")
 	private List<CaughtMovie> caughtMovieList;
 	
 	public User() {
