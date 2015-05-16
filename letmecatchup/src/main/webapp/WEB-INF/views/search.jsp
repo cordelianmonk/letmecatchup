@@ -103,7 +103,7 @@
 			</div>
 			<div class="col-xs-12 col-md-12">
 				<div class="form-group">
-					<label for="title">Title</label><br /> <input type="text"
+					<label for="title">Title</label><br /> <input autofocus type="text"
 						name="title" id="search-title"></input>
 					<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
 				</div>
@@ -139,7 +139,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
-						<label for="title">Title</label><br /> <input type="text"
+						<label for="title">Title</label><br /> <input autofocus type="text"
 							name="title" id="title"></input><br /> <label for="comment">Comment</label></br>
 						<textarea rows="5" cols="60" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
@@ -163,7 +163,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
-						<label for="title">Title</label><br /> <input type="text"
+						<label for="title">Title</label><br /> <input autofocus type="text"
 							name="title" id="title"></input><br /> <label for="comment">Comment</label><br />
 						<textarea rows="5" cols="60" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"

@@ -9,7 +9,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/index.html", method = RequestMethod.GET)
 	public String home() {
-		return "home";
+		return "search";
 	}
 
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
