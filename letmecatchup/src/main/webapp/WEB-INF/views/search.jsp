@@ -70,7 +70,7 @@
 		<div class="col-xs-12 col-md-12">
 			<div class="form-group">
 				<label for="select-action">Choose one from the selection</label> <select
-					class="form-control" id="select-action"  style="width: 250px">
+					class="form-control" id="select-action" style="width: 250px">
 					<option selected="selected"></option>
 					<option value="search">Search and (maybe) save</option>
 					<option value="add">Just add</option>
@@ -83,19 +83,11 @@
 	<div class="container">
 		<div hidden class="search-area" id="search-area">
 			<h2>Search and add</h2>
-			<div class="col-xs-12 col-md-6">
-				<div class="form-group">
-					<label for="search-status">Select status</label> <select
-						class="form-control" id="search-status" style="width: 150px">
-						<option value="catch">Catch</option>
-						<option value="caught">Caught</option>
-					</select>
-				</div>
-			</div>
 			<div class="col-xs-12 col-md-12">
 				<div class="form-group">
 					<label for="mediatype">Select media type</label> <select
-						class="form-control" name="mediatype" id="search-mediatype" style="width: 150px">
+						class="form-control" name="mediatype" id="search-mediatype"
+						style="width: 150px">
 						<option value="book">Book</option>
 						<option value="movie">Movie</option>
 					</select>
@@ -103,8 +95,8 @@
 			</div>
 			<div class="col-xs-12 col-md-12">
 				<div class="form-group">
-					<label for="title">Title</label><br /> <input autofocus type="text"
-						name="title" id="search-title"></input>
+					<label for="title">Title</label><br /> <input autofocus
+						type="text" name="title" id="search-title"></input>
 					<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
 				</div>
 			</div>
@@ -119,8 +111,9 @@
 			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
 					<label for="status">Select Status</label> <select
-						class="form-control" id="add-status" name="status" style="width: 150px">
-						<option selected="selected">Status</option>
+						class="form-control" id="add-status" name="status"
+						style="width: 150px">
+						<option selected="selected"></option>
 						<option value="catch">Catch</option>
 						<option value="caught">Caught</option>
 					</select>
@@ -131,7 +124,8 @@
 				<div class="col-xs-12 col-md-12">
 					<div class="form-group">
 						<label for="mediatype">Select media type</label> <select
-							class="form-control" id="mediatype" name="mediatype" style="width: 150px">
+							class="form-control" id="mediatype" name="mediatype"
+							style="width: 150px">
 							<option value="book">Book</option>
 							<option value="movie">Movie</option>
 						</select>
@@ -139,8 +133,9 @@
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
-						<label for="title">Title</label><br /> <input autofocus type="text"
-							name="title" id="title"></input><br /> <label for="comment">Comment</label></br>
+						<label for="title">Title</label><br /> <input autofocus
+							type="text" name="title" id="title"></input><br /> <label
+							for="comment">Comment</label></br>
 						<textarea rows="5" cols="60" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
@@ -155,7 +150,8 @@
 				<div class="col-xs-12 col-md-12">
 					<div class="form-group">
 						<label for="mediatype">Select media type</label> <select
-							class="form-control" id="mediatype" name="mediatype" style="width: 150px">
+							class="form-control" id="mediatype" name="mediatype"
+							style="width: 150px">
 							<option value="book">Book</option>
 							<option value="movie">Movie</option>
 						</select>
@@ -163,15 +159,16 @@
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
-						<label for="title">Title</label><br /> <input autofocus type="text"
-							name="title" id="title"></input><br /> <label for="comment">Comment</label><br />
+						<label for="title">Title</label><br /> <input autofocus
+							type="text" name="title" id="title"></input><br /> <label
+							for="comment">Comment</label><br />
 						<textarea rows="5" cols="60" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
 						<br /> <label for="rating">Rate</label> <select
 							class="form-control" id="rating" name="rating"
 							style="width: 80px">
-							<option value="1">0</option>
+							<option selected="selected" value="1">0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -187,6 +184,48 @@
 					</div>
 				</div>
 			</form>
+		</div>
+	</div>
+
+	<!-- BOOK INFO -->
+	<h1>Book Info</h1>
+	<!-- 1 / 3 -->
+	<div class="container">
+		<div class="col-xs-12 col-md-2">
+
+			<div id="cover"></div>
+			<h3>Writer</h3>
+			<p id="writer"></p>
+			<br />
+			<div id="gr-link"></div>
+			<button>Catch</button>
+			<br />
+			<button>Caught</button>
+			<br />
+		</div>
+	</div>
+
+	<!-- 2 / 3 -->
+	<div class="container">
+		<div class="col-xs-12 col-md-5">
+
+
+			<h2 id="book-title">Title</h2>
+			<br />
+			<h3 id="book-rating">GoodReads(TM) Rating</h3>
+			<br />
+			<p id="book-description">Description</p>
+			<br />
+		</div>
+	</div>
+
+	<!-- 3/3 -->
+	<div class="container">
+		<div class="col-xs-12 col-md-5">
+
+			<div id="reviews">
+				<h2>Reviews</h2>
+			</div>
 		</div>
 	</div>
 
