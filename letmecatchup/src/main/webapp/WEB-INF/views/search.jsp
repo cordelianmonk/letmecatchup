@@ -65,8 +65,8 @@
 	<!-- MAIN BODY -->
 
 	<h1 class="jumbotron">Look up and add media</h1>
-	<div class="container">
-		<h2>What would you like to do</h2>
+	<div class="container-fluid">
+		<h2>What would you like to do?</h2>
 		<div class="col-xs-12 col-md-12">
 			<div class="form-group">
 				<label for="select-action">Choose one from the selection</label> <select
@@ -80,7 +80,7 @@
 	</div>
 
 	<!-- SEARCH AREA -->
-	<div class="container">
+	<div class="container-fluid">
 		<div hidden class="search-area" id="search-area">
 			<h2>Search and add</h2>
 			<div class="col-xs-12 col-md-12">
@@ -88,23 +88,29 @@
 					<label for="mediatype">Select media type</label> <select
 						class="form-control" name="mediatype" id="search-mediatype"
 						style="width: 150px">
+						<option selected="selected"></option>
 						<option value="book">Book</option>
 						<option value="movie">Movie</option>
 					</select>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-12">
-				<div class="form-group">
+			<div hidden id="search-area-form" class="form-group">
+				<div class="col-xs-12 col-md-6">
 					<label for="title">Title</label><br /> <input autofocus
-						type="text" name="title" id="search-title"></input>
-					<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+						type="text" name="title" id="search-title" style="width: 90%"></input><br />
+					<button type="button" class="btn btn-sm btn-primary" id="search">Search</button>
+				</div>
+
+				<div id="search-writer-area" class="col-xs-12 col-md-6">
+					<label for="writer">Writer</label><br /> <input autofocus
+						type="text" name="writer" id="search-writer" style="width: 90%"></input>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- ADD ONLY AREA -->
-	<div class="container">
+	<div class="container-f">
 		<div hidden class="add-only-area" id="add-only-area">
 			<h2>Add only</h2>
 
@@ -188,43 +194,34 @@
 	</div>
 
 	<!-- BOOK INFO -->
-	<h1>Book Info</h1>
-	<!-- 1 / 3 -->
-	<div class="container">
-		<div class="col-xs-12 col-md-2">
-
-			<div id="cover"></div>
-			<h3>Writer</h3>
-			<p id="writer"></p>
-			<br />
-			<div id="gr-link"></div>
-			<button>Catch</button>
-			<br />
-			<button>Caught</button>
-			<br />
-		</div>
-	</div>
-
-	<!-- 2 / 3 -->
-	<div class="container">
-		<div class="col-xs-12 col-md-5">
-
-
-			<h2 id="book-title">Title</h2>
-			<br />
-			<h3 id="book-rating">GoodReads(TM) Rating</h3>
-			<br />
-			<p id="book-description">Description</p>
-			<br />
-		</div>
-	</div>
-
-	<!-- 3/3 -->
-	<div class="container">
-		<div class="col-xs-12 col-md-5">
-
-			<div id="reviews">
-				<h2>Reviews</h2>
+	<div hidden class="book-info-area" id="book-info-area">
+		<div class="container-fluid">
+			<!-- 1 / 3 -->
+			<div class="col-xs-12 col-md-2">
+				<div id="cover"></div>
+				<p id="writer"></p>
+				<br />
+				<div id="gr-link"></div>
+				<br />
+				<button>Catch</button>
+				<br />
+				<button>Caught</button>
+				<br />
+			</div>
+			<!-- 2 / 3 -->
+			<div class="col-xs-12 col-md-6">
+				<h2 id="book-title">Title</h2>
+				<br />
+				<h3 id="book-rating">GoodReads(TM) Rating</h3>
+				<br />
+				<p id="book-description">Description</p>
+				<br />
+			</div>
+			<!-- 3/3 -->
+			<div class="col-xs-12 col-md-4">
+				<div id="reviews">
+					<h2>Reviews</h2>
+				</div>
 			</div>
 		</div>
 	</div>
