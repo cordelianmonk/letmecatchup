@@ -58,6 +58,10 @@ $(document).ready(function() {
 			alert("FIGURE OUT THE MOVIE DATABASE YOU LAZY SOD");
 		}
 		
+		$("#searched-catch").click(function(){
+			generateCatchForm();
+		} ) ;
+		
 	});
 
 });
@@ -82,32 +86,33 @@ function searchBook(title, writer) {
 						format : "xml"
 					},
 					function(xml) {
-						$("#cover")
+						$("#image")
 								.html(
 										"<img src="
 												+ xml
 														.getElementsByTagName("image_url")[0].textContent
 												+ ">");
-						$("#writer")
-								.html(
-										xml.getElementsByTagName("name")[0].textContent);
-						$("#gr-link")
+						$("#creator")
+								.html("<p>"+
+										xml.getElementsByTagName("name")[0].textContent+"</p>");
+						$("#link")
 								.html(
 										"<a href="
 												+ xml
 														.getElementsByTagName("url")[0].textContent
-												+ ">link to GoodReads</a>");
-						$("#book-title")
+												+ ">See on Goodreads</a>");
+						$("#searched-title")
 								.html(
 										xml.getElementsByTagName("title")[0].textContent);
-						$("#book-rating")
-								.html(
-										"Rated "
-												+ xml
+						$("#searched-apikey")
+						.html(
+								xml.getElementsByTagName("id")[0].textContent);
+						$("#searched-rating")
+								.html(xml
 														.getElementsByTagName("average_rating")[0].textContent
-												+ "/5 stars");
-						$("#book-description")
-								.html(
+												+ " out of 5 stars");
+						$("#searched-description")
+								.html("<i>Description from GoodReads:</i><br/><br/>" + 
 										xml.getElementsByTagName("description")[0].textContent);
 						$("#reviews")
 								.html(
@@ -117,6 +122,22 @@ function searchBook(title, writer) {
 						$("#goodreads-widget")[0].style.height = "350px";
 						$("#the_iframe")[0].width = "100%";
 						$("#the_iframe")[0].height = "400";
-						$("#book-info-area").show(); // VERY IMPORRANT
+						$("#info-area").show(); // VERY IMPORRANT
 					});
+}
+
+function searchMovie(title){
+}
+
+function generateCatchForm(){
+	
+	 $("#searched-form").html('<form action="addCatchMedia" method="post">' +
+	'<input hidden name="mediatype" value="' + $("#search-mediatype").val() + '"></input>' +
+	'<input hidden name="title" value="' + $("#searched-title").text()  + '"></input>' +
+	'<input hidden name="apiID" + value= "' + $("#searched-apikey").text() + '"></input>' +
+	'<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>' +
+	'<button type="submit" class="btn btn-sm btn-primary" >Submit</button>' +
+	'</form>'
+	);
+	
 }

@@ -97,7 +97,7 @@
 			<div hidden id="search-area-form" class="form-group">
 				<div class="col-xs-12 col-md-6">
 					<label for="title">Title</label><br /> <input autofocus
-						type="text" name="title" id="search-title" style="width: 90%"></input><br />
+						type="text" name="title" id="search-title" style="width: 80%"></input>
 					<button type="button" class="btn btn-sm btn-primary" id="search">Search</button>
 				</div>
 
@@ -145,6 +145,7 @@
 						<textarea rows="5" cols="60" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
+							<input hidden name="apiID"></input>
 						<br />
 						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
 					</div>
@@ -193,28 +194,34 @@
 		</div>
 	</div>
 
-	<!-- BOOK INFO -->
-	<div hidden class="book-info-area" id="book-info-area">
+	<!-- INFO -->
+	<div class="info-area" id="info-area">
 		<div class="container-fluid">
 			<!-- 1 / 3 -->
 			<div class="col-xs-12 col-md-2">
-				<div id="cover"></div>
-				<p id="writer"></p>
-				<br />
-				<div id="gr-link"></div>
-				<br />
-				<button>Catch</button>
-				<br />
-				<button>Caught</button>
-				<br />
+				<div id="image"></div>
+				<div id="creator"></div>
+				<br/>
+				<div id="link"></div>
+				<br/>
+				<button id="searched-catch">Catch</button>
+				<br/>
+				<button id="searched-caught">Caught</button>
+				<br/>
+				<!--  HIDDEN FORM -->
+				<div id="searched-form">
+				
+				</div>
+				
 			</div>
 			<!-- 2 / 3 -->
 			<div class="col-xs-12 col-md-6">
-				<h2 id="book-title">Title</h2>
+				<h2 id="searched-title">Title</h2>
+				<p hidden id="searched-apikey"></p>
 				<br />
-				<h3 id="book-rating">GoodReads(TM) Rating</h3>
+				<h3 id="searched-rating">GoodReads(TM) Rating</h3>
 				<br />
-				<p id="book-description">Description</p>
+				<p id="searched-description">Description</p>
 				<br />
 			</div>
 			<!-- 3/3 -->
@@ -225,6 +232,9 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
 
 
 
