@@ -219,7 +219,7 @@
 				<h2 id="searched-title">Title</h2>
 				<p hidden id="searched-apikey"></p>
 				<br />
-				<h3 id="searched-rating">GoodReads(TM) Rating</h3>
+				<h3 id="searched-rating">Rating</h3>
 				<br />
 				<p id="searched-description">Description</p>
 				<br />
@@ -227,7 +227,6 @@
 			<!-- 3/3 -->
 			<div class="col-xs-12 col-md-4">
 				<div id="reviews">
-					<h2>Reviews</h2>
 				</div>
 			</div>
 		</div>

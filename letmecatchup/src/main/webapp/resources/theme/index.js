@@ -37,7 +37,7 @@ $(document).ready(function() {
 		if ($("#search-mediatype").val() == "book") {
 			$("#search-area-form").show();
 			$("#search-writer-area").show();
-		} else if ( ($("#search-mediatype").val() == "movie") ) {
+		} else if (($("#search-mediatype").val() == "movie")) {
 			$("#search-area-form").show();
 			$("#search-writer-area").hide();
 		} else {
@@ -49,19 +49,19 @@ $(document).ready(function() {
 	$("#search").click(function() {
 		var title = $("#search-title").val();
 		var writer = $("#search-writer").val();
-		
-		if ($("#search-mediatype").val() == "book"){
+
+		if ($("#search-mediatype").val() == "book") {
 			searchBook(title, writer);
 		}
-		
-		if ($("#search-mediatype").val() == "movie"){
-			alert("FIGURE OUT THE MOVIE DATABASE YOU LAZY SOD");
+
+		if ($("#search-mediatype").val() == "movie") {
+			searchMovie(title);
 		}
-		
-		$("#searched-catch").click(function(){
-			generateCatchForm();
-		} ) ;
-		
+
+	});
+
+	$("#searched-catch").click(function() {
+		generateCatchForm();
 	});
 
 });
@@ -93,8 +93,11 @@ function searchBook(title, writer) {
 														.getElementsByTagName("image_url")[0].textContent
 												+ ">");
 						$("#creator")
-								.html("<p>"+
-										xml.getElementsByTagName("name")[0].textContent+"</p>");
+								.html(
+										"<p>"
+												+ xml
+														.getElementsByTagName("name")[0].textContent
+												+ "</p>");
 						$("#link")
 								.html(
 										"<a href="
@@ -104,16 +107,18 @@ function searchBook(title, writer) {
 						$("#searched-title")
 								.html(
 										xml.getElementsByTagName("title")[0].textContent);
-						$("#searched-apikey")
-						.html(
+						$("#searched-apikey").html(
 								xml.getElementsByTagName("id")[0].textContent);
 						$("#searched-rating")
-								.html(xml
-														.getElementsByTagName("average_rating")[0].textContent
+								.html(
+										xml
+												.getElementsByTagName("average_rating")[0].textContent
 												+ " out of 5 stars");
 						$("#searched-description")
-								.html("<i>Description from GoodReads:</i><br/><br/>" + 
-										xml.getElementsByTagName("description")[0].textContent);
+								.html(
+										"<i>Description from Goodreads:</i><br/><br/>"
+												+ xml
+														.getElementsByTagName("description")[0].textContent);
 						$("#reviews")
 								.html(
 										xml
@@ -126,18 +131,109 @@ function searchBook(title, writer) {
 					});
 }
 
-function searchMovie(title){
+function searchMovie(title) {
+
+	$.ajax({
+		method : "GET",
+		url : "http://api.themoviedb.org/3/search/movie",
+		contentType : 'application/json',
+		dataType : 'jsonp',
+		data : {
+			api_key : "aff7e1ce102316f1349934e4c4228ac5",
+			query : title
+		},
+		success : function(data) {
+			var number = data.total_results;
+			console.log(number);
+			if(number > 1){
+				alert("many movies!");
+			} else if ( number == 1){
+				var movieID = data.results[0].id;
+				console.log(movieID);
+				searchMovieByID(movieID);
+				getMovieTrailer(movieID);
+			}
+
+		},
+		error : function(data) {
+			alert(JSON.stringify(data));
+		}
+	});
+
 }
 
-function generateCatchForm(){
-	
-	 $("#searched-form").html('<form action="addCatchMedia" method="post">' +
-	'<input hidden name="mediatype" value="' + $("#search-mediatype").val() + '"></input>' +
-	'<input hidden name="title" value="' + $("#searched-title").text()  + '"></input>' +
-	'<input hidden name="apiID" + value= "' + $("#searched-apikey").text() + '"></input>' +
-	'<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>' +
-	'<button type="submit" class="btn btn-sm btn-primary" >Submit</button>' +
-	'</form>'
-	);
-	
+function searchMovieByID(movieID){
+
+	$.ajax({
+		method : "GET",
+		url : "http://api.themoviedb.org/3/movie/" + movieID,
+		contentType : 'application/json',
+		dataType : 'jsonp',
+		data : {
+			api_key : "aff7e1ce102316f1349934e4c4228ac5",
+			
+		},
+		success : function(data) {			
+			$("#image").html("<img height='140px' src=http://image.tmdb.org/t/p/w300"
+							+ data.poster_path+ ">");
+			$("#link").html("<a href=http://www.themoviedb.org/movie/"
+							+ data.id + ">See on TMDb </a>");
+			$("#searched-title").html(data.title);
+			$("#searched-apikey").html(data.id);
+			$("#searched-rating").html(data.vote_average + " out of 10 stars");
+			$("#searched-description").html("<i>Description from The Movie Database:</i><br/><br/>" +
+					data.overview);
+		},
+		error : function(data) {
+			alert(JSON.stringify(data));
+		}
+	});
+
+}
+
+function getMovieTrailer(movieID){
+	$.ajax({
+		method : "GET",
+		url : "http://api.themoviedb.org/3/movie/" + movieID + "/videos",
+		contentType : 'application/json',
+		dataType : 'jsonp',
+		data : {
+			api_key : "aff7e1ce102316f1349934e4c4228ac5",
+		},
+		success : function(data) {
+			console.log(data.results[0].key);
+			
+			$("#reviews").html(
+			'<iframe id="player" type="text/html" width="100%" height="300px" '+
+			'src="http://www.youtube.com/embed/'+ data.results[0].key + '?enablejsapi=1"'+
+			'frameborder="0"></iframe>' );
+		      
+		},
+		error : function(data) {
+			console.log(JSON.stringify(data));
+		}
+		
+	});
+		
+		
+}
+
+function generateCatchForm() {
+
+	$("#searched-form")
+			.html(
+					'<form action="addCatchMedia" method="post">'
+							+ '<input hidden name="mediatype" value="'
+							+ $("#search-mediatype").val()
+							+ '"></input>'
+							+ '<input hidden name="title" value="'
+							+ $("#searched-title").text()
+							+ '"></input>'
+							+ '<input hidden name="apiID" + value= "'
+							+ $("#searched-apikey").text()
+							+ '"></input>'
+							+ '<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
+							+ '<button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
+							+ '</form>');
+
 }
