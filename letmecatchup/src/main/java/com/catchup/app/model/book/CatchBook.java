@@ -43,11 +43,12 @@ public class CatchBook {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CatchBook(User	user, Date date, String title, String comment) {
+	public CatchBook(User	user, Date date, String title, String comment, String apiID) {
 		this.user = user;
 		this.dateAdded = date;
 		this.title = title;
 		this.comment=comment;
+		this.apiID = apiID;
 	}
 
 	public int getBid() {

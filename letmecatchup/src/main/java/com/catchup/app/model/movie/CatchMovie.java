@@ -43,11 +43,12 @@ public class CatchMovie {
 	public CatchMovie() {
 	}
 	
-	public CatchMovie(User user, Date date, String title, String comment) {
+	public CatchMovie(User user, Date date, String title, String comment, String apiID) {
 		this.user = user;
 		this.dateAdded = date;
 		this.title = title;
 		this.comment = comment;
+		this.apiID = apiID;
 	}
 
 	public int getMid() {

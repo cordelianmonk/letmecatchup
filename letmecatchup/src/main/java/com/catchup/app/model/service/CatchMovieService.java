@@ -6,6 +6,6 @@ import com.catchup.app.model.user.User;
 
 public interface CatchMovieService {
 
-	boolean newCatchMovie(User user, Date date, String title, String comment);
+	boolean newCatchMovie(User user, Date date, String title, String comment, String apiID);
 
 }

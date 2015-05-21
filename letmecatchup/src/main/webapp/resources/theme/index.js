@@ -47,6 +47,7 @@ $(document).ready(function() {
 	});
 
 	$("#search").click(function() {
+		//$("#info-area").empty();
 		var title = $("#search-title").val();
 		var writer = $("#search-writer").val();
 
@@ -62,6 +63,10 @@ $(document).ready(function() {
 
 	$("#searched-catch").click(function() {
 		generateCatchForm();
+	});
+	
+	$("#searched-caught").click(function() {
+		generateCaughtForm();
 	});
 
 });
@@ -145,13 +150,18 @@ function searchMovie(title) {
 		success : function(data) {
 			var number = data.total_results;
 			console.log(number);
-			if(number > 1){
-				alert("many movies!");
-			} else if ( number == 1){
+			
+			//if(number > 1){
+		//		alert("many movies!");
+			//} else 
+			if ( number >= 1){
 				var movieID = data.results[0].id;
-				console.log(movieID);
+				console.log(movieID); //TODO for removal 
 				searchMovieByID(movieID);
 				getMovieTrailer(movieID);
+				$("#info-area").show()
+			} else {
+				alert("No movie found!")
 			}
 
 		},
@@ -233,6 +243,31 @@ function generateCatchForm() {
 							+ $("#searched-apikey").text()
 							+ '"></input>'
 							+ '<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
+							+ '<button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
+							+ '</form>');
+
+}
+
+function generateCaughtForm() {
+
+	$("#searched-form")
+			.html(
+					'<form action="addCatchMedia" method="post">'
+							+ '<input hidden name="mediatype" value="'
+							+ $("#search-mediatype").val()
+							+ '"></input>'
+							+ '<input hidden name="title" value="'
+							+ $("#searched-title").text()
+							+ '"></input>'
+							+ '<input hidden name="apiID" + value= "'
+							+ $("#searched-apikey").text()
+							+ '"></input>'
+							+ '<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
+							+ '<select id="rating" name="rating" style="width: 80px"> <option selected="selected"'
+							+ 'value="0">0</option><option value="1">1</option> <option value="2">2</option>'
+							+ '<option value="3">3</option><option value="4">4</option><option value="5">5</option>'
+							+ '<option value="6">6</option><option value="7">7</option><option value="8">8</option>'
+							+ '<option value="9">9</option><option value="10">10</option></select> '
 							+ '<button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
 							+ '</form>');
 

@@ -3,6 +3,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -66,6 +70,21 @@
 <h1 class="jumbotron"> Your Movies</h1>
 
 	<div id="catch-movie-list">
+	<c:if test="${!empty catchMovieList}">
+				<c:forEach items="${catchMovieList}" var="catchMovie">
+
+					<h2>${catchMovie.title}</h2>
+					<br />
+					<p>${catchMovie.comment}</p>
+							<br />
+							<form>
+								<input hidden value="${catchMovie.title}"></input>
+								 <input hidden value="${catchMovie.comment}"></input>
+								<input hidden value="${catchMovie.mid}"></input> 
+								<input hidden value="${catchMovie.apiID}"></input>
+							</form>
+				</c:forEach>
+		</c:if>
 	</div>
 
 </body>

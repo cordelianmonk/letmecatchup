@@ -3,6 +3,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -64,9 +68,24 @@
 
 	<!-- BODY -->
 
-	<h1 class="jumbotron"> Your Reads </h1>
+	<h1 class="jumbotron">Your Reads</h1>
 
 	<div id="booklist">
+		<c:if test="${!empty catchBookList}">
+				<c:forEach items="${catchBookList}" var="catchBook">
+
+					<h2>${catchBook.title}</h2>
+					<br />
+					<p>${catchBook.comment}</p>
+							<br />
+							<form>
+								<input hidden value="${catchBook.title}"></input>
+								 <input hidden value="${catchBook.comment}"></input>
+								<input hidden value="${catchBook.bid}"></input> 
+								<input hidden value="${catchBook.apiID}"></input>
+							</form>
+				</c:forEach>
+		</c:if>
 	</div>
 
 </body>

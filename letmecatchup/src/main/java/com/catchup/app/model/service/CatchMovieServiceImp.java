@@ -21,13 +21,13 @@ public class CatchMovieServiceImp implements CatchMovieService {
 	@Override
 	@Transactional
 	public boolean newCatchMovie(User user, Date date, String title,
-			String comment) {
+			String comment, String apiID) {
 		
-		if(this.catchMovieDAO.bookExists(title) ){
-			return false;
-		}
+		//if(this.catchMovieDAO.bookExists(title) ){
+		//	return false; TODO Needs to be more sophisticated
+		//}
 		
-		CatchMovie catchMovie = new CatchMovie(user, date, title, comment);
+		CatchMovie catchMovie = new CatchMovie(user, date, title, comment, apiID);
 		this.catchMovieDAO.addCatchBook(catchMovie);
 		return true;
 		

@@ -48,29 +48,33 @@ public class SearchController {
 	}
 	
 	@RequestMapping(value = "/addCatchMedia", method=RequestMethod.POST)
-	public String addMedia(
+	public String addCatchMedia(
 			@RequestParam("mediatype") String mediaType,
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
+			@RequestParam("apiID") String apiID,
 			HttpSession session
 			)
-	{
+	{	
+		
 		User user = this.userService.getUserById( ((User) session.getAttribute("user")).getUid() );
 		java.sql.Date date = Date.valueOf( LocalDate.now() );
 		
 		switch(mediaType){
 		case "book":
-			if( catchBookService.newCatchBook(user, date, title, comment) ){
+			if( catchBookService.newCatchBook(user, date, title, comment, apiID) ){
 				System.out.println("Saved new to-read!");
 				return "search";
 			};
 		case "movie":
-			if(catchMovieService.newCatchMovie(user, date, title, comment) ){
+			if(catchMovieService.newCatchMovie(user, date, title, comment, apiID) ){
 				System.out.println("Saved new to-watch!");
 				return "search";
 			};
 		}
 		
+		//System.out.println( mediaType + " " + title + " " + comment + " " + apiID );
+		//System.out.println( apiID.length() );
 		return "search";
 		
 	}
