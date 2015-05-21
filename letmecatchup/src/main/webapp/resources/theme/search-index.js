@@ -254,7 +254,7 @@ function generateCaughtForm() {
 
 	$("#searched-form")
 			.html(
-					'<form action="addCatchMedia" method="post">'
+					'<form action="addCaughtMedia" method="post">'
 							+ '<input hidden name="mediatype" value="'
 							+ $("#search-mediatype").val()
 							+ '"></input>'

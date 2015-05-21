@@ -115,6 +115,8 @@ public class SearchController {
 		java.sql.Date date = Date.valueOf( LocalDate.now() );
 		int intRating = Integer.parseInt(rating);
 		
+		System.out.println(mediaType + title + comment + rating);
+		
 		switch(mediaType){
 		case "book":
 			if( caughtBookService.newCaughtBook(user, date, title, comment, apiID, intRating) ){
@@ -136,6 +138,7 @@ public class SearchController {
 				
 			};
 		}
+		
 		
 		return "search";
 		
