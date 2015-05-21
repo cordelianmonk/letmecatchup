@@ -8,8 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.catchup.app.model.service.UserService;
-import com.catchup.app.model.user.User;
+
+import com.catchup.app.model.items.User;
+import com.catchup.app.model.service.interfaces.UserService;
 import com.catchup.app.util.HashGeneratorUtils;
 
 @Controller

@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
 
+	// SEARCH AREA FUNCTIONS
 	$("#select-action").val('');
 
 	$('#select-action').change(function() {
@@ -43,7 +44,8 @@ $(document).ready(function() {
 		} else {
 			$("#search-area-form").hide();
 		}
-
+		
+		
 	});
 
 	$("#search").click(function() {
@@ -272,3 +274,5 @@ function generateCaughtForm() {
 							+ '</form>');
 
 }
+
+

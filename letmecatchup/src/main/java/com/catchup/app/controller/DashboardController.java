@@ -11,13 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.catchup.app.model.book.CatchBook;
-import com.catchup.app.model.book.CaughtBook;
-import com.catchup.app.model.movie.CatchMovie;
-import com.catchup.app.model.movie.CaughtMovie;
-import com.catchup.app.model.service.CatchBookService;
-import com.catchup.app.model.service.UserService;
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.items.CatchBook;
+import com.catchup.app.model.items.CatchMovie;
+import com.catchup.app.model.items.CaughtBook;
+import com.catchup.app.model.items.CaughtMovie;
+import com.catchup.app.model.items.User;
+import com.catchup.app.model.service.interfaces.CatchBookService;
+import com.catchup.app.model.service.interfaces.UserService;
 
 @Controller
 public class DashboardController {
@@ -31,8 +31,7 @@ public class DashboardController {
 	
 	@RequestMapping(value="dash.html")
 	public String allHome(HttpSession session, Model model) {
-		int uid = (int)( (User) session.getAttribute("user") ).getUid();
-		User user = this.userService.getUserById( uid );
+		User user = (User) session.getAttribute("user");
 		System.out.println( user.getFirstName() );
 		
 		List<String> mediaList = new ArrayList<String>();

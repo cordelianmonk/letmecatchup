@@ -1,6 +1,6 @@
-package com.catchup.app.model.dao;
+package com.catchup.app.model.dao.interfaces;
 
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.items.User;
 
 public interface UserDAO {
 	public User validateUser(String email, String password);

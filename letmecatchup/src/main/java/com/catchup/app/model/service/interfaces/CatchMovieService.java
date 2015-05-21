@@ -1,8 +1,8 @@
-package com.catchup.app.model.service;
+package com.catchup.app.model.service.interfaces;
 
 import java.sql.Date;
 
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.items.User;
 
 public interface CatchMovieService {
 

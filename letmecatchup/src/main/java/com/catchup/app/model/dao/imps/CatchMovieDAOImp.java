@@ -1,4 +1,4 @@
-package com.catchup.app.model.dao;
+package com.catchup.app.model.dao.imps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.catchup.app.model.movie.CatchMovie;
+import com.catchup.app.model.dao.interfaces.CatchMovieDAO;
+import com.catchup.app.model.items.CatchMovie;
 
 @Repository
 public class CatchMovieDAOImp implements CatchMovieDAO {

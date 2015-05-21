@@ -1,10 +1,11 @@
-package com.catchup.app.model.service;
+package com.catchup.app.model.service.imps;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.catchup.app.model.dao.UserDAO;
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.dao.interfaces.UserDAO;
+import com.catchup.app.model.items.User;
+import com.catchup.app.model.service.interfaces.UserService;
 import com.catchup.app.util.HashGeneratorUtils;
 
 @Service

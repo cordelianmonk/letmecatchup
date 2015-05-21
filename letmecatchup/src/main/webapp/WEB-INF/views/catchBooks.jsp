@@ -17,7 +17,7 @@
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
-<script src="<c:url value="/resources/index.js" />"></script>
+<script src="<c:url value="/resources/catch-index.js" />"></script>
 </head>
 <body>
 
@@ -78,12 +78,17 @@
 					<br />
 					<p>${catchBook.comment}</p>
 							<br />
-							<form>
-								<input hidden value="${catchBook.title}"></input>
-								 <input hidden value="${catchBook.comment}"></input>
-								<input hidden value="${catchBook.bid}"></input> 
-								<input hidden value="${catchBook.apiID}"></input>
+							<form action="updateCatchBook" method="post">
+								<input hidden name="title" id="title-${catchBook.bid}" value ="${catchBook.title}"></input>
+								 <input hidden name="comment" id="comment-${catchBook.bid}" value="${catchBook.comment}"></input>
+								<input hidden name="bid" value="${catchBook.bid}"></input> 
+								<input hidden name="apiID" value="${catchBook.apiID}"></input>
+								<button hidden type="submit" class="btn btn-sm btn-primary" id="update-catchbook">
+								Update</button>
+								<button hidden class="btn btn-sm btn-primary" formaction="deleteCatchBook"
+								id="delete-catchbook" >Delete</button>
 							</form>
+							<button class="btn btn-sm btn-primary"  id="edit-catchbook-${catchBook.bid}">Edit</button>
 				</c:forEach>
 		</c:if>
 	</div>

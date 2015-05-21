@@ -41,11 +41,11 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
-				<beans:value>com.catchup.app.model.user.User</beans:value>
-				<beans:value>com.catchup.app.model.book.CatchBook</beans:value>
-				<beans:value>com.catchup.app.model.book.CaughtBook</beans:value>
-				<beans:value>com.catchup.app.model.movie.CatchMovie</beans:value>
-				<beans:value>com.catchup.app.model.movie.CaughtMovie</beans:value>
+				<beans:value>com.catchup.app.model.items.User</beans:value>
+				<beans:value>com.catchup.app.model.items.CatchBook</beans:value>
+				<beans:value>com.catchup.app.model.items.CaughtBook</beans:value>
+				<beans:value>com.catchup.app.model.items.CatchMovie</beans:value>
+				<beans:value>com.catchup.app.model.items.CaughtMovie</beans:value>
             </beans:list>
             
         </beans:property>
@@ -64,29 +64,44 @@
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
-    <beans:bean id="userDAO" class="com.catchup.app.model.dao.UserDaoImp">
+    <beans:bean id="userDAO" class="com.catchup.app.model.dao.imps.UserDaoImp">
         <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
-    <beans:bean id="userService" class="com.catchup.app.model.service.UserServiceImp">
+    <beans:bean id="userService" class="com.catchup.app.model.service.imps.UserServiceImp">
         <beans:property name="userDAO" ref="userDAO"></beans:property>
     </beans:bean>
     
-    <beans:bean id="catchBookDAO" class="com.catchup.app.model.dao.CatchBookDAOImp">
+    <beans:bean id="catchBookDAO" class="com.catchup.app.model.dao.imps.CatchBookDAOImp">
         <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
-    <beans:bean id="catchBookService" class="com.catchup.app.model.service.CatchBookServiceImp">
+    <beans:bean id="catchBookService" class="com.catchup.app.model.service.imps.CatchBookServiceImp">
         <beans:property name="catchBookDAO" ref="catchBookDAO"></beans:property>
     </beans:bean>
     
-     <beans:bean id="catchMovieDAO" class="com.catchup.app.model.dao.CatchMovieDAOImp">
+     <beans:bean id="catchMovieDAO" class="com.catchup.app.model.dao.imps.CatchMovieDAOImp">
         <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
-    <beans:bean id="catchMovieService" class="com.catchup.app.model.service.CatchMovieServiceImp">
+    <beans:bean id="catchMovieService" class="com.catchup.app.model.service.imps.CatchMovieServiceImp">
         <beans:property name="catchMovieDAO" ref="catchMovieDAO"></beans:property>
     </beans:bean>
 	
+	<beans:bean id="caughtBookDAO" class="com.catchup.app.model.dao.imps.CaughtBookDAOImp">
+        <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="caughtBookService" class="com.catchup.app.model.service.imps.CaughtBookServiceImp">
+        <beans:property name="caughtBookDAO" ref="caughtBookDAO"></beans:property>
+    </beans:bean>
+    
+    <beans:bean id="caughtMovieDAO" class="com.catchup.app.model.dao.imps.CaughtMovieDAOImp">
+        <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="caughtMovieService" class="com.catchup.app.model.service.imps.CaughtMovieServiceImp">
+        <beans:property name="caughtMovieDAO" ref="caughtMovieDAO"></beans:property>
+    </beans:bean>
 	
 </beans:beans>

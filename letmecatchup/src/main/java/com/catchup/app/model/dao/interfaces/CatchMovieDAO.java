@@ -1,6 +1,6 @@
-package com.catchup.app.model.dao;
+package com.catchup.app.model.dao.interfaces;
 
-import com.catchup.app.model.movie.CatchMovie;
+import com.catchup.app.model.items.CatchMovie;
 
 public interface CatchMovieDAO {
 

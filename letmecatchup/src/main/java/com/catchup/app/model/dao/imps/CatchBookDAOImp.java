@@ -1,4 +1,4 @@
-package com.catchup.app.model.dao;
+package com.catchup.app.model.dao.imps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.catchup.app.model.book.CatchBook;
-import com.catchup.app.model.movie.CatchMovie;
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.dao.interfaces.CatchBookDAO;
+import com.catchup.app.model.items.CatchBook;
+import com.catchup.app.model.items.CatchMovie;
+import com.catchup.app.model.items.User;
 
 @Repository
 public class CatchBookDAOImp implements CatchBookDAO{
@@ -19,6 +20,7 @@ public class CatchBookDAOImp implements CatchBookDAO{
 		this.factory = factory;
 	}
 
+	//TODO I think this needs to be revised. 
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean bookExists(String title) {
@@ -40,7 +42,6 @@ public class CatchBookDAOImp implements CatchBookDAO{
 	public void addCatchBook(CatchBook catchBook) {
 		Session session = factory.getCurrentSession();
 		session.persist(catchBook);
-		session.flush();
 	}
 
 }

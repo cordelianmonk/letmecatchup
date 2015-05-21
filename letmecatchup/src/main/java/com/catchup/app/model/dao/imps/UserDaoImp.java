@@ -1,4 +1,4 @@
-package com.catchup.app.model.dao;
+package com.catchup.app.model.dao.imps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.dao.interfaces.UserDAO;
+import com.catchup.app.model.items.User;
 
 @Repository
 public class UserDaoImp implements UserDAO {
@@ -30,7 +31,15 @@ public class UserDaoImp implements UserDAO {
 			.list();
  
 		if (users.size() > 0) {
-			return users.get(0);
+			
+			User user = users.get(0);
+			Hibernate.initialize( user.getCatchBookList() );
+			Hibernate.initialize( user.getCatchMovieList() );
+			Hibernate.initialize( user.getCaughtBookList() );
+			Hibernate.initialize( user.getCaughtMovieList() );
+			
+			return user;
+			
 		} else {
 			return null;
 		}

@@ -1,6 +1,6 @@
-package com.catchup.app.model.service;
+package com.catchup.app.model.service.interfaces;
 
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.items.User;
 
 public interface UserService {
 	public User validateUser(String email, String password);

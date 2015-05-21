@@ -1,6 +1,6 @@
-package com.catchup.app.model.dao;
+package com.catchup.app.model.dao.interfaces;
 
-import com.catchup.app.model.book.CatchBook;
+import com.catchup.app.model.items.CatchBook;
 public interface CatchBookDAO {
 
 	public boolean bookExists(String title);

@@ -1,4 +1,4 @@
-package com.catchup.app.model.user;
+package com.catchup.app.model.items;
 
 import java.util.List;
 
@@ -13,11 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-
-import com.catchup.app.model.book.CatchBook;
-import com.catchup.app.model.book.CaughtBook;
-import com.catchup.app.model.movie.CatchMovie;
-import com.catchup.app.model.movie.CaughtMovie;
 
 @Entity
 @Table(name="USERS", uniqueConstraints={@UniqueConstraint(columnNames={"UID"})})

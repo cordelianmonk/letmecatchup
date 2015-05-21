@@ -13,7 +13,7 @@
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
-<script src="<c:url value="/resources/index.js" />"></script>
+<script src="<c:url value="/resources/search-index.js" />"></script>
 </head>
 <body>
 
@@ -166,13 +166,20 @@
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
+						
 						<label for="title">Title</label><br /> <input autofocus
-							type="text" name="title" id="title"></input><br /> <label
+							type="text" name="title" id="title"></input><br /> 
+							
+						<label
 							for="comment">Comment</label><br />
 						<textarea rows="5" cols="60" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
-						<br /> <label for="rating">Rate</label> <select
+						
+						<input hidden name="apiID"></input>
+							
+						<br /> 
+						<label for="rating">Rate</label> <select
 							class="form-control" id="rating" name="rating"
 							style="width: 80px">
 							<option selected="selected" value="0">0</option>

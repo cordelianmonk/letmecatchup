@@ -1,13 +1,14 @@
-package com.catchup.app.model.service;
+package com.catchup.app.model.service.imps;
 
 import java.sql.Date;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.catchup.app.model.book.CatchBook;
-import com.catchup.app.model.dao.CatchBookDAO;
-import com.catchup.app.model.user.User;
+import com.catchup.app.model.dao.interfaces.CatchBookDAO;
+import com.catchup.app.model.items.CatchBook;
+import com.catchup.app.model.items.User;
+import com.catchup.app.model.service.interfaces.CatchBookService;
 
 @Service
 public class CatchBookServiceImp implements CatchBookService {
