@@ -25,9 +25,10 @@ import com.catchup.app.model.service.interfaces.UserService;
 public class CatchController {
 	private UserService userService;
 	private CatchBookService catchBookService;
+	private CatchMovieService catchMovieService;
 	private CaughtBookService caughtBookService;
 	private CaughtMovieService caughtMovieService;
-	private CatchMovieService catchMovieService;
+	
 	
 	@Autowired(required=true)
     @Qualifier(value="userService")
@@ -89,11 +90,11 @@ public class CatchController {
 	{	
 		User user = (User) session.getAttribute("user");
 		
-		CatchBook catchBook = this.catchBookService.searchBookByID(bid);
+		CatchBook catchBook = this.catchBookService.searchCatchBookByID(bid);
 		catchBook.setTitle(title);
 		catchBook.setComment(comment);
 		
-		this.catchBookService.updateBook(catchBook);
+		this.catchBookService.updateCatchBook(catchBook);
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );

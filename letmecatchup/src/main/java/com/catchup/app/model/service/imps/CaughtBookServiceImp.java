@@ -30,4 +30,22 @@ public class CaughtBookServiceImp implements CaughtBookService {
 		
 	}
 
+	@Override
+	@Transactional
+	public CaughtBook searchCaughtBookByID(int bid) {
+		return this.caughtBookDAO.searchCaughtBookByID(bid);
+	}
+
+	@Override
+	@Transactional
+	public void updateCaughtBook(CaughtBook caughtBook) {
+		this.caughtBookDAO.updateCaughtBook(caughtBook);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteCaughtBook(int bid) {
+		this.caughtBookDAO.deleteCaughtBook(bid);
+	}
+
 }

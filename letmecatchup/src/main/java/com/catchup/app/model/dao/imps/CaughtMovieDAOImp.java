@@ -20,5 +20,28 @@ public class CaughtMovieDAOImp implements CaughtMovieDAO {
 		Session session = factory.getCurrentSession();
 		session.persist(caughtMovie);		
 	}
+
+	@Override
+	public CaughtMovie searchCaughtMovieByID(int mid) {
+		Session session = factory.getCurrentSession();
+		return (CaughtMovie) session.get(CaughtMovie.class, new Integer(mid) );
+	}
+
+	@Override
+	public void updateCaughtMovie(CaughtMovie caughtMovie) {
+		Session session = factory.getCurrentSession();
+		session.update(caughtMovie);
+	}
+
+	@Override
+	public void deleteCaughtMovie(int mid) {
+		Session session = factory.getCurrentSession();
+		CaughtMovie caughtMovie = (CaughtMovie) session.get(CaughtMovie.class, new Integer (mid));
+		
+		if(caughtMovie!=null){
+			session.delete(caughtMovie);
+		}
+		
+	}
 	
 }

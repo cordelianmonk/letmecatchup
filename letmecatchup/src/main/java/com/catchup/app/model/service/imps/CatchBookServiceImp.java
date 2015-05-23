@@ -30,13 +30,13 @@ public class CatchBookServiceImp implements CatchBookService {
 
 	@Override
 	@Transactional
-	public CatchBook searchBookByID(int bid) {
+	public CatchBook searchCatchBookByID(int bid) {
 		return this.catchBookDAO.searchCatchBookByID(bid);
 	}
 
 	@Override
 	@Transactional
-	public void updateBook(CatchBook catchBook) {
+	public void updateCatchBook(CatchBook catchBook) {
 		this.catchBookDAO.updateCatchBook(catchBook);
 	}
 

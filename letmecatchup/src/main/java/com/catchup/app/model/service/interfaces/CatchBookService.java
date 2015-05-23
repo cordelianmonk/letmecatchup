@@ -9,9 +9,9 @@ public interface CatchBookService {
 
 	public boolean newCatchBook(User user, Date date, String title, String comment, String apiID);
 
-	public CatchBook searchBookByID(int bid);
+	public CatchBook searchCatchBookByID(int bid);
 
-	public void updateBook(CatchBook catchBook);
+	public void updateCatchBook(CatchBook catchBook);
 
 	public void deleteCatchBook(int bid);
 

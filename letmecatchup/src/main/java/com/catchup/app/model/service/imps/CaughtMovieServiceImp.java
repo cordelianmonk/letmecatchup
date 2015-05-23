@@ -26,6 +26,24 @@ public class CaughtMovieServiceImp implements CaughtMovieService {
 		CaughtMovie caughtMovie = new CaughtMovie(user, date, title, comment, apiID, rating);
 		this.caughtMovieDAO.addCaughtMovie(caughtMovie);
 		return true;
+	}
+
+	@Override
+	@Transactional
+	public CaughtMovie searchCaughtMovieByID(int mid) {
+		return this.caughtMovieDAO.searchCaughtMovieByID(mid);
+	}
+
+	@Override
+	@Transactional
+	public void updateCaughtMovie(CaughtMovie caughtMovie) {
+		this.caughtMovieDAO.updateCaughtMovie(caughtMovie);	
+	}
+
+	@Override
+	@Transactional
+	public void deleteCaughtMovie(int mid) {
+		this.caughtMovieDAO.deleteCaughtMovie(mid);
 		
 	}
 

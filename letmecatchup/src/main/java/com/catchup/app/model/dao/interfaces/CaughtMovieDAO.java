@@ -4,6 +4,12 @@ import com.catchup.app.model.items.CaughtMovie;
 
 public interface CaughtMovieDAO {
 
-	void addCaughtMovie(CaughtMovie caughtMovie);
+public void addCaughtMovie(CaughtMovie caughtMovie);
+
+public CaughtMovie searchCaughtMovieByID(int mid);
+
+public void updateCaughtMovie(CaughtMovie caughtMovie);
+
+public void deleteCaughtMovie(int mid);
 
 }

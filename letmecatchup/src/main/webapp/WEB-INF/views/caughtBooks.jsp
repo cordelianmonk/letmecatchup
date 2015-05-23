@@ -11,7 +11,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Caught Books</title>
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
+	<!-- NAVBAR -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -65,12 +65,61 @@
 		</div>
 	</div>
 	</nav>
-	
+
 	<!-- NAVBAR END -->
-	
-	<h1 class="jumbotron"> Books </h1>
-	
+
+	<h1 class="jumbotron">Books</h1>
+
 	<div id="caught-book-list">
+		<c:if test="${!empty caughtBookList}">
+			<c:forEach items="${caughtBookList}" var="caughtBook">
+				<div id="caughtbook-${caughtBook.bid}">
+					<h2>${caughtBook.title}</h2>
+					<br />
+					<p>Rated ${caughtBook.rating} out of 10</p><br />
+					<input hidden id="caughtbook-set-rating-${caughtBook.bid}" value="${caughtBook.rating}"></input>
+					<p>${caughtBook.comment}</p>
+				</div>
+				<form hidden id="caughtbook-form-${caughtBook.bid}"
+					action="updateCaughtBook" method="post">
+					<label for="title">Title</label><br /> <input name="title"
+						id="title-${caughtBook.bid}" value="${caughtBook.title}"></input><br /><br />
+					<label for="comment">Comment</label><br />
+					<textarea rows="5" cols="60" maxlength="300" name="comment"
+						id="comment-${caughtBook.bid}">${caughtBook.comment}</textarea>
+					<br /> <input hidden name="bid" value="${caughtBook.bid}"></input>
+					<input hidden name="apiID" value="${caughtBook.apiID}"></input>
+					<label for="rating">Rating</label><br />
+					<select disabled="true" 
+							id="caughtbook-form-${caughtBook.bid}-rating"
+							class="form-control" name="rating" style="width: 80px">
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select> <br />
+
+					<button type="submit" class="btn btn-sm btn-primary"
+						id="update-caughtbook">Save</button>
+					<button class="btn btn-sm btn-primary" formaction="deleteCaughtBook"
+						id="delete-caughtbook">Delete</button>
+					<button type="button" class="btn btn-sm btn-primary"
+						id="canceledit-caughtbook-${caughtBook.bid}">Cancel</button>
+					<br />
+				</form>
+
+				<button class="btn btn-sm btn-primary"
+					id="edit-caughtbook-${caughtBook.bid}">Edit</button>
+
+			</c:forEach>
+		</c:if>
 	</div>
 
 </body>

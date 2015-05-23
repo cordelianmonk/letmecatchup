@@ -22,4 +22,27 @@ public class CaughtBookDAOImp implements CaughtBookDAO {
 		
 	}
 
+	@Override
+	public CaughtBook searchCaughtBookByID(int bid) {
+		Session session = factory.getCurrentSession();
+		return (CaughtBook) session.get(CaughtBook.class, new Integer (bid) );
+	}
+
+	@Override
+	public void updateCaughtBook(CaughtBook caughtBook) {
+		Session session = factory.getCurrentSession();
+		session.update(caughtBook);
+	}
+
+	@Override
+	public void deleteCaughtBook(int bid) {
+		Session session = factory.getCurrentSession();
+		CaughtBook caughtBook = (CaughtBook) session.get(CaughtBook.class, new Integer(bid));
+		
+		if(caughtBook != null){
+			session.delete(caughtBook);
+		}
+		
+	}
+
 }
