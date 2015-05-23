@@ -4,8 +4,14 @@ import com.catchup.app.model.items.CatchMovie;
 
 public interface CatchMovieDAO {
 
-	boolean bookExists(String title);
+	public boolean catchMovieExists(String title);
 
-	void addCatchBook(CatchMovie catchMovie);
+	public void addCatchMovie(CatchMovie catchMovie);
+
+	public CatchMovie searchMovieByID(int mid);
+
+	public void updateMovie(CatchMovie catchMovie);
+
+	public void deleteCatchMovie(int mid);
 
 }

@@ -42,6 +42,12 @@ public class CatchController {
 	}
 	
 	@Autowired(required=true)
+    @Qualifier(value="catchMovieService")
+	public void setCatchMovieService(CatchMovieService catchMovieService) {
+		this.catchMovieService = catchMovieService;
+	}
+
+	@Autowired(required=true)
     @Qualifier(value="caughtBookService")
 	public void setCaughtBookService(CaughtBookService caughtBookService) {
 		this.caughtBookService = caughtBookService;
@@ -143,7 +149,7 @@ public class CatchController {
 		catchMovie.setTitle(title);
 		catchMovie.setComment(comment);
 		
-		this.catchMovieService.updateMoviek(catchMovie);
+		this.catchMovieService.updateMovie(catchMovie);
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
@@ -164,9 +170,9 @@ public class CatchController {
 		return "redirect:catch_movies.html";
 	}
 	
-	@RequestMapping(value="caughtCatchBook")
-	public String caughtCatchBook(
-			@RequestParam("bid") int bid,
+	@RequestMapping(value="caughtCatchMovie")
+	public String caughtCatchMovie(
+			@RequestParam("mid") int mid,
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
 			@RequestParam("apiID") String apiID,
@@ -177,13 +183,13 @@ public class CatchController {
 		User user = (User) session.getAttribute("user");
 		java.sql.Date date = Date.valueOf( LocalDate.now() );
 		
-		this.caughtBookService.newCaughtBook(user, date, title, comment, apiID, rating);
-		this.catchBookService.deleteCatchBook(bid);
+		this.caughtMovieService.newCaughtMovie(user, date, title, comment, apiID, rating);
+		this.catchMovieService.deleteCatchMovie(mid);
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
 		
-		return "redirect:caught_books.html";
+		return "redirect:caught_movies.html";
 	}
 	
 

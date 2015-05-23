@@ -20,7 +20,7 @@ public class CatchMovieDAOImp implements CatchMovieDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean bookExists(String title) {
+	public boolean catchMovieExists(String title) {
 		Session session = factory.getCurrentSession(); 
 		List<CatchMovie> list = new ArrayList<CatchMovie>();
 		 
@@ -36,10 +36,34 @@ public class CatchMovieDAOImp implements CatchMovieDAO {
 	}
 
 	@Override
-	public void addCatchBook(CatchMovie catchMovie) {
+	public void addCatchMovie(CatchMovie catchMovie) {
 		Session session = factory.getCurrentSession();
 		session.persist(catchMovie);
 		session.flush();
+		
+	}
+
+	@Override
+	public CatchMovie searchMovieByID(int mid) {
+		Session session = factory.getCurrentSession();
+		return (CatchMovie) session.get(CatchMovie.class, new Integer(mid) );
+	}
+
+	@Override
+	public void updateMovie(CatchMovie catchMovie) {
+		Session session = factory.getCurrentSession();
+		session.update(catchMovie);
+		
+	}
+
+	@Override
+	public void deleteCatchMovie(int mid) {
+		Session session = factory.getCurrentSession();
+		CatchMovie catchMovie = (CatchMovie) session.get(CatchMovie.class, new Integer (mid) );
+		
+		if(catchMovie != null){
+			session.delete(catchMovie);
+		}
 		
 	}
 

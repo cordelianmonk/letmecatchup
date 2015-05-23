@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.catchup.app.model.dao.interfaces.CatchBookDAO;
 import com.catchup.app.model.items.CatchBook;
-import com.catchup.app.model.items.CatchMovie;
-import com.catchup.app.model.items.User;
 
 @Repository
 public class CatchBookDAOImp implements CatchBookDAO{
@@ -23,7 +21,7 @@ public class CatchBookDAOImp implements CatchBookDAO{
 	//TODO I think this needs to be revised. 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean bookExists(String title) {
+	public boolean catchBookExists(String title) {
 		Session session = factory.getCurrentSession(); 
 		List<CatchBook> books = new ArrayList<CatchBook>();
 		 
@@ -45,14 +43,14 @@ public class CatchBookDAOImp implements CatchBookDAO{
 	}
 
 	@Override
-	public CatchBook searchBookByID(int bid) {
+	public CatchBook searchCatchBookByID(int bid) {
 		Session session = factory.getCurrentSession();
 		return (CatchBook) session.get(CatchBook.class, new Integer (bid) );
 		
 	}
 
 	@Override
-	public void updateBook(CatchBook catchBook) {
+	public void updateCatchBook(CatchBook catchBook) {
 		Session session = factory.getCurrentSession();
 		session.update(catchBook);
 		

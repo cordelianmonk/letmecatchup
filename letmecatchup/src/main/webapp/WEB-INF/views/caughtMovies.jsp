@@ -18,7 +18,7 @@
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
-<script src="<c:url value="/resources/index.js" />"></script>
+<script src="<c:url value="/resources/caught-index.js" />"></script>
 </head>
 <body>
 

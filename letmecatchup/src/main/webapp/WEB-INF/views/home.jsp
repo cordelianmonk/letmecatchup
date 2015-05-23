@@ -12,7 +12,7 @@
 	href="<c:url value="resources/index.css" />"
 	rel="stylesheet">
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
-<script src="<c:url value="resources/bootstrap/css/bootstrap.min.js" />"></script>
+<script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
 </head>
 <body>
 	<div class="container">
