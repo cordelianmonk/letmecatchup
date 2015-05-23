@@ -11,13 +11,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Movies to Catch</title>
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
-<script src="<c:url value="/resources/index.js" />"></script>
+<script src="<c:url value="/resources/catch-index.js" />"></script>
 </head>
 <body>
 
@@ -67,23 +68,67 @@
 	<!-- END OF NAVBAR -->
 
 	<!-- BODY -->
-<h1 class="jumbotron"> Your Movies</h1>
+	<h1 class="jumbotron">Your Movies</h1>
 
 	<div id="catch-movie-list">
-	<c:if test="${!empty catchMovieList}">
-				<c:forEach items="${catchMovieList}" var="catchMovie">
-
+		<c:if test="${!empty catchMovieList}">
+			<c:forEach items="${catchMovieList}" var="catchMovie">
+				<div id="catchmovie-${catchMovie.mid}">
 					<h2>${catchMovie.title}</h2>
 					<br />
 					<p>${catchMovie.comment}</p>
-							<br />
-							<form>
-								<input hidden value="${catchMovie.title}"></input>
-								 <input hidden value="${catchMovie.comment}"></input>
-								<input hidden value="${catchMovie.mid}"></input> 
-								<input hidden value="${catchMovie.apiID}"></input>
-							</form>
-				</c:forEach>
+				</div>
+				<form hidden id="catchmovie-form-${catchMovie.mid}"
+					action="updateCatchMovie" method="post">
+					<label for="title">Title</label><br /> <input name="title"
+						id="title-${catchMovie.mid}" value="${catchMovie.title}"></input><br />
+					<label for="comment">Comment</label><br />
+					<textarea rows="5" cols="60" maxlength="300" name="comment"
+						id="comment-${catchMovie.mid}">${catchMovie.comment}</textarea>
+					<br /> <input hidden name="mid" value="${catchMovie.mid}"></input>
+					<input hidden name="apiID" value="${catchMovie.apiID}"></input>
+
+					<div id="catchmovie-form-${catchMovie.mid}-editbuttons">
+						<button type="submit" class="btn btn-sm btn-primary"
+							id="update-catchmovie">Save</button>
+						<button class="btn btn-sm btn-primary"
+							formaction="deleteCatchMovie" id="delete-catchmovie">Delete</button>
+						<button type="button" class="btn btn-sm btn-primary"
+							id="canceledit-catchmovie-${catchMovie.mid}">Cancel</button>
+						<br />
+					</div>
+
+					<div hidden id="catchmovie-form-${catchMovie.mid}-caughtbuttons">
+
+						<label for="rating">Rate</label> <br /> <select disabled="true"
+							id="catchmovie-form-${catchMovie.mid}-rating" class="form-control"
+							name="rating" style="width: 80px">
+							<option selected="selected" value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select> <br />
+						<button class="btn btn-sm btn-primary"
+							formaction="caughtCatchMovie" id="caught-catchmovie">Save</button>
+						<button type="button" class="btn btn-sm btn-primary"
+							id="cancelcaught-catchmovie-${catchMovie.mid}">Cancel</button>
+					</div>
+				</form>
+
+				<button class="btn btn-sm btn-primary"
+					id="edit-catchmovie-${catchMovie.mid}">Edit</button>
+
+				<button class="btn btn-sm btn-primary"
+					id="caught-catchmovie-${catchMovie.mid}">Caught!</button>
+
+			</c:forEach>
 		</c:if>
 	</div>
 

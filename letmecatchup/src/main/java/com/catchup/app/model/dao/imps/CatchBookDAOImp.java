@@ -44,4 +44,27 @@ public class CatchBookDAOImp implements CatchBookDAO{
 		session.persist(catchBook);
 	}
 
+	@Override
+	public CatchBook searchBookByID(int bid) {
+		Session session = factory.getCurrentSession();
+		return (CatchBook) session.get(CatchBook.class, new Integer (bid) );
+		
+	}
+
+	@Override
+	public void updateBook(CatchBook catchBook) {
+		Session session = factory.getCurrentSession();
+		session.update(catchBook);
+		
+	}
+
+	@Override
+	public void deleteCatchBook(int bid) {
+		Session session = factory.getCurrentSession();
+		CatchBook catchBook = (CatchBook) session.load(CatchBook.class, bid);
+		if(catchBook != null){
+			session.delete(catchBook);
+		}
+	}
+
 }

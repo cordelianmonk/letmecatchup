@@ -2,14 +2,15 @@
 <%@ page session="true"%>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>User Registration</title>
+<script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <link type="text/css"
 	href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <link type="text/css" href="<c:url value="resources/index.css" />"
 	rel="stylesheet">
-<script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
-<script src="<c:url value="/resources/index.js" />"></script>
 </head>
 <body>
 	<div class="container">

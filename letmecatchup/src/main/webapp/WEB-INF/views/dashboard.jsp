@@ -7,6 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Dashboard</title>
 <link
 	href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"

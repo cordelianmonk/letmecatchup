@@ -77,7 +77,7 @@ public class SearchController {
 		
 		switch(mediaType){
 		case "book":
-			if( catchBookService.newCatchBook(user, date, title, comment, apiID) ){
+			if( this.catchBookService.newCatchBook(user, date, title, comment, apiID) ){
 				System.out.println("Saved new to-read!");
 				
 				user = this.userService.getUserById( user.getUid() );
@@ -107,19 +107,16 @@ public class SearchController {
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
 			@RequestParam("apiID") String apiID,
-			@RequestParam("rating") String rating,
+			@RequestParam("rating") int rating,
 			HttpSession session
 			)
 	{	
 		User user = (User) session.getAttribute("user");
 		java.sql.Date date = Date.valueOf( LocalDate.now() );
-		int intRating = Integer.parseInt(rating);
-		
-		System.out.println(mediaType + title + comment + rating);
 		
 		switch(mediaType){
 		case "book":
-			if( caughtBookService.newCaughtBook(user, date, title, comment, apiID, intRating) ){
+			if( this.caughtBookService.newCaughtBook(user, date, title, comment, apiID, rating) ){
 				System.out.println("Saved read book!");
 				
 				user = this.userService.getUserById( user.getUid() );
@@ -128,7 +125,8 @@ public class SearchController {
 				return "search";
 			};
 		case "movie":
-			if(caughtMovieService.newCaughtMovie(user, date, title, comment, apiID, intRating) ){
+			if(caughtMovieService.newCaughtMovie(user, date, title, comment, apiID, rating) )
+			{
 				System.out.println("Saved watched book!");
 				
 				user = this.userService.getUserById( user.getUid() );

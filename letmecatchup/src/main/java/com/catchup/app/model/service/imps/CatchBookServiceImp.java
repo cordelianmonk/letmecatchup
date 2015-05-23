@@ -21,15 +21,29 @@ public class CatchBookServiceImp implements CatchBookService {
 	@Override
 	@Transactional
 	public boolean newCatchBook(User user, Date date, String title, String comment, String apiID) {
-		
-		//if(this.catchBookDAO.bookExists(title) ){
-		//	return false;		TODO Needs to be more sophisticated
-		//}
-		
+				
 		CatchBook catchBook = new CatchBook(user, date, title, comment, apiID);
 		this.catchBookDAO.addCatchBook(catchBook);
 		return true;
 		
+	}
+
+	@Override
+	@Transactional
+	public CatchBook searchBookByID(int bid) {
+		return this.catchBookDAO.searchBookByID(bid);
+	}
+
+	@Override
+	@Transactional
+	public void updateBook(CatchBook catchBook) {
+		this.catchBookDAO.updateBook(catchBook);
+	}
+
+	@Override
+	@Transactional
+	public void deleteCatchBook(int bid) {
+		this.catchBookDAO.deleteCatchBook(bid);
 	}
 
 	
