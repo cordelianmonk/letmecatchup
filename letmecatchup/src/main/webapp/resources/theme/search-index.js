@@ -8,16 +8,28 @@ $(document).ready(function() {
 
 	$('#select-action').change(function() {
 		if ($("#select-action").val() == "search") {
+			
 			$("#add-only-area").hide();
+			
 			$("#search-area").show();
 			$("#search-mediatype").val("");
+			
+			$("#info-area").hide();
+			
 		} else if ($("#select-action").val() == "add") {
-			$("#add-only-area").show();
+			$("#add-only-area").show();	
 			$("#add-status").val("");
+			
 			$("#search-area").hide();
+			
+			$("#info-area").hide();
+			
 		} else {
 			$("#add-only-area").hide();
+			
 			$("#search-area").hide();
+			
+			$("#info-area").hide();
 		}
 	});
 
@@ -36,13 +48,22 @@ $(document).ready(function() {
 
 	$("#search-mediatype").change(function() {
 		if ($("#search-mediatype").val() == "book") {
+			
 			$("#search-area-form").show();
 			$("#search-writer-area").show();
+			
+			$("#info-area").hide();
+			
 		} else if (($("#search-mediatype").val() == "movie")) {
 			$("#search-area-form").show();
 			$("#search-writer-area").hide();
+			
+			$("#info-area").hide();
+			
 		} else {
 			$("#search-area-form").hide();
+			
+			$("#info-area").hide();
 		}
 		
 		
@@ -65,10 +86,18 @@ $(document).ready(function() {
 
 	$("#searched-catch").click(function() {
 		generateCatchForm();
+		$("#searched-caught").prop("class", "btn btn-sm btn-warning " + " disabled");
 	});
 	
 	$("#searched-caught").click(function() {
 		generateCaughtForm();
+		$("#searched-catch").prop("class", "btn btn-sm btn-primary " + " disabled");
+	});
+	
+
+	$("#searched-caught-cancel").click(function() {
+		alert("cancel pressed");
+		$("#searched-catch").prop("class", "btn btn-sm btn-primary");
 	});
 
 });
@@ -151,17 +180,14 @@ function searchMovie(title) {
 		},
 		success : function(data) {
 			var number = data.total_results;
-			console.log(number);
-			
-			//if(number > 1){
-		//		alert("many movies!");
-			//} else 
+
 			if ( number >= 1){
 				var movieID = data.results[0].id;
-				console.log(movieID); //TODO for removal 
+				
 				searchMovieByID(movieID);
 				getMovieTrailer(movieID);
 				$("#info-area").show()
+				
 			} else {
 				alert("No movie found!")
 			}
@@ -213,13 +239,18 @@ function getMovieTrailer(movieID){
 			api_key : "aff7e1ce102316f1349934e4c4228ac5",
 		},
 		success : function(data) {
-			console.log(data.results[0].key);
 			
-			$("#reviews").html(
-			'<iframe id="player" type="text/html" width="100%" height="300px" '+
-			'src="http://www.youtube.com/embed/'+ data.results[0].key + '?enablejsapi=1"'+
-			'frameborder="0"></iframe>' );
-		      
+			if(data.results[0] == undefined){
+				$("#reviews").html("<h3>No trailer found!</h3>");
+				return;
+			} 	
+			
+				$("#reviews").html(
+				'<iframe id="player" type="text/html" width="100%" height="300px" '+
+				'src="http://www.youtube.com/embed/'+ data.results[0].key + '?enablejsapi=1"'+
+				'frameborder="0"></iframe>' );
+			
+			
 		},
 		error : function(data) {
 			console.log(JSON.stringify(data));
@@ -246,7 +277,13 @@ function generateCatchForm() {
 							+ '"></input>'
 							+ '<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
 							+ '<button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
+							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-catch-cancel">Cancel</button>'
 							+ '</form>');
+	
+	$("#searched-catch-cancel").click(function() {
+		$("#searched-caught").prop("class", "btn btn-sm btn-warning");
+		$("#searched-form").empty();
+	});
 
 }
 
@@ -269,9 +306,15 @@ function generateCaughtForm() {
 							+ 'value="0">0</option><option value="1">1</option> <option value="2">2</option>'
 							+ '<option value="3">3</option><option value="4">4</option><option value="5">5</option>'
 							+ '<option value="6">6</option><option value="7">7</option><option value="8">8</option>'
-							+ '<option value="9">9</option><option value="10">10</option></select> '
+							+ '<option value="9">9</option><option value="10">10</option></select><br/>'
 							+ '<button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
+							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-caught-cancel">Cancel</button>'
 							+ '</form>');
+	
+	$("#searched-caught-cancel").click(function() {
+		$("#searched-catch").prop("class", "btn btn-sm btn-primary");
+		$("#searched-form").empty();
+	});
 
 }
 

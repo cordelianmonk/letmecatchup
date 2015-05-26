@@ -112,7 +112,7 @@
 	</div>
 
 	<!-- ADD ONLY AREA -->
-	<div class="container-f">
+	<div class="container-fluid">
 		<div hidden class="add-only-area" id="add-only-area">
 			<h2>Add only</h2>
 
@@ -204,7 +204,7 @@
 	</div>
 
 	<!-- INFO -->
-	<div class="info-area" id="info-area">
+	<div hidden class="info-area" id="info-area">
 		<div class="container-fluid">
 			<!-- 1 / 3 -->
 			<div class="col-xs-12 col-md-2">
@@ -213,9 +213,9 @@
 				<br/>
 				<div id="link"></div>
 				<br/>
-				<button id="searched-catch">Catch</button>
+				<button type="button" class="btn btn-sm btn-primary" id="searched-catch">Catch</button>
 				<br/>
-				<button id="searched-caught">Caught</button>
+				<button type="button" class="btn btn-sm btn-warning" id="searched-caught">Caught</button>
 				<br/>
 				<!--  HIDDEN FORM -->
 				<div id="searched-form">

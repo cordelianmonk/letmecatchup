@@ -32,32 +32,15 @@ public class DashboardController {
 	@RequestMapping(value="dash.html")
 	public String allHome(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
-		System.out.println( user.getFirstName() );
 		
-		List<String> mediaList = new ArrayList<String>();
+		model.addAttribute("catchBookList", user.getCatchBookList() );
+		model.addAttribute("catchMovieList", user.getCatchMovieList() );
+		model.addAttribute("caughtBookList", user.getCaughtBookList() );
+		model.addAttribute("caughtMovieList", user.getCaughtMovieList() );
 		
-		for( CatchBook catchBook : user.getCatchBookList()  ){
-			mediaList.add( catchBook.getTitle() );
-		}
-		
-		for( CatchMovie catchMovie : user.getCatchMovieList()  ){
-			mediaList.add( catchMovie.getTitle() );
-		}
-		
-		for(  CaughtBook caughtBook : user.getCaughtBookList()  ){
-				mediaList.add( caughtBook.getTitle() );
-		}
-			
-		for( CaughtMovie caughtMovie : user.getCaughtMovieList()  ){
-				mediaList.add( caughtMovie.getTitle() );
-		}
-		
-		model.addAttribute("mediaList", mediaList);
 		model.addAttribute( "userName", user.getFirstName() );
 		
-		for( String media : mediaList){ 
-			System.out.println(media);
-		}
+	
 		
 		return "dashboard";
 	}
