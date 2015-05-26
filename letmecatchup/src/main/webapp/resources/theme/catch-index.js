@@ -19,6 +19,19 @@ $(document).ready(function() {
 		$("#catchbook-" + suffix).show();
 
 	});
+	
+	$("[id^='show-delete-catchbook']").click(function() {
+		var suffix = this.id.split("-")[3];
+		$("#catchbook-form-" + suffix + "-deletebuttons").show();
+	});
+	
+	
+	$("[id^='canceldelete-catchbook']").click(function() {
+
+		var suffix = this.id.split("-")[2];
+		$("#catchbook-form-" + suffix + "-deletebuttons").hide();
+
+	});
 
 	$("[id^='caught-catchbook']").click(function() {
 

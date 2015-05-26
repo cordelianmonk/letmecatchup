@@ -20,6 +20,8 @@
 <script src="<c:url value="/resources/jquery.textillate.js" />"></script>
 <script src="<c:url value="/resources/dash-index.js" />"></script>
 
+<script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -77,7 +79,6 @@
 						<c:if test="${!empty catchBookList}">
 							<c:forEach items="${catchBookList}" var="catchBook">
 								<li>${catchBook.title}</li>
-								<li>Test for another book</li>
 							</c:forEach>
 						</c:if>
 					</ul>
