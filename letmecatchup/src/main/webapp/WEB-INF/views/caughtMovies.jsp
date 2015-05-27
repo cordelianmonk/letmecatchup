@@ -23,8 +23,8 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">CatchMeUp</a>
@@ -66,46 +66,49 @@
 		</div>
 	</div>
 	</nav>
-	
+
 	<!-- NAVBAR END -->
-	
-	<h1 class="jumbotron"> Movies </h1>
-	
+	<div class="jumbotron">
+		<h1>Movies</h1>
+	</div>
+
 	<div id="caught-movie-list">
-	<c:if test="${!empty caughtMovieList}">
+		<c:if test="${!empty caughtMovieList}">
 			<c:forEach items="${caughtMovieList}" var="caughtMovie">
 				<div id="caughtmovie-${caughtMovie.mid}">
 					<h2>${caughtMovie.title}</h2>
 					<br />
-					<p>Rated ${caughtMovie.rating} out of 10</p><br />
-					<input hidden id="caughtmovie-set-rating-${caughtMovie.mid}" value="${caughtMovie.rating}"></input>
-					<p>${caughtMovie.comment}</p><br/>
+					<p>Rated ${caughtMovie.rating} out of 10</p>
+					<br /> <input hidden
+						id="caughtmovie-set-rating-${caughtMovie.mid}"
+						value="${caughtMovie.rating}"></input>
+					<p>${caughtMovie.comment}</p>
+					<br />
 				</div>
 				<form hidden id="caughtmovie-form-${caughtMovie.mid}"
 					action="updateCaughtMovie" method="post">
 					<label for="title">Title</label><br /> <input name="title"
-						id="title-${caughtMovie.mid}" value="${caughtMovie.title}"></input><br /><br />
-					<label for="comment">Comment</label><br />
+						id="title-${caughtMovie.mid}" value="${caughtMovie.title}"></input><br />
+					<br /> <label for="comment">Comment</label><br />
 					<textarea rows="5" cols="60" maxlength="300" name="comment"
 						id="comment-${caughtMovie.mid}">${caughtMovie.comment}</textarea>
 					<br /> <input hidden name="mid" value="${caughtMovie.mid}"></input>
-					<input hidden name="apiID" value="${caughtMovie.apiID}"></input>
-					<label for="rating">Rating</label><br />
-					<select disabled="true" 
-							id="caughtmovie-form-${caughtMovie.mid}-rating"
-							class="form-control" name="rating" style="width: 80px">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> <br />
+					<input hidden name="apiID" value="${caughtMovie.apiID}"></input> <label
+						for="rating">Rating</label><br /> <select disabled="true"
+						id="caughtmovie-form-${caughtMovie.mid}-rating"
+						class="form-control" name="rating" style="width: 80px">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select> <br />
 
 					<div class="btn-group"
 						id="caughtmovie-form-${caughtMovie.mid}-editbuttons">

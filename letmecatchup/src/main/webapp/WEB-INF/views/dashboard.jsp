@@ -18,13 +18,14 @@
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="/resources/jquery.lettering.js" />"></script>
 <script src="<c:url value="/resources/jquery.textillate.js" />"></script>
+
 <script src="<c:url value="/resources/dash-index.js" />"></script>
 
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
 
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">CatchMeUp</a>
@@ -69,11 +70,15 @@
 	</nav>
 
 	<!-- MAIN AREA -->
-<h1 class="jumbotron">Hello ${userName}!</h1>
+	<div id="user-hello">
+		<h1>Hello ${userName}! Do you want to...</h1>
+	</div>
+
 	<div class="container-fluid">
+
 		<div class="col-xs-12 col-md-6">
-			<div id="catch-booklist"
-				style="background-color: pink; padding:50px; margin: 20px auto;">
+			<div class="titles" id="catch-booklist">
+				<p class="small text-muted">...catch up with your reading?</p>
 				<h2 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchBookList}">
@@ -83,14 +88,13 @@
 						</c:if>
 					</ul>
 				</h2>
+				<a href="catch_books.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
-
-
 		<div class="col-xs-12 col-md-6">
-			<div id="catch-movielist"
-				style="background-color: lightblue; padding:50px; margin: 20px auto;">
+			<div class="titles" id="catch-movielist">
+				<p class="small text-muted">...catch a movie?</p>
 				<h2 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchMovieList}">
@@ -100,14 +104,13 @@
 						</c:if>
 					</ul>
 				</h2>
+				<a href="catch_movies.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
-
-
 		<div class="col-xs-12 col-md-6">
-			<div id="caught-booklist"
-				style="background-color: lavender; padding:50px; margin: 20px auto;">
+			<div class="titles" id="caught-booklist">
+				<p class="small text-muted">...read this book again?</p>
 				<h2 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty caughtBookList}">
@@ -117,14 +120,14 @@
 						</c:if>
 					</ul>
 				</h2>
+				<a href="caught_books.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
 
-
 		<div class="col-xs-12 col-md-6">
-			<div id="caught-movielist"
-				style="background-color: lightgreen; padding:50px; margin: 20px auto;">
+			<div class="titles" id="caught-movielist">
+			<p class="small text-muted">...watch this movie again?</p>
 				<h2 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty caughtMovieList}">
@@ -134,6 +137,7 @@
 						</c:if>
 					</ul>
 				</h2>
+				<a href="caught_books.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
