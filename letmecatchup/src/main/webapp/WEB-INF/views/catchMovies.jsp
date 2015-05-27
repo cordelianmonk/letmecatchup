@@ -23,7 +23,7 @@
 <body>
 
 	<!-- NAVBAR -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">CatchMeUp</a>
@@ -68,8 +68,9 @@
 	<!-- END OF NAVBAR -->
 
 	<!-- BODY -->
-	<h1 class="jumbotron">Your Movies</h1>
-
+	<div class="top-greeting">
+		<h1>Your watch list</h1>
+	</div>
 	<div id="catch-movie-list">
 		<c:if test="${!empty catchMovieList}">
 			<c:forEach items="${catchMovieList}" var="catchMovie">
@@ -90,7 +91,7 @@
 
 					<div class="btn-group"
 						id="catchmovie-form-${catchMovie.mid}-editbuttons">
-						<button type="submit" class="btn btn-sm btn-info"
+						<button type="submit" class="btn btn-sm btn-success"
 							id="update-catchmovie">Save</button>
 						<button type="button" class="btn btn-sm btn-warning"
 							id="canceledit-catchmovie-${catchMovie.mid}">Cancel</button>
@@ -128,7 +129,7 @@
 						</select> <br />
 
 						<div class="btn-group">
-							<button class="btn btn-sm btn-info" formaction="caughtCatchMovie"
+							<button class="btn btn-sm btn-primary" formaction="caughtCatchMovie"
 								id="caught-catchmovie">Save</button>
 							<button type="button" class="btn btn-sm btn-warning"
 								id="cancelcaught-catchmovie-${catchMovie.mid}">Cancel</button>
@@ -137,9 +138,9 @@
 				</form>
 				<br />
 				<div class="btn-group">
-					<button class="btn btn-sm btn-primary"
+					<button class="btn btn-sm btn-default"
 						id="edit-catchmovie-${catchMovie.mid}">Edit</button>
-					<button class="btn btn-sm btn-primary"
+					<button class="btn btn-sm btn-info"
 						id="caught-catchmovie-${catchMovie.mid}">Caught!</button>
 				</div>
 			</c:forEach>

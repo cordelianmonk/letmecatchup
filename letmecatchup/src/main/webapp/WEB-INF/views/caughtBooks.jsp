@@ -23,7 +23,7 @@
 <body>
 
 	<!-- NAVBAR -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">CatchMeUp</a>
@@ -68,7 +68,9 @@
 
 	<!-- NAVBAR END -->
 
-	<h1 class="jumbotron">Books</h1>
+	<div class="top-greeting">
+		<h1>Books you've read</h1>
+	</div>
 
 	<div id="caught-book-list">
 		<c:if test="${!empty caughtBookList}">
@@ -108,7 +110,7 @@
 
 					<div class="btn-group"
 						id="caughtbook-form-${caughtBook.bid}-editbuttons">
-						<button type="submit" class="btn btn-sm btn-info"
+						<button type="submit" class="btn btn-sm btn-primary"
 							id="update-caughtbook">Save</button>
 						<button type="button" class="btn btn-sm btn-warning"
 							id="canceledit-caughtbook-${caughtBook.bid}">Cancel</button>
@@ -127,7 +129,7 @@
 					</div>
 				</form>
 
-				<button class="btn btn-sm btn-primary"
+				<button class="btn btn-sm btn-default"
 					id="edit-caughtbook-${caughtBook.bid}">Edit</button>
 
 			</c:forEach>

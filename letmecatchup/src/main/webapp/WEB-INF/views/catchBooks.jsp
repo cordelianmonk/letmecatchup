@@ -25,7 +25,7 @@
 <body>
 
 	<!-- NAVBAR -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">CatchMeUp</a>
@@ -70,84 +70,87 @@
 	<!-- END OF NAVBAR -->
 
 	<!-- BODY -->
-
-	<h1 class="jumbotron">Your Reads</h1>
+	<div class="top-greeting">
+		<h1>Your reading list</h1>
+	</div>
 
 	<div id="booklist">
+	
 		<c:if test="${!empty catchBookList}">
 			<c:forEach items="${catchBookList}" var="catchBook">
-				<div id="catchbook-${catchBook.bid}">
-					<h2>${catchBook.title}</h2>
-					<br />
-					<p>${catchBook.comment}</p>
-				</div>
-				<form hidden id="catchbook-form-${catchBook.bid}"
-					action="updateCatchBook" method="post">
-					<label for="title">Title</label><br /> <input name="title"
-						id="title-${catchBook.bid}" value="${catchBook.title}"></input><br />
-					<label for="comment">Comment</label><br />
-					<textarea rows="5" cols="60" maxlength="300" name="comment"
-						id="comment-${catchBook.bid}">${catchBook.comment}</textarea>
-					<br /> <input hidden name="bid" value="${catchBook.bid}"></input>
-					<input hidden name="apiID" value="${catchBook.apiID}"></input>
+				<div class="container">
+					<div class="panel panel-default" id="catchbook-${catchBook.bid}">
+						<div class="panel-heading"  id="catchbook-${catchBook.bid}-title">${catchBook.title}</div>
+						<div class="panel-body" id="catchbook-${catchBook.bid}-comment" >${catchBook.comment}</div>
 
-					<div class="btn-group"
-						id="catchbook-form-${catchBook.bid}-editbuttons">
-						<button type="submit" class="btn btn-sm btn-info"
-							id="update-catchbook">Save</button>
-						<button type="button" class="btn btn-sm btn-warning"
-							id="canceledit-catchbook-${catchBook.bid}">Cancel</button>
-						<button type="button" class="btn btn-sm btn-danger"
-							id="show-delete-catchbook-${catchBook.bid}">Delete</button>
-					</div>
+						<form hidden id="catchbook-form-${catchBook.bid}"
+							action="updateCatchBook" method="post">
+							<label for="title">Title</label><br /> <input name="title"
+								id="title-${catchBook.bid}" value="${catchBook.title}"></input><br />
+							<label for="comment">Comment</label><br />
+							<textarea rows="5" cols="60" maxlength="300" name="comment"
+								id="comment-${catchBook.bid}">${catchBook.comment}</textarea>
+							<br /> <input hidden name="bid" value="${catchBook.bid}"></input>
+							<input hidden name="apiID" value="${catchBook.apiID}"></input>
 
-					<div hidden id="catchbook-form-${catchBook.bid}-deletebuttons">
+							<div class="btn-group"
+								id="catchbook-form-${catchBook.bid}-editbuttons">
+								<button type="submit" class="btn btn-sm btn-primary"
+									id="update-catchbook">Save</button>
+								<button type="button" class="btn btn-sm btn-warning"
+									id="canceledit-catchbook-${catchBook.bid}">Cancel</button>
+								<button type="button" class="btn btn-sm btn-danger"
+									id="show-delete-catchbook-${catchBook.bid}">Delete</button>
+							</div>
+
+							<div hidden id="catchbook-form-${catchBook.bid}-deletebuttons">
+								<div class="btn-group">
+									<button class="btn btn-sm btn-danger"
+										formaction="deleteCatchBook" id="delete-catchbook">Confirm
+										Delete</button>
+									<button type="button" class="btn btn-sm btn-warning"
+										id="canceldelete-catchbook-${catchBook.bid}">Cancel</button>
+								</div>
+							</div>
+
+							<div hidden id="catchbook-form-${catchBook.bid}-caughtbuttons">
+								<label for="rating">Rate</label> <br /> <select disabled="true"
+									id="catchbook-form-${catchBook.bid}-rating"
+									class="form-control" name="rating" style="width: 80px">
+									<option selected="selected" value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select> <br />
+
+								<div class="btn-group">
+									<button class="btn btn-sm btn-primary"
+										formaction="caughtCatchBook" id="caught-catchbook">Save</button>
+									<button type="button" class="btn btn-sm btn-warning"
+										id="cancelcaught-catchbook-${catchBook.bid}">Cancel</button>
+								</div>
+
+							</div>
+						</form>
+
 						<div class="btn-group">
-							<button class="btn btn-sm btn-danger"
-								formaction="deleteCatchBook" id="delete-catchbook">Confirm
-								Delete</button>
-							<button type="button" class="btn btn-sm btn-warning"
-								id="canceldelete-catchbook-${catchBook.bid}">Cancel</button>
+							<button class="btn btn-sm btn-default"
+								id="edit-catchbook-${catchBook.bid}">Edit</button>
+							<button class="btn btn-sm btn-info"
+								id="caught-catchbook-${catchBook.bid}">Caught!</button>
 						</div>
 					</div>
-
-					<div hidden id="catchbook-form-${catchBook.bid}-caughtbuttons">
-						<label for="rating">Rate</label> <br /> <select disabled="true"
-							id="catchbook-form-${catchBook.bid}-rating" class="form-control"
-							name="rating" style="width: 80px">
-							<option selected="selected" value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> <br />
-						
-						<div class="btn-group">
-							<button class="btn btn-sm btn-info" formaction="caughtCatchBook"
-								id="caught-catchbook">Save</button>
-							<button type="button" class="btn btn-sm btn-warning"
-								id="cancelcaught-catchbook-${catchBook.bid}">Cancel</button>
-						</div>
-						
-					</div>
-				</form>
-				<br />
-				
-				<div class="btn-group">
-					<button class="btn btn-sm btn-primary"
-						id="edit-catchbook-${catchBook.bid}">Edit</button>
-					<button class="btn btn-sm btn-primary"
-						id="caught-catchbook-${catchBook.bid}">Caught!</button>
 				</div>
-				
 			</c:forEach>
 		</c:if>
+
 	</div>
 
 </body>

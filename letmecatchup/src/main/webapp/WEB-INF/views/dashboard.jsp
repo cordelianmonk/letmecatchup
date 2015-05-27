@@ -70,16 +70,16 @@
 	</nav>
 
 	<!-- MAIN AREA -->
-	<div id="user-hello">
-		<h1>Hello ${userName}! Do you want to...</h1>
+	<div class="top-greeting">
+		<h1>Hello ${userName}!</h1>
 	</div>
 
 	<div class="container-fluid">
-
-		<div class="col-xs-12 col-md-6">
-			<div class="titles" id="catch-booklist">
+		<h3>Do you want to...</h3>
+		<div class="col-xs-12">
+			<div class="well titles" id="catch-booklist">
 				<p class="small text-muted">...catch up with your reading?</p>
-				<h2 class="tlt">
+				<h3 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchBookList}">
 							<c:forEach items="${catchBookList}" var="catchBook">
@@ -87,15 +87,15 @@
 							</c:forEach>
 						</c:if>
 					</ul>
-				</h2>
+				</h3>
 				<a href="catch_books.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
-		<div class="col-xs-12 col-md-6">
-			<div class="titles" id="catch-movielist">
+		<div class="col-xs-12">
+			<div class="well titles" id="catch-movielist">
 				<p class="small text-muted">...catch a movie?</p>
-				<h2 class="tlt">
+				<h3 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchMovieList}">
 							<c:forEach items="${catchMovieList}" var="catchMovie">
@@ -103,15 +103,15 @@
 							</c:forEach>
 						</c:if>
 					</ul>
-				</h2>
+				</h3>
 				<a href="catch_movies.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
-		<div class="col-xs-12 col-md-6">
-			<div class="titles" id="caught-booklist">
+		<div class="col-xs-12">
+			<div class="well titles" id="caught-booklist">
 				<p class="small text-muted">...read this book again?</p>
-				<h2 class="tlt">
+				<h3 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty caughtBookList}">
 							<c:forEach items="${caughtBookList}" var="caughtBook">
@@ -119,16 +119,16 @@
 							</c:forEach>
 						</c:if>
 					</ul>
-				</h2>
+				</h3>
 				<a href="caught_books.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
 
-		<div class="col-xs-12 col-md-6">
-			<div class="titles" id="caught-movielist">
+		<div class="col-xs-12">
+			<div class="well titles" id="caught-movielist">
 			<p class="small text-muted">...watch this movie again?</p>
-				<h2 class="tlt">
+				<h3 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty caughtMovieList}">
 							<c:forEach items="${caughtMovieList}" var="caughtMovie">
@@ -136,7 +136,7 @@
 							</c:forEach>
 						</c:if>
 					</ul>
-				</h2>
+				</h3>
 				<a href="caught_books.html" class="pull-right">more...</a>
 			</div>
 		</div>

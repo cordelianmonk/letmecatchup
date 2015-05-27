@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Search</title>
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
@@ -20,7 +20,7 @@
 <body>
 
 	<!-- NAVIGATION BAR -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">CatchMeUp</a>
@@ -65,10 +65,11 @@
 	</nav>
 
 	<!-- MAIN BODY -->
-
-	<h1 class="jumbotron">Look up and add media</h1>
+	<div class="top-greeting">
+		<h1>Search and add media here</h1>
+	</div>
 	<div class="container-fluid">
-		<h2>What would you like to do?</h2>
+		<h2>What would you like to do?</h2><br/>
 		<div class="col-xs-12 col-md-12">
 			<div class="form-group">
 				<label for="select-action">Choose one from the selection</label> <select
@@ -84,7 +85,6 @@
 	<!-- SEARCH AREA -->
 	<div class="container-fluid">
 		<div hidden class="search-area" id="search-area">
-			<h2>Search and add</h2>
 			<div class="col-xs-12 col-md-12">
 				<div class="form-group">
 					<label for="mediatype">Select media type</label> <select
@@ -114,7 +114,6 @@
 	<!-- ADD ONLY AREA -->
 	<div class="container-fluid">
 		<div hidden class="add-only-area" id="add-only-area">
-			<h2>Add only</h2>
 
 			<div class="col-xs-12 col-md-6">
 				<div class="form-group">
@@ -147,8 +146,7 @@
 						<textarea rows="5" width="100%" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
-							<input hidden name="apiID"></input>
-						<br />
+						<input hidden name="apiID"></input> <br />
 						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
 					</div>
 				</div>
@@ -168,21 +166,16 @@
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12">
-						
+
 						<label for="title">Title</label><br /> <input autofocus
-							type="text" name="title" id="title"></input><br /> 
-							
-						<label
+							type="text" name="title" id="title"></input><br /> <label
 							for="comment">Comment</label><br />
 						<textarea rows="5" width="100%" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
-						
-						<input hidden name="apiID"></input>
-							
-						<br /> 
-						<label for="rating">Rate</label> <select
-							class="form-control" id="rating" name="rating"
+
+						<input hidden name="apiID"></input> <br /> <label for="rating">Rate</label>
+						<select class="form-control" id="rating" name="rating"
 							style="width: 80px">
 							<option selected="selected" value="0">0</option>
 							<option value="1">1</option>
@@ -204,45 +197,40 @@
 	</div>
 
 	<!-- INFO -->
+	<br />
 	<div hidden class="info-area" id="info-area">
-		<div class="container-fluid">
+		<div class="panel container">
 			<!-- 1 / 3 -->
-			<div class="col-xs-12 col-md-2">
+			<div class="col-xs-12 col-md-3">
 				<div id="image"></div>
 				<div id="creator"></div>
-				<br/>
 				<div id="link"></div>
-				<br/>
 				<div class="btn-group">
-				<button type="button" class="btn btn-sm btn-primary" id="searched-catch">Catch</button>
-				<button type="button" class="btn btn-sm btn-warning" id="searched-caught">Caught</button>
+					<button type="button" class="btn btn-sm btn-info"
+						id="searched-catch">Catch</button>
+					<button type="button" class="btn btn-sm btn-default"
+						id="searched-caught">Caught</button>
 				</div>
 				<!--  HIDDEN FORM -->
-				<div id="searched-form">
-				
-				</div>
-				
+				<div id="searched-form"></div>
+
 			</div>
 			<!-- 2 / 3 -->
-			<div class="col-xs-12 col-md-6">
+			<div class="col-xs-12 col-md-5">
 				<h2 id="searched-title">Title</h2>
 				<p hidden id="searched-apikey"></p>
-				<br />
 				<h3 id="searched-rating">Rating</h3>
-				<br />
 				<p id="searched-description">Description</p>
-				<br />
 			</div>
 			<!-- 3/3 -->
 			<div class="col-xs-12 col-md-4">
-				<div id="reviews">
-				</div>
+				<div id="reviews"></div>
 			</div>
 		</div>
 	</div>
-	
-	
-	
+
+
+
 
 </body>
 </html>

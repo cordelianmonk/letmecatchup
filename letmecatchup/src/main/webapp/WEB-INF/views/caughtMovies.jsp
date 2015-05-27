@@ -68,8 +68,8 @@
 	</nav>
 
 	<!-- NAVBAR END -->
-	<div class="jumbotron">
-		<h1>Movies</h1>
+		<div class="top-greeting">
+		<h1>Movies you've watched</h1>
 	</div>
 
 	<div id="caught-movie-list">
@@ -112,7 +112,7 @@
 
 					<div class="btn-group"
 						id="caughtmovie-form-${caughtMovie.mid}-editbuttons">
-						<button type="submit" class="btn btn-sm btn-info"
+						<button type="submit" class="btn btn-sm btn-primary"
 							id="update-caughtmovie">Save</button>
 						<button type="button" class="btn btn-sm btn-warning"
 							id="canceledit-caughtmovie-${caughtMovie.mid}">Cancel</button>
@@ -131,7 +131,7 @@
 					</div>
 				</form>
 
-				<button class="btn btn-sm btn-primary"
+				<button class="btn btn-sm btn-default"
 					id="edit-caughtmovie-${caughtMovie.mid}">Edit</button>
 
 			</c:forEach>

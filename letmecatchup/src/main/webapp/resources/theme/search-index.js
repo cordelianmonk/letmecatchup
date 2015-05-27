@@ -86,18 +86,18 @@ $(document).ready(function() {
 
 	$("#searched-catch").click(function() {
 		generateCatchForm();
-		$("#searched-caught").prop("class", "btn btn-sm btn-warning" + " disabled");
+		$("#searched-caught").prop("class", "btn btn-sm btn-default disabled");
 	});
 	
 	$("#searched-caught").click(function() {
 		generateCaughtForm();
-		$("#searched-catch").prop("class", "btn btn-sm btn-primary" + " disabled");
+		$("#searched-catch").prop("class", "btn btn-sm btn-info disabled");
 	});
 	
 
 	$("#searched-caught-cancel").click(function() {
 		alert("cancel pressed");
-		$("#searched-catch").prop("class", "btn btn-sm btn-primary");
+		$("#searched-catch").prop("class", "btn btn-sm btn-info");
 	});
 
 });
@@ -340,7 +340,7 @@ function generateCatchForm() {
 							+ '</form>');
 	
 	$("#searched-catch-cancel").click(function() {
-		$("#searched-caught").prop("class", "btn btn-sm btn-warning");
+		$("#searched-caught").prop("class", "btn btn-sm btn-default");
 		$("#searched-form").empty();
 	});
 
@@ -371,7 +371,7 @@ function generateCaughtForm() {
 							+ '</div></form>');
 	
 	$("#searched-caught-cancel").click(function() {
-		$("#searched-catch").prop("class", "btn btn-sm btn-primary");
+		$("#searched-catch").prop("class", "btn btn-sm btn-info");
 		$("#searched-form").empty();
 	});
 
