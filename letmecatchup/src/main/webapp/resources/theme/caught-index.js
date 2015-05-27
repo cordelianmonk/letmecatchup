@@ -22,6 +22,20 @@ $(document).ready(function() {
 		$("#caughtbook-" + suffix).show();
 
 	});
+	
+	$("[id^='show-delete-caughtbook']").click(function(){
+		
+		var suffix = this.id.split("-")[3];
+		$("#caughtbook-form-"+ suffix +"-deletebuttons").show();
+		$("#caughtbook-form-" + suffix + "-editbuttons").hide();
+		
+	});
+	
+	$("[id^='canceldelete-caughtbook']").click(function() {
+		var suffix = this.id.split("-")[2];
+		$("#caughtbook-form-"+ suffix +"-deletebuttons").hide();
+		$("#caughtbook-form-" + suffix + "-editbuttons").show();
+	});
 
 	// MOVIE
 	$("[id^='edit-caughtmovie']").click(function() {
@@ -42,6 +56,20 @@ $(document).ready(function() {
 		$("#caughtmovie-form-" + suffix).hide();
 		$("#caughtmovie-" + suffix).show();
 
+	});
+	
+$("[id^='show-delete-caughtmovie']").click(function(){
+		
+		var suffix = this.id.split("-")[3];
+		$("#caughtmovie-form-"+ suffix +"-deletebuttons").show();
+		$("#caughtmovie-form-" + suffix + "-editbuttons").hide();
+		
+	});
+	
+	$("[id^='canceldelete-caughtmovie']").click(function() {
+		var suffix = this.id.split("-")[2];
+		$("#caughtmovie-form-"+ suffix +"-deletebuttons").hide();
+		$("#caughtmovie-form-" + suffix + "-editbuttons").show();
 	});
 
 });

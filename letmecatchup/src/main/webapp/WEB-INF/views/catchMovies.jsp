@@ -88,21 +88,32 @@
 					<br /> <input hidden name="mid" value="${catchMovie.mid}"></input>
 					<input hidden name="apiID" value="${catchMovie.apiID}"></input>
 
-					<div id="catchmovie-form-${catchMovie.mid}-editbuttons">
-						<button type="submit" class="btn btn-sm btn-primary"
+					<div class="btn-group"
+						id="catchmovie-form-${catchMovie.mid}-editbuttons">
+						<button type="submit" class="btn btn-sm btn-info"
 							id="update-catchmovie">Save</button>
-						<button class="btn btn-sm btn-primary"
-							formaction="deleteCatchMovie" id="delete-catchmovie">Delete</button>
-						<button type="button" class="btn btn-sm btn-primary"
+						<button type="button" class="btn btn-sm btn-warning"
 							id="canceledit-catchmovie-${catchMovie.mid}">Cancel</button>
+						<button type="button" class="btn btn-sm btn-danger"
+							id="show-delete-catchmovie-${catchMovie.mid}">Delete</button>
 						<br />
 					</div>
 
-					<div hidden id="catchmovie-form-${catchMovie.mid}-caughtbuttons">
+					<div hidden id="catchmovie-form-${catchMovie.mid}-deletebuttons">
+						<div class="btn-group">
+							<button class="btn btn-sm btn-danger"
+								formaction="deleteCatchMovie" id="delete-catchmovie">Confirm
+								Delete</button>
+							<button type="button" class="btn btn-sm btn-warning"
+								id="canceldelete-catchmovie-${catchMovie.mid}">Cancel</button>
+						</div>
+					</div>
 
+
+					<div hidden id="catchmovie-form-${catchMovie.mid}-caughtbuttons">
 						<label for="rating">Rate</label> <br /> <select disabled="true"
-							id="catchmovie-form-${catchMovie.mid}-rating" class="form-control"
-							name="rating" style="width: 80px">
+							id="catchmovie-form-${catchMovie.mid}-rating"
+							class="form-control" name="rating" style="width: 80px">
 							<option selected="selected" value="0">0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -115,19 +126,22 @@
 							<option value="9">9</option>
 							<option value="10">10</option>
 						</select> <br />
-						<button class="btn btn-sm btn-primary"
-							formaction="caughtCatchMovie" id="caught-catchmovie">Save</button>
-						<button type="button" class="btn btn-sm btn-primary"
-							id="cancelcaught-catchmovie-${catchMovie.mid}">Cancel</button>
+
+						<div class="btn-group">
+							<button class="btn btn-sm btn-info" formaction="caughtCatchMovie"
+								id="caught-catchmovie">Save</button>
+							<button type="button" class="btn btn-sm btn-warning"
+								id="cancelcaught-catchmovie-${catchMovie.mid}">Cancel</button>
+						</div>
 					</div>
 				</form>
-
-				<button class="btn btn-sm btn-primary"
-					id="edit-catchmovie-${catchMovie.mid}">Edit</button>
-
-				<button class="btn btn-sm btn-primary"
-					id="caught-catchmovie-${catchMovie.mid}">Caught!</button>
-
+				<br />
+				<div class="btn-group">
+					<button class="btn btn-sm btn-primary"
+						id="edit-catchmovie-${catchMovie.mid}">Edit</button>
+					<button class="btn btn-sm btn-primary"
+						id="caught-catchmovie-${catchMovie.mid}">Caught!</button>
+				</div>
 			</c:forEach>
 		</c:if>
 	</div>

@@ -86,12 +86,12 @@ $(document).ready(function() {
 
 	$("#searched-catch").click(function() {
 		generateCatchForm();
-		$("#searched-caught").prop("class", "btn btn-sm btn-warning " + " disabled");
+		$("#searched-caught").prop("class", "btn btn-sm btn-warning" + " disabled");
 	});
 	
 	$("#searched-caught").click(function() {
 		generateCaughtForm();
-		$("#searched-catch").prop("class", "btn btn-sm btn-primary " + " disabled");
+		$("#searched-catch").prop("class", "btn btn-sm btn-primary" + " disabled");
 	});
 	
 
@@ -130,7 +130,7 @@ function searchBook(title, writer) {
 												+ ">");
 						$("#creator")
 								.html(
-										"<p>"
+										"<p><b>Written by:</b>"
 												+ xml
 														.getElementsByTagName("name")[0].textContent
 												+ "</p>");
@@ -186,6 +186,7 @@ function searchMovie(title) {
 				
 				searchMovieByID(movieID);
 				getMovieTrailer(movieID);
+				getMovieCredits(movieID);
 				$("#info-area").show()
 				
 			} else {
@@ -230,6 +231,7 @@ function searchMovieByID(movieID){
 }
 
 function getMovieTrailer(movieID){
+	
 	$.ajax({
 		method : "GET",
 		url : "http://api.themoviedb.org/3/movie/" + movieID + "/videos",
@@ -261,6 +263,63 @@ function getMovieTrailer(movieID){
 		
 }
 
+function getMovieCredits(movieID){
+	
+	$.ajax({
+		method : "GET",
+		url : "http://api.themoviedb.org/3/movie/" + movieID + "/credits",
+		contentType : 'application/json',
+		dataType : 'jsonp',
+		data : {
+			api_key : "aff7e1ce102316f1349934e4c4228ac5",
+		},
+		success : function(data) {
+
+		var actors = getCast(data);
+		console.log(actors);
+		var crew = getCrew(data);
+		console.log(crew);	
+		
+		$("#creator").html( actors + crew);
+		
+		},	
+		error : function(data) {
+			console.log(JSON.stringify(data));
+		}
+		
+	});
+	
+}
+
+function getCast(data){
+	var actors = "<p><b>Cast: </b>";
+	for(var i = 0; i<=4; i++ ){
+		actors += data.cast[i].name + ", "; 
+	}
+	return actors.substring( 0, actors.length-2 ) + "</p>";
+}
+
+function getCrew(data){
+	var director="<b>Direction: </b> "
+	var writing="<b>Writing: </b> " 
+	
+	$.each( data.crew , function( index, value ) {
+			  if( value.job=="Director"){
+				  director += value.name + ", ";
+			  }
+			  
+			  if( value.job=="Writer" || value.job=="Screenplay" || value.job=="Author" || value.job=="Novel"){
+				  writing += value.name + "(" + value.job + "), ";
+			  }			    
+	});
+	
+	director = "<p>" + director.substring( 0 , director.length-2 ) +  "</p>";
+	writing = "<p>" + writing.substring( 0 , writing.length-2 ) + "</p>";
+ 
+	return director + writing;
+			
+}
+
 function generateCatchForm() {
 
 	$("#searched-form")
@@ -275,9 +334,9 @@ function generateCatchForm() {
 							+ '<input hidden name="apiID" + value= "'
 							+ $("#searched-apikey").text()
 							+ '"></input>'
-							+ '<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
-							+ '<button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
-							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-catch-cancel">Cancel</button>'
+							+ '<textarea width="100%" rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
+							+ '<br/><div class="btn-group"><button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
+							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-catch-cancel">Cancel</button></div>'
 							+ '</form>');
 	
 	$("#searched-catch-cancel").click(function() {
@@ -301,15 +360,15 @@ function generateCaughtForm() {
 							+ '<input hidden name="apiID" + value= "'
 							+ $("#searched-apikey").text()
 							+ '"></input>'
-							+ '<textarea rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
-							+ '<select id="rating" name="rating" style="width: 80px"> <option selected="selected"'
+							+ '<textarea width="100%" rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
+							+ '<br/><select id="rating" name="rating" style="width: 80px"> <option selected="selected"'
 							+ 'value="0">0</option><option value="1">1</option> <option value="2">2</option>'
 							+ '<option value="3">3</option><option value="4">4</option><option value="5">5</option>'
 							+ '<option value="6">6</option><option value="7">7</option><option value="8">8</option>'
 							+ '<option value="9">9</option><option value="10">10</option></select><br/>'
-							+ '<button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
+							+ '<div class="btn-group"><button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
 							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-caught-cancel">Cancel</button>'
-							+ '</form>');
+							+ '</div></form>');
 	
 	$("#searched-caught-cancel").click(function() {
 		$("#searched-catch").prop("class", "btn btn-sm btn-primary");

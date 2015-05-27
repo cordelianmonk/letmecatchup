@@ -99,18 +99,17 @@
 							id="canceledit-catchbook-${catchBook.bid}">Cancel</button>
 						<button type="button" class="btn btn-sm btn-danger"
 							id="show-delete-catchbook-${catchBook.bid}">Delete</button>
-						<div hidden id="catchbook-form-${catchBook.bid}-deletebuttons">
+					</div>
 
+					<div hidden id="catchbook-form-${catchBook.bid}-deletebuttons">
+						<div class="btn-group">
 							<button class="btn btn-sm btn-danger"
 								formaction="deleteCatchBook" id="delete-catchbook">Confirm
 								Delete</button>
 							<button type="button" class="btn btn-sm btn-warning"
 								id="canceldelete-catchbook-${catchBook.bid}">Cancel</button>
-							<br />
-
 						</div>
 					</div>
-
 
 					<div hidden id="catchbook-form-${catchBook.bid}-caughtbuttons">
 						<label for="rating">Rate</label> <br /> <select disabled="true"
@@ -128,22 +127,25 @@
 							<option value="9">9</option>
 							<option value="10">10</option>
 						</select> <br />
+						
 						<div class="btn-group">
-							<button class="btn btn-sm btn-info"
-								formaction="caughtCatchBook" id="caught-catchbook">Save</button>
+							<button class="btn btn-sm btn-info" formaction="caughtCatchBook"
+								id="caught-catchbook">Save</button>
 							<button type="button" class="btn btn-sm btn-warning"
 								id="cancelcaught-catchbook-${catchBook.bid}">Cancel</button>
 						</div>
+						
 					</div>
 				</form>
 				<br />
+				
 				<div class="btn-group">
 					<button class="btn btn-sm btn-primary"
 						id="edit-catchbook-${catchBook.bid}">Edit</button>
-
 					<button class="btn btn-sm btn-primary"
 						id="caught-catchbook-${catchBook.bid}">Caught!</button>
 				</div>
+				
 			</c:forEach>
 		</c:if>
 	</div>

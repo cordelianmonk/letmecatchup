@@ -213,10 +213,10 @@
 				<br/>
 				<div id="link"></div>
 				<br/>
+				<div class="btn-group">
 				<button type="button" class="btn btn-sm btn-primary" id="searched-catch">Catch</button>
-				<br/>
 				<button type="button" class="btn btn-sm btn-warning" id="searched-caught">Caught</button>
-				<br/>
+				</div>
 				<!--  HIDDEN FORM -->
 				<div id="searched-form">
 				

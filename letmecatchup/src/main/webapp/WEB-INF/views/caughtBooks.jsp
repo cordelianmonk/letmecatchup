@@ -76,43 +76,55 @@
 				<div id="caughtbook-${caughtBook.bid}">
 					<h2>${caughtBook.title}</h2>
 					<br />
-					<p>Rated ${caughtBook.rating} out of 10</p><br />
-					<input hidden id="caughtbook-set-rating-${caughtBook.bid}" value="${caughtBook.rating}"></input>
+					<p>Rated ${caughtBook.rating} out of 10</p>
+					<br /> <input hidden id="caughtbook-set-rating-${caughtBook.bid}"
+						value="${caughtBook.rating}"></input>
 					<p>${caughtBook.comment}</p>
 				</div>
 				<form hidden id="caughtbook-form-${caughtBook.bid}"
 					action="updateCaughtBook" method="post">
 					<label for="title">Title</label><br /> <input name="title"
-						id="title-${caughtBook.bid}" value="${caughtBook.title}"></input><br /><br />
-					<label for="comment">Comment</label><br />
+						id="title-${caughtBook.bid}" value="${caughtBook.title}"></input><br />
+					<br /> <label for="comment">Comment</label><br />
 					<textarea rows="5" cols="60" maxlength="300" name="comment"
 						id="comment-${caughtBook.bid}">${caughtBook.comment}</textarea>
 					<br /> <input hidden name="bid" value="${caughtBook.bid}"></input>
-					<input hidden name="apiID" value="${caughtBook.apiID}"></input>
-					<label for="rating">Rating</label><br />
-					<select disabled="true" 
-							id="caughtbook-form-${caughtBook.bid}-rating"
-							class="form-control" name="rating" style="width: 80px">
-							<option value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select> <br />
+					<input hidden name="apiID" value="${caughtBook.apiID}"></input> <label
+						for="rating">Rating</label><br /> <select disabled="true"
+						id="caughtbook-form-${caughtBook.bid}-rating" class="form-control"
+						name="rating" style="width: 80px">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select> <br />
 
-					<button type="submit" class="btn btn-sm btn-primary"
-						id="update-caughtbook">Save</button>
-					<button class="btn btn-sm btn-primary" formaction="deleteCaughtBook"
-						id="delete-caughtbook">Delete</button>
-					<button type="button" class="btn btn-sm btn-primary"
-						id="canceledit-caughtbook-${caughtBook.bid}">Cancel</button>
-					<br />
+					<div class="btn-group"
+						id="caughtbook-form-${caughtBook.bid}-editbuttons">
+						<button type="submit" class="btn btn-sm btn-info"
+							id="update-caughtbook">Save</button>
+						<button type="button" class="btn btn-sm btn-warning"
+							id="canceledit-caughtbook-${caughtBook.bid}">Cancel</button>
+						<button type="button" class="btn btn-sm btn-danger"
+							id="show-delete-caughtbook-${caughtBook.bid}">Delete</button>
+					</div>
+
+					<div hidden id="caughtbook-form-${caughtBook.bid}-deletebuttons">
+						<div class="btn-group">
+							<button class="btn btn-sm btn-danger"
+								formaction="deleteCaughtBook" id="delete-caughtbook">Confirm
+								Delete</button>
+							<button type="button" class="btn btn-sm btn-warning"
+								id="canceldelete-caughtbook-${caughtBook.bid}">Cancel</button>
+						</div>
+					</div>
 				</form>
 
 				<button class="btn btn-sm btn-primary"

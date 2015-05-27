@@ -107,13 +107,25 @@
 							<option value="10">10</option>
 						</select> <br />
 
-					<button type="submit" class="btn btn-sm btn-primary"
-						id="update-caughtmovie">Save</button>
-					<button class="btn btn-sm btn-primary" formaction="deleteCaughtMovie"
-						id="delete-caughtmovie">Delete</button>
-					<button type="button" class="btn btn-sm btn-primary"
-						id="canceledit-caughtmovie-${caughtMovie.mid}">Cancel</button>
-					<br />
+					<div class="btn-group"
+						id="caughtmovie-form-${caughtMovie.mid}-editbuttons">
+						<button type="submit" class="btn btn-sm btn-info"
+							id="update-caughtmovie">Save</button>
+						<button type="button" class="btn btn-sm btn-warning"
+							id="canceledit-caughtmovie-${caughtMovie.mid}">Cancel</button>
+						<button type="button" class="btn btn-sm btn-danger"
+							id="show-delete-caughtmovie-${caughtMovie.mid}">Delete</button>
+					</div>
+
+					<div hidden id="caughtmovie-form-${caughtMovie.mid}-deletebuttons">
+						<div class="btn-group">
+							<button class="btn btn-sm btn-danger"
+								formaction="deleteCaughtBook" id="delete-caughtmovie">Confirm
+								Delete</button>
+							<button type="button" class="btn btn-sm btn-warning"
+								id="canceldelete-caughtmovie-${caughtMovie.mid}">Cancel</button>
+						</div>
+					</div>
 				</form>
 
 				<button class="btn btn-sm btn-primary"
