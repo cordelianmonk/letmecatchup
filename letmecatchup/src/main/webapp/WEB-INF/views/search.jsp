@@ -10,10 +10,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Search</title>
+
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
+	
+<link href='http://fonts.googleapis.com/css?family=Lobster|Droid+Serif|Raleway' rel='stylesheet' type='text/css' />
+	
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
+<link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
+
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
+
+<script src="<c:url value="/resources/jquery.rateit.min.js" />"></script>
+
+
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/search-index.js" />"></script>
 </head>
@@ -69,7 +79,7 @@
 		<h1>Search and add media here</h1>
 	</div>
 	<div class="container-fluid">
-		<h2>What would you like to do?</h2><br/>
+		<h4>What would you like to do?</h4><br/>
 		<div class="col-xs-12 col-md-12">
 			<div class="form-group">
 				<label for="select-action">Choose one from the selection</label> <select
@@ -219,12 +229,14 @@
 			<div class="col-xs-12 col-md-5">
 				<h2 id="searched-title">Title</h2>
 				<p hidden id="searched-apikey"></p>
-				<h3 id="searched-rating">Rating</h3>
+				<div class="rateit" data-rateit-ispreset="true" 
+				data-rateit-readonly="true"  id="searched-rating"></div>
+				<!--  <h3 id="searched-rating">Rating</h3>  -->
 				<p id="searched-description">Description</p>
 			</div>
 			<!-- 3/3 -->
 			<div class="col-xs-12 col-md-4">
-				<div id="reviews"></div>
+				<div class="container" id="reviews"></div>
 			</div>
 		</div>
 	</div>

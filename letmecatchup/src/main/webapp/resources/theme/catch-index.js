@@ -8,8 +8,10 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#catchbook-form-" + suffix).show();
+		
 		$("#catchbook-" + suffix +"-title").hide();
 		$("#catchbook-" + suffix +"-comment").hide();
+		
 		$("#caught-catchbook-"+suffix ).prop("class", "btn btn-sm btn-info disabled");
 	});
 
@@ -78,7 +80,9 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).show();
-		$("#catchmovie-" + suffix).hide();
+		
+		$("#catchmovie-" + suffix +"-title").hide();
+		$("#catchmovie-" + suffix +"-comment").hide();
 		
 		$("#caught-catchmovie-"+suffix ).prop("class", "btn btn-sm btn-info disabled");
 
@@ -88,7 +92,9 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).hide();
-		$("#catchmovie-" + suffix).show();
+		
+		$("#catchmovie-" + suffix +"-title").show();
+		$("#catchmovie-" + suffix +"-comment").show();
 		
 		$("#caught-catchmovie-"+suffix ).prop("class", "btn btn-sm btn-info");
 
@@ -115,7 +121,9 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).show();
-		$("#catchmovie-" + suffix).hide();
+		
+		$("#catchmovie-" + suffix +"-title").hide();
+		$("#catchmovie-" + suffix +"-comment").hide();
 		
 		$("#catchmovie-form-" + suffix + "-editbuttons").hide();
 		$("#catchmovie-form-" + suffix + "-caughtbuttons").show();
@@ -130,7 +138,9 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).hide();
-		$("#catchmovie-" + suffix).show();
+		
+		$("#catchmovie-" + suffix +"-title").show();
+		$("#catchmovie-" + suffix +"-comment").show();
 		
 		$("#catchmovie-form-" + suffix + "-editbuttons").show();
 		$("#catchmovie-form-" + suffix + "-caughtbuttons").hide();

@@ -145,11 +145,10 @@ function searchBook(title, writer) {
 										xml.getElementsByTagName("title")[0].textContent);
 						$("#searched-apikey").html(
 								xml.getElementsByTagName("id")[0].textContent);
-						$("#searched-rating")
-								.html(
+						$("#searched-rating").rateit("value",
 										xml
-												.getElementsByTagName("average_rating")[0].textContent
-												+ " out of 5 stars");
+												.getElementsByTagName("average_rating")[0].textContent);
+						$("#searched-rating").rateit("max", 5);
 						$("#searched-description")
 								.html(
 										"<i>Description from Goodreads:</i><br/><br/>"
@@ -160,9 +159,9 @@ function searchBook(title, writer) {
 										xml
 												.getElementsByTagName("reviews_widget")[0].textContent);
 						$("#goodreads-widget")[0].style.width = "100%";
-						$("#goodreads-widget")[0].style.height = "350px";
+						$("#goodreads-widget")[0].style.height = "100%" ;
 						$("#the_iframe")[0].width = "100%";
-						$("#the_iframe")[0].height = "400";
+						$("#the_iframe")[0].height = "100%";
 						$("#info-area").show(); // VERY IMPORRANT
 					});
 }
@@ -219,7 +218,8 @@ function searchMovieByID(movieID){
 							+ data.id + ">See on TMDb </a>");
 			$("#searched-title").html(data.title);
 			$("#searched-apikey").html(data.id);
-			$("#searched-rating").html(data.vote_average + " out of 10 stars");
+			$("#searched-rating").rateit("value", +data.vote_average);
+			$("#searched-rating").rateit("max", +10 );
 			$("#searched-description").html("<i>Description from The Movie Database:</i><br/><br/>" +
 					data.overview);
 		},

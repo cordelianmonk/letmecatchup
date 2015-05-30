@@ -7,7 +7,10 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#caughtbook-form-" + suffix).show();
-		$("#caughtbook-" + suffix).hide();
+		
+		$("#caughtbook-" + suffix+"-title").hide();
+		$("#caughtbook-" + suffix+"-comment").hide();
+		$("#caughtbook-" + suffix+"-rating").hide();
 
 		var rating = +$("#caughtbook-set-rating-" + suffix).val();
 		$("#caughtbook-form-" + suffix + "-rating").prop("disabled", false);
@@ -19,7 +22,10 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#caughtbook-form-" + suffix).hide();
-		$("#caughtbook-" + suffix).show();
+		
+		$("#caughtbook-" + suffix+"-title").show();
+		$("#caughtbook-" + suffix+"-comment").show();
+		$("#caughtbook-" + suffix+"-rating").show();
 
 	});
 	
@@ -42,7 +48,10 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#caughtmovie-form-" + suffix).show();
-		$("#caughtmovie-" + suffix).hide();
+		
+		$("#caughtmovie-" + suffix+"-title").hide();
+		$("#caughtmovie-" + suffix+"-comment").hide();
+		$("#caughtmovie-" + suffix+"-rating").hide();
 
 		var rating = +$("#caughtmovie-set-rating-" + suffix).val();
 		$("#caughtmovie-form-" + suffix + "-rating").prop("disabled", false);
@@ -54,7 +63,10 @@ $(document).ready(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#caughtmovie-form-" + suffix).hide();
-		$("#caughtmovie-" + suffix).show();
+		
+		$("#caughtbook-" + suffix+"-title").show();
+		$("#caughtbook-" + suffix+"-comment").show();
+		$("#caughtbook-" + suffix+"-rating").show();
 
 	});
 	

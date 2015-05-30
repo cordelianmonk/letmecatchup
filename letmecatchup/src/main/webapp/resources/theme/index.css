@@ -3,17 +3,28 @@
 .login-area {
 	height: 380px;
 	width: 500px;
-	background: white;
 	margin: 0 auto;
 	margin-bottom: 50px;
+	font-family: 'Lobster', cursive;
+	
+}
+
+#app-name{
+	font-family: 'Lobster', cursive;
+	
 }
 
 .search-area {
 	margin: 0 auto;
 }
 
+.info-area{
+	font-family: 'Raleway', sans-serif;
+}
+
 .top-greeting {
 	margin: 80px 0px 0px 10px;
+	font-family: 'Lobster', cursive;
 }
 
 .well titles {
@@ -21,31 +32,20 @@
 	height: 200px;
 }
 
-.slabtexted .slabtext {
-	display: -moz-inline-box;
-	display: inline-block;
-	white-space: nowrap
-}
 
-.slabtextinactive .slabtext {
-	display: inline;
-	white-space: normal;
-	font-size: 1em !important;
-	letter-spacing: inherit !important;
-	word-spacing: inherit !important;
-	*letter-spacing: 0 !important;
-	*word-spacing: 0 !important;
-}
-
-.slabtextdone .slabtext {
-	display: block;
-	line-height: 0.9;
-}
-
-h2.tlt{
+h3.tlt{
 	text-align: center;
+	font-family: 'Bitter', serif;
 }
 
 .panel panel-default{
 	margin:auto;
+}
+
+.panel-heading{
+	font-family: 'Droid Serif', serif;
+}
+
+.panel-body{
+	font-family: 'Raleway', sans-serif;
 }

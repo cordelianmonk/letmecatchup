@@ -13,6 +13,9 @@
 <link href="<c:url value="resources/animate.css" />" rel="stylesheet" />
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
+	
+<link href='http://fonts.googleapis.com/css?family=Lobster|Bitter:700' rel='stylesheet' type='text/css' />
+
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
@@ -75,7 +78,7 @@
 	</div>
 
 	<div class="container-fluid">
-		<h3>Do you want to...</h3>
+		<p>Do you want to...</p>
 		<div class="col-xs-12">
 			<div class="well titles" id="catch-booklist">
 				<p class="small text-muted">...catch up with your reading?</p>
