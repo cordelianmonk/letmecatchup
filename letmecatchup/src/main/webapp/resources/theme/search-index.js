@@ -334,7 +334,7 @@ function generateCatchForm() {
 							+ '<input hidden name="apiID" + value= "'
 							+ $("#searched-apikey").text()
 							+ '"></input>'
-							+ '<textarea width="100%" rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
+							+ '<textarea class="form-control" rows="5" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
 							+ '<br/><div class="btn-group"><button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
 							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-catch-cancel">Cancel</button></div>'
 							+ '</form>');
@@ -360,12 +360,13 @@ function generateCaughtForm() {
 							+ '<input hidden name="apiID" + value= "'
 							+ $("#searched-apikey").text()
 							+ '"></input>'
-							+ '<textarea width="100%" rows="5" cols="20" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
-							+ '<br/><select id="rating" name="rating" style="width: 80px"> <option selected="selected"'
+							+ '<textarea class="form-control" rows="5" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
+							+ '<br/><select id="caught-rating" name="rating" style="width: 80px"> <option selected="selected"'
 							+ 'value="0">0</option><option value="1">1</option> <option value="2">2</option>'
 							+ '<option value="3">3</option><option value="4">4</option><option value="5">5</option>'
 							+ '<option value="6">6</option><option value="7">7</option><option value="8">8</option>'
-							+ '<option value="9">9</option><option value="10">10</option></select><br/>'
+							+ '<option value="9">9</option><option value="10">10</option></select>'
+							+'<div id="star-rating"></div><br/>'
 							+ '<div class="btn-group"><button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
 							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-caught-cancel">Cancel</button>'
 							+ '</div></form>');
@@ -373,6 +374,10 @@ function generateCaughtForm() {
 	$("#searched-caught-cancel").click(function() {
 		$("#searched-catch").prop("class", "btn btn-sm btn-info");
 		$("#searched-form").empty();
+	});
+	
+	$(function () { 
+		$('#star-rating').rateit( { max: 10, step: 1, backingfld: '#caught-rating' } ); 
 	});
 
 }

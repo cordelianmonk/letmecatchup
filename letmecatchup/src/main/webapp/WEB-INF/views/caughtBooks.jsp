@@ -16,7 +16,9 @@
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 
-<link href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster' rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster'
+	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
@@ -84,27 +86,26 @@
 			<c:forEach items="${caughtBookList}" var="caughtBook">
 				<div class="container">
 					<div class="panel panel-default" id="caughtbook-${caughtBook.bid}">
-						<div class="panel-heading" id="caughtbook-${caughtBook.bid}-title">
+						<div class="panel-heading"
+							id="caughtbook-${caughtBook.bid}-panelheadtitle">
 							<h3>${caughtBook.title}</h3>
-							<div id="caughtbook-${caughtBook.bid}-rating" class="rateit"
+							<div id="caughtbook-${caughtBook.bid}-star-rating" class="rateit"
 								data-rateit-ispreset="true" data-rateit-readonly="true"
 								data-rateit-value="${caughtBook.rating}" data-rateit-max="10"></div>
 						</div>
-						<div hidden class="panel-body">
+						<div hidden class="panel-body"
+							id="caughtbook-${caughtBook.bid}-panel-body">
 							<input hidden id="caughtbook-set-rating-${caughtBook.bid}"
 								value="${caughtBook.rating}"></input>
 							<h4 id="caughtbook-${caughtBook.bid}-comment">${caughtBook.comment}</h4>
 							<form hidden id="caughtbook-form-${caughtBook.bid}"
 								action="updateCaughtBook" method="post">
+
 								<label for="title">Title</label><br /> <input name="title"
-									id="title-${caughtBook.bid}" value="${caughtBook.title}"></input><br />
-								<br /> <label for="comment">Comment</label><br />
-								<textarea rows="5" cols="60" maxlength="300" name="comment"
-									id="comment-${caughtBook.bid}">${caughtBook.comment}</textarea>
-								<br /> <input hidden name="bid" value="${caughtBook.bid}"></input>
-								<input hidden name="apiID" value="${caughtBook.apiID}"></input>
-								<label for="rating">Rating</label><br /> <select
-									disabled="true" id="caughtbook-form-${caughtBook.bid}-rating"
+									id="title-${caughtBook.bid}" value="${caughtBook.title}"
+									class="form-control"></input><br />
+									<label for="rating">Rating</label><select disabled="true"
+									id="caughtbook-form-${caughtBook.bid}-rating"
 									class="form-control" name="rating" style="width: 80px">
 									<option value="0">0</option>
 									<option value="1">1</option>
@@ -117,9 +118,17 @@
 									<option value="8">8</option>
 									<option value="9">9</option>
 									<option value="10">10</option>
-								</select> <br />
-
-								<div class="btn-group"
+								</select>
+								<div id="caughtbook-form-edit-star-rating-${caughtBook.bid}"></div><br /><br />
+																											
+									<label
+									for="comment">Comment</label><br />
+								<textarea rows="3" class="form-control" maxlength="300"
+									name="comment" id="comment-${caughtBook.bid}">${caughtBook.comment}</textarea>
+								<br /> <input hidden name="bid" value="${caughtBook.bid}"></input>
+								<input hidden name="apiID" value="${caughtBook.apiID}"></input>
+								
+								<div class="btn-group pull-right"
 									id="caughtbook-form-${caughtBook.bid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
 										id="update-caughtbook">Save</button>
@@ -130,7 +139,7 @@
 								</div>
 
 								<div hidden id="caughtbook-form-${caughtBook.bid}-deletebuttons">
-									<div class="btn-group">
+									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCaughtBook" id="delete-caughtbook">Confirm
 											Delete</button>
@@ -140,8 +149,11 @@
 								</div>
 							</form>
 
-							<button class="btn btn-sm btn-default pull-right"
-								id="edit-caughtbook-${caughtBook.bid}">Edit</button>
+							<div id="edit-caughtbook-button-${caughtBook.bid}">
+								<button class="btn btn-sm btn-default pull-right"
+									id="edit-caughtbook-${caughtBook.bid}">Edit</button>
+							</div>
+							
 						</div>
 					</div>
 				</div>

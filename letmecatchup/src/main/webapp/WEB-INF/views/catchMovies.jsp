@@ -23,6 +23,9 @@
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/catch-index.js" />"></script>
+
+<link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
+<script src="<c:url value="/resources/jquery.rateit.min.js" />"></script>
 </head>
 <body>
 
@@ -83,24 +86,24 @@
 				<div class="container">
 
 					<div class="panel panel-default" id="catchmovie-${catchMovie.mid}">
-						<div class="panel-heading" id="catchmovie-${catchMovie.mid}-title">
+						<div class="panel-heading" id="catchmovie-${catchMovie.mid}-panelheadtitle">
 							<h3>${catchMovie.title}</h3>
 						</div>
-						<div class="panel-body">
+						<div hidden class="panel-body" id="catchmovie-${catchMovie.mid}-panel-body">
 							<h4 id="catchmovie-${catchMovie.mid}-comment">${catchMovie.comment}</h4>
 
 
 							<form hidden id="catchmovie-form-${catchMovie.mid}"
 								action="updateCatchMovie" method="post">
 								<label for="title">Title</label><br /> <input name="title"
-									id="title-${catchMovie.mid}" value="${catchMovie.title}"></input><br />
+									id="title-${catchMovie.mid}" value="${catchMovie.title}" class="form-control"></input><br />
 								<label for="comment">Comment</label><br />
-								<textarea rows="5" cols="60" maxlength="300" name="comment"
-									id="comment-${catchMovie.mid}">${catchMovie.comment}</textarea>
+								<textarea rows="3" maxlength="300" name="comment"
+									id="comment-${catchMovie.mid}" class="form-control">${catchMovie.comment}</textarea>
 								<br /> <input hidden name="mid" value="${catchMovie.mid}"></input>
 								<input hidden name="apiID" value="${catchMovie.apiID}"></input>
 
-								<div class="btn-group"
+								<div class="btn-group pull-right"
 									id="catchmovie-form-${catchMovie.mid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-success"
 										id="update-catchmovie">Save</button>
@@ -108,11 +111,10 @@
 										id="canceledit-catchmovie-${catchMovie.mid}">Cancel</button>
 									<button type="button" class="btn btn-sm btn-danger"
 										id="show-delete-catchmovie-${catchMovie.mid}">Delete</button>
-									<br />
 								</div>
 
 								<div hidden id="catchmovie-form-${catchMovie.mid}-deletebuttons">
-									<div class="btn-group">
+									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCatchMovie" id="delete-catchmovie">Confirm
 											Delete</button>
@@ -123,7 +125,7 @@
 
 
 								<div hidden id="catchmovie-form-${catchMovie.mid}-caughtbuttons">
-									<label for="rating">Rate</label> <br /> <select
+									<label for="rating">Rate</label><select
 										disabled="true" id="catchmovie-form-${catchMovie.mid}-rating"
 										class="form-control" name="rating" style="width: 80px">
 										<option selected="selected" value="0">0</option>
@@ -137,9 +139,10 @@
 										<option value="8">8</option>
 										<option value="9">9</option>
 										<option value="10">10</option>
-									</select> <br />
+									</select>
+									<div id="catchmovie-form-star-rating-${catchMovie.mid}"></div>
 
-									<div class="btn-group">
+									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-primary"
 											formaction="caughtCatchMovie" id="caught-catchmovie">Save</button>
 										<button type="button" class="btn btn-sm btn-warning"
@@ -147,8 +150,7 @@
 									</div>
 								</div>
 							</form>
-							<br />
-							<div class="btn-group pull-right">
+							<div class="btn-group pull-right" id="edit-caught-catchmovie-${catchMovie.mid}">
 								<button class="btn btn-sm btn-default"
 									id="edit-catchmovie-${catchMovie.mid}">Edit</button>
 								<button class="btn btn-sm btn-info"

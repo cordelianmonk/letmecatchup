@@ -16,7 +16,9 @@
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 
-<link href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster' rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster'
+	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
@@ -85,28 +87,26 @@
 					<div class="panel panel-default"
 						id="caughtmovie-${caughtMovie.mid}">
 
-						<div class="panel-heading">
-							<h3 id="caughtmovie-${caughtMovie.mid}-title">${caughtMovie.title}</h3>
+						<div class="panel-heading"
+							id="caughtmovie-${caughtMovie.mid}-panelheadtitle">
+							<h3>${caughtMovie.title}</h3>
 							<div id="caughtmovie-${caughtMovie.mid}-rating" class="rateit"
 								data-rateit-ispreset="true" data-rateit-readonly="true"
 								data-rateit-value="${caughtMovie.rating}" data-rateit-max="10">
 							</div>
 						</div>
-						<div class="panel-body">
+						<div hidden class="panel-body"
+							id="caughtmovie-${caughtMovie.mid}-panel-body">
 							<input hidden id="caughtmovie-set-rating-${caughtMovie.mid}"
 								value="${caughtMovie.rating}"></input>
 							<h4 id="caughtmovie-${caughtMovie.mid}-comment">${caughtMovie.comment}</h4>
 
 							<form hidden id="caughtmovie-form-${caughtMovie.mid}"
 								action="updateCaughtMovie" method="post">
-								<label for="title">Title</label><br /> <input name="title"
-									id="title-${caughtMovie.mid}" value="${caughtMovie.title}"></input><br />
-								<br /> <label for="comment">Comment</label><br />
-								<textarea rows="5" cols="60" maxlength="300" name="comment"
-									id="comment-${caughtMovie.mid}">${caughtMovie.comment}</textarea>
-
-								<input hidden name="mid" value="${caughtMovie.mid}"></input> <input
-									hidden name="apiID" value="${caughtMovie.apiID}"></input> <br />
+								<label for="title">Title</label><br /> <input class="form-control" name="title"
+									id="title-${caughtMovie.mid}" value="${caughtMovie.title}"></input>
+								<br /> 
+								
 								<label for="rating">Rating</label><br /> <select
 									disabled="true" id="caughtmovie-form-${caughtMovie.mid}-rating"
 									class="form-control" name="rating" style="width: 80px">
@@ -121,9 +121,17 @@
 									<option value="8">8</option>
 									<option value="9">9</option>
 									<option value="10">10</option>
-								</select> <br />
+								</select>
+								<div id="caughtmovie-${caughtMovie.mid}-edit-star-rating"></div><br /><br />
+								
+								<label for="comment">Comment</label><br />
+								<textarea rows="3" maxlength="300" name="comment"
+									id="comment-${caughtMovie.mid}" class="form-control">${caughtMovie.comment}</textarea><br />
 
-								<div class="btn-group"
+								<input hidden name="mid" value="${caughtMovie.mid}"></input> <input
+									hidden name="apiID" value="${caughtMovie.apiID}"></input>
+
+								<div class="btn-group pull-right"
 									id="caughtmovie-form-${caughtMovie.mid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
 										id="update-caughtmovie">Save</button>
@@ -135,7 +143,7 @@
 
 								<div hidden
 									id="caughtmovie-form-${caughtMovie.mid}-deletebuttons">
-									<div class="btn-group">
+									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCaughtBook" id="delete-caughtmovie">Confirm
 											Delete</button>
@@ -144,9 +152,12 @@
 									</div>
 								</div>
 							</form>
-
-							<button class="btn btn-sm btn-default pull-right"
-								id="edit-caughtmovie-${caughtMovie.mid}">Edit</button>
+							
+							<div id="edit-caughtmovie-button-${caughtMovie.mid}">
+								<button class="btn btn-sm btn-default pull-right"
+									id="edit-caughtmovie-${caughtMovie.mid}">Edit</button>
+							</div>
+							
 						</div>
 					</div>
 				</div>

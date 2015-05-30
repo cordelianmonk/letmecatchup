@@ -154,9 +154,9 @@
 						<label for="title">Title</label><br /> <input autofocus
 							type="text" name="title" id="title"></input><br /> <label
 							for="comment">Comment</label></br>
-						<textarea rows="5" width="100%" maxlength="300"
+						<textarea rows="5" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
-							id="comment"></textarea>
+							id="comment" class="form-control"></textarea>
 						<input hidden name="apiID"></input> <br />
 						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
 					</div>
@@ -178,10 +178,10 @@
 				<div class="form-group">
 					<div class="col-xs-12">
 
-						<label for="title">Title</label><br /> <input autofocus
+						<label for="title">Title</label><br /> <input autofocus class="form-control"
 							type="text" name="title" id="title"></input><br /> <label
 							for="comment">Comment</label><br />
-						<textarea rows="5" width="100%" maxlength="300"
+						<textarea class="form-control" rows="5" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
 
@@ -199,7 +199,9 @@
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
-						</select> <br />
+						</select>
+						<div class="rateit" data-rateit-backingfld="#rating"></div>
+						<br />
 						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
 					</div>
 				</div>
@@ -224,7 +226,7 @@
 				</div>
 				<!--  HIDDEN FORM -->
 				<div id="searched-form"></div>
-
+					
 			</div>
 			<!-- 2 / 3 -->
 			<div class="col-xs-12 col-md-5">

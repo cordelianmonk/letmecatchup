@@ -3,21 +3,38 @@
  */
 $(document).ready(function() {
 	
+	$(".panel-heading" ).hover(function(){
+		   
+    	if ( $(this).data("clicked") ){
+    		$("#" + this.id ).css("background-color", "#20E897");
+    	} else {
+    		$("#" + this.id ).css("background-color", "#ADF9DA");
+    	}
+}
+    	
+   , function(){
+	
+	if ( $(this).data("clicked") ){
+		$("#" + this.id  ).css("background-color", "#20E897");
+	} else {
+		$("#" + this.id ).css("background-color", "#F5F5F5");
+	}
+	
+}); 
 	// BOOK 
 	
-	$("[id*='title']").click(function() {
+	$("[id*='panelheadtitle']").click(function() {
 		
 		var id = this.id; 
 		var shortID = id.substring(0, id.lastIndexOf("-") );
 		shortID = shortID + "-panel-body";
 		
 		if(jQuery( "#"+id ).data('clicked') ) {
-			$("#" + id  )[0].style.background="#F5F5F5";
+			$("#" + id  ).css("background-color", "#ADF9DA");
 			$("#" + shortID ).hide();
-		    $(this).data('clicked', false);
-		    
+		    $(this).data('clicked', false);	    
 		} else {
-			$("#" + id  )[0].style.background="#ADF9DA";
+			$("#" + id  ).css("background-color", "#20E897");
 			$("#" + shortID ).show();
 			$(this).data('clicked', true);
 		}
@@ -29,19 +46,21 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[2];
 		$("#catchbook-form-" + suffix).show();
 		
-		$("#catchbook-" + suffix +"-title").hide();
+		
+		$("#catchbook-" + suffix +"-panelheadtitle").hide();
 		$("#catchbook-" + suffix +"-comment").hide();
 		
-		$("#caught-catchbook-"+suffix ).prop("class", "btn btn-sm btn-info disabled");
+		$("#edit-caught-catchbook-"+suffix ).hide();
 	});
 
 	$("[id^='canceledit-catchbook']").click(function() {
 
 		var suffix = this.id.split("-")[2];
 		$("#catchbook-form-" + suffix).hide();
-		$("#catchbook-" + suffix +"-title").show();
+		$("#catchbook-" + suffix +"-panelheadtitle").show();
 		$("#catchbook-" + suffix +"-comment").show();
-		$("#caught-catchbook-"+suffix ).prop("class", "btn btn-sm btn-info");
+		
+		$("#edit-caught-catchbook-"+suffix ).show();
 
 	});
 	
@@ -49,8 +68,6 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[3];
 		$("#catchbook-form-" + suffix + "-deletebuttons").show();
 		$("#catchbook-form-" + suffix + "-editbuttons").hide();
-		
-		
 	});
 	
 	
@@ -67,7 +84,7 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[2];
 		$("#catchbook-form-" + suffix).show();
 		
-		$("#catchbook-" + suffix +"-title").hide();
+		$("#catchbook-" + suffix +"-panelheadtitle").hide();
 		$("#catchbook-" + suffix +"-comment").hide();
 		
 		$("#catchbook-form-" + suffix + "-editbuttons").hide();
@@ -75,7 +92,11 @@ $(document).ready(function() {
 		
 		$("#catchbook-form-" + suffix + "-rating").prop("disabled", false);
 		
-		$("#edit-catchbook-"+suffix ).prop("class", "btn btn-sm btn-default disabled");
+		$(function () { 
+			$('#catchbook-form-star-rating-' + suffix).rateit( { max: 10, step: 1, backingfld: "#catchbook-form-" + suffix + "-rating" } ); 
+		});
+		
+		$("#edit-caught-catchbook-"+suffix ).hide();
 
 	});
 	
@@ -84,7 +105,7 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[2];
 		$("#catchbook-form-" + suffix).hide();
 		
-		$("#catchbook-" + suffix +"-title").show();
+		$("#catchbook-" + suffix +"-panelheadtitle").show();
 		$("#catchbook-" + suffix +"-comment").show();
 		
 		$("#catchbook-form-" + suffix + "-editbuttons").show();
@@ -92,7 +113,7 @@ $(document).ready(function() {
 		
 		$("#catchbook-form-" + suffix + "-rating").prop("disabled", true);
 
-		$("#edit-catchbook-"+suffix ).prop("class", "btn btn-sm btn-default");
+		$("#edit-caught-catchbook-"+suffix ).show();
 	});
 	
 	//MOVIE
@@ -101,10 +122,10 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).show();
 		
-		$("#catchmovie-" + suffix +"-title").hide();
+		$("#catchmovie-" + suffix +"-panelheadtitle").hide();
 		$("#catchmovie-" + suffix +"-comment").hide();
 		
-		$("#caught-catchmovie-"+suffix ).prop("class", "btn btn-sm btn-info disabled");
+		$("#edit-caught-catchmovie-"+suffix ).hide();
 
 	});
 
@@ -113,10 +134,10 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).hide();
 		
-		$("#catchmovie-" + suffix +"-title").show();
+		$("#catchmovie-" + suffix +"-panelheadtitle").show();
 		$("#catchmovie-" + suffix +"-comment").show();
 		
-		$("#caught-catchmovie-"+suffix ).prop("class", "btn btn-sm btn-info");
+		$("#edit-caught-catchmovie-"+suffix ).show();
 
 	});
 	
@@ -142,13 +163,17 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).show();
 		
-		$("#catchmovie-" + suffix +"-title").hide();
+		$("#catchmovie-" + suffix +"-panelheadtitle").hide();
 		$("#catchmovie-" + suffix +"-comment").hide();
 		
 		$("#catchmovie-form-" + suffix + "-editbuttons").hide();
 		$("#catchmovie-form-" + suffix + "-caughtbuttons").show();
 		
-		$("#catchmovie-form-" + suffix + "-rating").prop("disabled", false);
+		$("#edit-caught-catchmovie-"+suffix ).hide();
+		
+		$(function () { 
+			$('#catchmovie-form-star-rating-' + suffix).rateit( { max: 10, step: 1, backingfld: "#catchmovie-form-" + suffix + "-rating" } ); 
+		});
 		
 		$("#edit-catchmovie-"+suffix ).prop("class", "btn btn-sm btn-default disabled");
 
@@ -159,7 +184,7 @@ $(document).ready(function() {
 		var suffix = this.id.split("-")[2];
 		$("#catchmovie-form-" + suffix).hide();
 		
-		$("#catchmovie-" + suffix +"-title").show();
+		$("#catchmovie-" + suffix +"-panelheadtitle").show();
 		$("#catchmovie-" + suffix +"-comment").show();
 		
 		$("#catchmovie-form-" + suffix + "-editbuttons").show();
@@ -167,7 +192,7 @@ $(document).ready(function() {
 		
 		$("#catchmovie-form-" + suffix + "-rating").prop("disabled", true);
 		
-		$("#edit-catchmovie-"+suffix ).prop("class", "btn btn-sm btn-default");
+		$("#edit-caught-catchmovie-"+suffix ).show();
 
 	});
 	

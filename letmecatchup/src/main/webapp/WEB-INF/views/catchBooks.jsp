@@ -15,9 +15,11 @@
 <title>Books to Catch</title>
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
-	
-<link href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster' rel='stylesheet' type='text/css'/>
-	
+
+<link
+	href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster'
+	rel='stylesheet' type='text/css' />
+
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
@@ -26,8 +28,6 @@
 
 <link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery.rateit.min.js" />"></script>
-
-
 </head>
 <body>
 
@@ -87,23 +87,26 @@
 			<c:forEach items="${catchBookList}" var="catchBook">
 				<div class="container">
 					<div class="panel panel-default" id="catchbook-${catchBook.bid}">
-						<div class="panel-heading" id="catchbook-${catchBook.bid}-title">
+						<div class="panel-heading"
+							id="catchbook-${catchBook.bid}-panelheadtitle">
 							<h3>${catchBook.title}</h3>
 						</div>
-						<div hidden class="panel-body" id="catchbook-${catchBook.bid}-panel-body">
+						<div hidden class="panel-body"
+							id="catchbook-${catchBook.bid}-panel-body">
 							<h4 id="catchbook-${catchBook.bid}-comment">${catchBook.comment}</h4>
 
 							<form hidden id="catchbook-form-${catchBook.bid}"
 								action="updateCatchBook" method="post">
-								<label for="title">Title</label><br /> <input name="title"
+								<label for="title-${catchBook.bid}">Title</label> <input
+									class="form-control input-lg" name="title"
 									id="title-${catchBook.bid}" value="${catchBook.title}"></input><br />
-								<label for="comment">Comment</label><br />
-								<textarea rows="5" cols="60" maxlength="300" name="comment"
-									id="comment-${catchBook.bid}">${catchBook.comment}</textarea>
+								<label for="comment-${catchBook.bid}">Comment</label><br />
+								<textarea class="form-control" rows="3"
+									maxlength="300" name="comment" id="comment-${catchBook.bid}">${catchBook.comment}</textarea>
 								<br /> <input hidden name="bid" value="${catchBook.bid}"></input>
 								<input hidden name="apiID" value="${catchBook.apiID}"></input>
 
-								<div class="btn-group"
+								<div class="btn-group pull-right"
 									id="catchbook-form-${catchBook.bid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
 										id="update-catchbook">Save</button>
@@ -112,9 +115,10 @@
 									<button type="button" class="btn btn-sm btn-danger"
 										id="show-delete-catchbook-${catchBook.bid}">Delete</button>
 								</div>
+								
 
 								<div hidden id="catchbook-form-${catchBook.bid}-deletebuttons">
-									<div class="btn-group">
+									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCatchBook" id="delete-catchbook">Confirm
 											Delete</button>
@@ -122,11 +126,12 @@
 											id="canceldelete-catchbook-${catchBook.bid}">Cancel</button>
 									</div>
 								</div>
-
+								
+								
 								<div hidden id="catchbook-form-${catchBook.bid}-caughtbuttons">
-									<label for="rating">Rate</label> <br /> <select
-										disabled="true" id="catchbook-form-${catchBook.bid}-rating"
-										class="form-control" name="rating" style="width: 80px">
+									<label for="catchbook-form-${catchBook.bid}-rating">Rate</label><select
+										id="catchbook-form-${catchBook.bid}-rating" name="rating"
+										style="width: 80px">
 										<option selected="selected" value="0">0</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -138,9 +143,10 @@
 										<option value="8">8</option>
 										<option value="9">9</option>
 										<option value="10">10</option>
-									</select> <br />
+									</select>
+									<div id="catchbook-form-star-rating-${catchBook.bid}"></div>
 
-									<div class="btn-group">
+									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-primary"
 											formaction="caughtCatchBook" id="caught-catchbook">Save</button>
 										<button type="button" class="btn btn-sm btn-warning"
@@ -148,14 +154,16 @@
 									</div>
 
 								</div>
+								
 							</form>
 
-							<div class="btn-group pull-right">
+							<div class="btn-group pull-right" id="edit-caught-catchbook-${catchBook.bid}">
 								<button class="btn btn-sm btn-default"
 									id="edit-catchbook-${catchBook.bid}">Edit</button>
 								<button class="btn btn-sm btn-info"
 									id="caught-catchbook-${catchBook.bid}">Caught!</button>
 							</div>
+
 						</div>
 					</div>
 				</div>
