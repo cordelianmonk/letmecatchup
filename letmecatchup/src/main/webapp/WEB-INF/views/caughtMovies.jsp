@@ -16,12 +16,15 @@
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 
-<link href='http://fonts.googleapis.com/css?family=Lobster|Droid+Serif|Raleway' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster' rel='stylesheet' type='text/css'>
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="/resources/caught-index.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
+
+<link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
+<script src="<c:url value="/resources/jquery.rateit.min.js" />"></script>
 
 </head>
 <body>
@@ -84,12 +87,13 @@
 
 						<div class="panel-heading">
 							<h3 id="caughtmovie-${caughtMovie.mid}-title">${caughtMovie.title}</h3>
+							<div id="caughtmovie-${caughtMovie.mid}-rating" class="rateit"
+								data-rateit-ispreset="true" data-rateit-readonly="true"
+								data-rateit-value="${caughtMovie.rating}" data-rateit-max="10">
+							</div>
 						</div>
 						<div class="panel-body">
-							<p id="caughtmovie-${caughtMovie.mid}-rating">Rated
-								${caughtMovie.rating} out of 10</p>
-							<input hidden
-								id="caughtmovie-set-rating-${caughtMovie.mid}"
+							<input hidden id="caughtmovie-set-rating-${caughtMovie.mid}"
 								value="${caughtMovie.rating}"></input>
 							<h4 id="caughtmovie-${caughtMovie.mid}-comment">${caughtMovie.comment}</h4>
 
@@ -97,16 +101,12 @@
 								action="updateCaughtMovie" method="post">
 								<label for="title">Title</label><br /> <input name="title"
 									id="title-${caughtMovie.mid}" value="${caughtMovie.title}"></input><br />
-								<br /> 
-								
-								<label for="comment">Comment</label><br />
+								<br /> <label for="comment">Comment</label><br />
 								<textarea rows="5" cols="60" maxlength="300" name="comment"
 									id="comment-${caughtMovie.mid}">${caughtMovie.comment}</textarea>
-								
-								<input hidden name="mid" value="${caughtMovie.mid}"></input>
-								
-								<input hidden name="apiID" value="${caughtMovie.apiID}"></input>
-								<br />
+
+								<input hidden name="mid" value="${caughtMovie.mid}"></input> <input
+									hidden name="apiID" value="${caughtMovie.apiID}"></input> <br />
 								<label for="rating">Rating</label><br /> <select
 									disabled="true" id="caughtmovie-form-${caughtMovie.mid}-rating"
 									class="form-control" name="rating" style="width: 80px">

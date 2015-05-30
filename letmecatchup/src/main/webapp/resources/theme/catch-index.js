@@ -4,6 +4,26 @@
 $(document).ready(function() {
 	
 	// BOOK 
+	
+	$("[id*='title']").click(function() {
+		
+		var id = this.id; 
+		var shortID = id.substring(0, id.lastIndexOf("-") );
+		shortID = shortID + "-panel-body";
+		
+		if(jQuery( "#"+id ).data('clicked') ) {
+			$("#" + id  )[0].style.background="#F5F5F5";
+			$("#" + shortID ).hide();
+		    $(this).data('clicked', false);
+		    
+		} else {
+			$("#" + id  )[0].style.background="#ADF9DA";
+			$("#" + shortID ).show();
+			$(this).data('clicked', true);
+		}
+		
+	});
+	
 	$("[id^='edit-catchbook']").click(function() {
 
 		var suffix = this.id.split("-")[2];

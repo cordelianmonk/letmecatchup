@@ -15,11 +15,15 @@
 <title>Caught Books</title>
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
-	
-<link href='http://fonts.googleapis.com/css?family=Lobster|Droid+Serif|Raleway' rel='stylesheet' type='text/css' />
+
+<link href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster' rel='stylesheet' type='text/css'>
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
+
+<link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
+<script src="<c:url value="/resources/jquery.rateit.min.js" />"></script>
+
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/caught-index.js" />"></script>
 </head>
@@ -82,14 +86,14 @@
 					<div class="panel panel-default" id="caughtbook-${caughtBook.bid}">
 						<div class="panel-heading" id="caughtbook-${caughtBook.bid}-title">
 							<h3>${caughtBook.title}</h3>
+							<div id="caughtbook-${caughtBook.bid}-rating" class="rateit"
+								data-rateit-ispreset="true" data-rateit-readonly="true"
+								data-rateit-value="${caughtBook.rating}" data-rateit-max="10"></div>
 						</div>
-						<div class="panel-body">
-							<p id="caughtbook-${caughtBook.bid}-rating">Rated
-								${caughtBook.rating} out of 10</p>
+						<div hidden class="panel-body">
 							<input hidden id="caughtbook-set-rating-${caughtBook.bid}"
 								value="${caughtBook.rating}"></input>
 							<h4 id="caughtbook-${caughtBook.bid}-comment">${caughtBook.comment}</h4>
-
 							<form hidden id="caughtbook-form-${caughtBook.bid}"
 								action="updateCaughtBook" method="post">
 								<label for="title">Title</label><br /> <input name="title"

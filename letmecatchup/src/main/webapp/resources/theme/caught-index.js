@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
 	// BOOK
+	
 	$("[id^='edit-caughtbook']").click(function() {
 
 		var suffix = this.id.split("-")[2];
@@ -85,3 +86,4 @@ $("[id^='show-delete-caughtmovie']").click(function(){
 	});
 
 });
+

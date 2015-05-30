@@ -17,6 +17,7 @@
 <link href='http://fonts.googleapis.com/css?family=Lobster|Droid+Serif|Raleway' rel='stylesheet' type='text/css' />
 	
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
+
 <link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
 
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
@@ -209,7 +210,7 @@
 	<!-- INFO -->
 	<br />
 	<div hidden class="info-area" id="info-area">
-		<div class="panel container">
+		<div class="container">
 			<!-- 1 / 3 -->
 			<div class="col-xs-12 col-md-3">
 				<div id="image"></div>
@@ -235,9 +236,11 @@
 				<p id="searched-description">Description</p>
 			</div>
 			<!-- 3/3 -->
-			<div class="col-xs-12 col-md-4">
-				<div class="container" id="reviews"></div>
-			</div>
+			<div>
+				<div class="col-xs-12 col-md-4">
+					<div id="reviews"></div>
+				</div>
+				
 		</div>
 	</div>
 

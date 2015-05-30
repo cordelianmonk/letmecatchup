@@ -16,14 +16,18 @@
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 	
-<link href='http://fonts.googleapis.com/css?family=Lobster|Droid+Serif|Raleway' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster' rel='stylesheet' type='text/css'/>
 	
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
+<script src="<c:url value="/resources/catch-index.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
 
-<script src="<c:url value="/resources/catch-index.js" />"></script>
+<link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
+<script src="<c:url value="/resources/jquery.rateit.min.js" />"></script>
+
+
 </head>
 <body>
 
@@ -86,7 +90,7 @@
 						<div class="panel-heading" id="catchbook-${catchBook.bid}-title">
 							<h3>${catchBook.title}</h3>
 						</div>
-						<div class="panel-body">
+						<div hidden class="panel-body" id="catchbook-${catchBook.bid}-panel-body">
 							<h4 id="catchbook-${catchBook.bid}-comment">${catchBook.comment}</h4>
 
 							<form hidden id="catchbook-form-${catchBook.bid}"

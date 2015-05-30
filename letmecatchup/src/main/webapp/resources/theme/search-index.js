@@ -159,9 +159,9 @@ function searchBook(title, writer) {
 										xml
 												.getElementsByTagName("reviews_widget")[0].textContent);
 						$("#goodreads-widget")[0].style.width = "100%";
-						$("#goodreads-widget")[0].style.height = "100%" ;
-						$("#the_iframe")[0].width = "100%";
-						$("#the_iframe")[0].height = "100%";
+						$("#goodreads-widget")[0].style.height = "350px";
+						$("#the_iframe")[0].style.width = "100%";
+						$("#the_iframe")[0].style.height = "350px";
 						$("#info-area").show(); // VERY IMPORRANT
 					});
 }
