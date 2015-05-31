@@ -122,7 +122,7 @@
 									<option value="9">9</option>
 									<option value="10">10</option>
 								</select>
-								<div id="caughtmovie-${caughtMovie.mid}-edit-star-rating"></div><br /><br />
+								<div id="caughtmovie-edit-star-rating-${caughtMovie.mid}"></div><br /><br />
 								
 								<label for="comment">Comment</label><br />
 								<textarea rows="3" maxlength="300" name="comment"

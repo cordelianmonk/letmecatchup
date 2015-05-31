@@ -53,7 +53,7 @@ $(document).ready(function() {
 		$("#caughtbook-form-" + suffix + "-rating").prop("disabled", false);
 
 		$(function() {
-			$('#caughtbook-' + suffix + '-edit-star-rating').rateit({
+			$('#caughtbook-form-edit-star-rating-' + suffix).rateit({
 				max : 10,
 				step : 1,
 				backingfld : "#caughtbook-form-" + suffix + "-rating",
@@ -106,7 +106,12 @@ $(document).ready(function() {
 		$("#caughtmovie-form-" + suffix + "-rating").val(rating);
 		
 		$(function () { 
-			$('#caughtbook-form-edit-star-rating-' + suffix).rateit( { max: 10, step: 1, backingfld: "#caughtbook-form-" + suffix + "-rating" } ); 
+			$('#caughtmovie-edit-star-rating-' + suffix).rateit( 
+					{ max: 10, 
+						step: 1, 
+						backingfld: "#caughtmovie-form-" + suffix + "-rating",
+						value: rating
+						} ); 
 		});
 
 
