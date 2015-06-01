@@ -2,7 +2,7 @@
 
 .login-area {
 	height: 380px;
-	width: 500px;
+	width: 300px;
 	margin: 0 auto;
 	font-family: 'Lobster', cursive;
 }
@@ -78,7 +78,8 @@ button{
 	width: 100%;
 	height: 100%;
 }
-h3.tlt {
+
+h4.tlt {
 	text-align: center;
 	font-family: 'Bitter', serif;
 }

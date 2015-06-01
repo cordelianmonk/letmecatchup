@@ -36,7 +36,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<img class="pull-right" src="<c:url value="resources/64x64.png"/>"></img>
+			<img class="pull-left" src="<c:url value="resources/64x64.png"/>"></img>
 			<a class="navbar-brand"></a>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
@@ -52,7 +52,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
 
-				<li class="active"><a href="searchmedia.html">Search</a></li>
+				<li class="active"><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -78,12 +78,12 @@
 	</nav>
 
 	<!-- MAIN BODY -->
-	<div class="top-greeting">
-		<h1>Search and add media here</h1>
+	<div class="container">
+		<div class="top-greeting">
+			<h3>Search and add media here</h3>
+		</div>
 	</div>
 	<div class="container">
-		<h4>What would you like to do?</h4>
-		<br />
 		<div class="col-xs-12 col-md-12">
 			<div class="form-group">
 				<label for="select-action">Choose one from the selection</label> <select

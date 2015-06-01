@@ -35,7 +35,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-		<img class="pull-right" src="<c:url value="resources/64x64.png"/>"></img>
+			<img class="pull-left" src="<c:url value="resources/64x64.png"/>"></img>
 			<a class="navbar-brand"></a>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
@@ -50,7 +50,7 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search</a></li>
+				<li><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -76,8 +76,10 @@
 	</nav>
 
 	<!-- NAVBAR END -->
-	<div class="top-greeting">
-		<h1>Movies you've watched</h1>
+	<div class="container">
+		<div class="top-greeting">
+			<h3>Movies you've watched</h3>
+		</div>
 	</div>
 
 	<div id="caught-movie-list">
@@ -89,7 +91,7 @@
 
 						<div class="panel-heading"
 							id="caughtmovie-${caughtMovie.mid}-panelheadtitle">
-							<h3>${caughtMovie.title}</h3>
+							<h4>${caughtMovie.title}</h4>
 							<div id="caughtmovie-${caughtMovie.mid}-rating" class="rateit"
 								data-rateit-ispreset="true" data-rateit-readonly="true"
 								data-rateit-value="${caughtMovie.rating}" data-rateit-max="10">
@@ -99,16 +101,15 @@
 							id="caughtmovie-${caughtMovie.mid}-panel-body">
 							<input hidden id="caughtmovie-set-rating-${caughtMovie.mid}"
 								value="${caughtMovie.rating}"></input>
-							<h4 id="caughtmovie-${caughtMovie.mid}-comment">${caughtMovie.comment}</h4>
+							<h5 id="caughtmovie-${caughtMovie.mid}-comment">${caughtMovie.comment}</h5>
 
 							<form hidden id="caughtmovie-form-${caughtMovie.mid}"
 								action="updateCaughtMovie" method="post">
-								<label for="title">Title</label><br /> <input class="form-control" name="title"
-									id="title-${caughtMovie.mid}" value="${caughtMovie.title}"></input>
-								<br /> 
-								
-								<label for="rating">Rating</label><br /> <select
-									disabled="true" id="caughtmovie-form-${caughtMovie.mid}-rating"
+								<label for="title">Title</label><br /> <input
+									class="form-control" name="title" id="title-${caughtMovie.mid}"
+									value="${caughtMovie.title}"></input> <br /> <label
+									for="rating">Rating</label><br /> <select disabled="true"
+									id="caughtmovie-form-${caughtMovie.mid}-rating"
 									class="form-control" name="rating" style="width: 80px">
 									<option value="0">0</option>
 									<option value="1">1</option>
@@ -122,14 +123,13 @@
 									<option value="9">9</option>
 									<option value="10">10</option>
 								</select>
-								<div id="caughtmovie-edit-star-rating-${caughtMovie.mid}"></div><br /><br />
-								
-								<label for="comment">Comment</label><br />
+								<div id="caughtmovie-edit-star-rating-${caughtMovie.mid}"></div>
+								<br />
+								<br /> <label for="comment">Comment</label><br />
 								<textarea rows="3" maxlength="300" name="comment"
-									id="comment-${caughtMovie.mid}" class="form-control">${caughtMovie.comment}</textarea><br />
-
-								<input hidden name="mid" value="${caughtMovie.mid}"></input> <input
-									hidden name="apiID" value="${caughtMovie.apiID}"></input>
+									id="comment-${caughtMovie.mid}" class="form-control">${caughtMovie.comment}</textarea>
+								<br /> <input hidden name="mid" value="${caughtMovie.mid}"></input>
+								<input hidden name="apiID" value="${caughtMovie.apiID}"></input>
 
 								<div class="btn-group pull-right"
 									id="caughtmovie-form-${caughtMovie.mid}-editbuttons">
@@ -152,12 +152,12 @@
 									</div>
 								</div>
 							</form>
-							
+
 							<div id="edit-caughtmovie-button-${caughtMovie.mid}">
 								<button class="btn btn-sm btn-default pull-right"
 									id="edit-caughtmovie-${caughtMovie.mid}">Edit</button>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>

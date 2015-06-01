@@ -16,24 +16,25 @@
 <body>
 	<div class="container">
 		<div id="app-name">
-			<img class="center-block"
+			<img class="center-block img-responsive"
 				src="<c:url value="resources/500x343.png"/>"></img>
 		</div>
 	</div>
 
-
-	<div class="login-area center-block">
-		<div class="center-block">
-			<h4>Log in</h4>
+	<div class="container">
+		<div class="login-area center-block">
+			<div class="center-block">
+				<h4>Log in</h4>
+			</div>
+			<form action="<c:url value="/checkUser"/> " method="post">
+				<label for="email">Email Address</label> <br> <input
+					type="text" name="email" id="email" class="form-control"><br>
+				<label for="password">Password</label> <br> <input
+					type="password" name="password" id="password" class="form-control"><br>
+				<button type="submit" class="btn btn-sm btn-primary" id="login">Submit</button>
+			</form>
+			<a href="new.html">New user?</a>
 		</div>
-		<form action="<c:url value="/checkUser"/> " method="post">
-			<label for="email">Email Address</label> <br> <input type="text"
-				name="email" id="email" class="form-control"><br> <label
-				for="password">Password</label> <br> <input type="password"
-				name="password" id="password" class="form-control"><br>
-			<button type="submit" class="btn btn-sm btn-primary" id="login">Submit</button>
-		</form>
-		<a href="new.html">New user?</a>
 	</div>
 </body>
 </html>

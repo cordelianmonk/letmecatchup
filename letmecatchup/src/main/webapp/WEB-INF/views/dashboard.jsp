@@ -32,7 +32,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<img class="pull-right" src="<c:url value="resources/64x64.png"/>"></img>
+			<img class="pull-left" src="<c:url value="resources/64x64.png"/>"></img>
 			<a class="navbar-brand"></a>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
@@ -48,7 +48,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="dash.html">Dashboard</a><span
 					class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search</a></li>
+				<li><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -74,15 +74,17 @@
 	</nav>
 
 	<!-- MAIN AREA -->
-	<div class="top-greeting">
-		<h1>Hello ${userName}!</h1>
+	<div class="container">
+		<div class="top-greeting">
+			<h3>Hello ${userName}!</h3>
+		</div>
 	</div>
 
 	<div class="container">
 		<div class="col-xs-12">
 			<div class="well titles" id="catch-booklist">
 				<p class="small text-muted">Catch up with your reading?</p>
-				<h3 class="tlt">
+				<h4 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchBookList}">
 							<c:forEach items="${catchBookList}" var="catchBook">
@@ -90,7 +92,7 @@
 							</c:forEach>
 						</c:if>
 					</ul>
-				</h3>
+				</h4>
 				<a href="catch_books.html" class="pull-right">more...</a>
 			</div>
 		</div>
@@ -98,7 +100,7 @@
 		<div class="col-xs-12">
 			<div class="well titles" id="catch-movielist">
 				<p class="small text-muted">Catch a movie?</p>
-				<h3 class="tlt">
+				<h4 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchMovieList}">
 							<c:forEach items="${catchMovieList}" var="catchMovie">
@@ -106,7 +108,7 @@
 							</c:forEach>
 						</c:if>
 					</ul>
-				</h3>
+				</h4>
 				<a href="catch_movies.html" class="pull-right">more...</a>
 			</div>
 		</div>
@@ -115,10 +117,11 @@
 			<div class="well titles-caught" id="caught-booklist">
 				<p class="small text-muted">Your &#9733 reads</p>
 
-				<ul class="texts">&#9733
+				<ul class="texts">
+					&#9733
 					<c:if test="${!empty caughtBookList}">
 						<c:forEach items="${caughtBookList}" var="caughtBook">
-							<li>${caughtBook.title} &#9733</li>
+							<li>${caughtBook.title}&#9733</li>
 						</c:forEach>
 					</c:if>
 				</ul>
@@ -130,10 +133,11 @@
 			<div class="well titles-caught" id="caught-movielist">
 				<p class="small text-muted">Your &#9733 movies</p>
 
-				<ul class="texts">&#9733
+				<ul class="texts">
+					&#9733
 					<c:if test="${!empty caughtMovieList}">
 						<c:forEach items="${caughtMovieList}" var="caughtMovie">
-							<li>${caughtMovie.title} &#9733</li>
+							<li>${caughtMovie.title}&#9733</li>
 						</c:forEach>
 					</c:if>
 				</ul>

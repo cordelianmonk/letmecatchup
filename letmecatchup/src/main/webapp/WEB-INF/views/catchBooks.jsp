@@ -35,7 +35,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-		<img class="pull-right" src="<c:url value="resources/64x64.png"/>"></img>
+			<img class="pull-left" src="<c:url value="resources/64x64.png"/>"></img>
 			<a class="navbar-brand"></a>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
@@ -50,7 +50,7 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search</a></li>
+				<li><a href="searchmedia.html">Search<span class="glyphicon glyphicon-search"/></a></li>
 
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -77,8 +77,10 @@
 	<!-- END OF NAVBAR -->
 
 	<!-- BODY -->
-	<div class="top-greeting">
-		<h1>Your reading list</h1>
+	<div class="container">
+		<div class="top-greeting">
+			<h3>Your reading list</h3>
+		</div>
 	</div>
 
 	<div id="booklist">
@@ -89,11 +91,11 @@
 					<div class="panel panel-default" id="catchbook-${catchBook.bid}">
 						<div class="panel-heading"
 							id="catchbook-${catchBook.bid}-panelheadtitle">
-							<h3>${catchBook.title}</h3>
+							<h4>${catchBook.title}</h4>
 						</div>
 						<div hidden class="panel-body"
 							id="catchbook-${catchBook.bid}-panel-body">
-							<h4 id="catchbook-${catchBook.bid}-comment">${catchBook.comment}</h4>
+							<h5 id="catchbook-${catchBook.bid}-comment">${catchBook.comment}</h5>
 
 							<form hidden id="catchbook-form-${catchBook.bid}"
 								action="updateCatchBook" method="post">
@@ -101,8 +103,8 @@
 									class="form-control input-lg" name="title"
 									id="title-${catchBook.bid}" value="${catchBook.title}"></input><br />
 								<label for="comment-${catchBook.bid}">Comment</label><br />
-								<textarea class="form-control" rows="3"
-									maxlength="300" name="comment" id="comment-${catchBook.bid}">${catchBook.comment}</textarea>
+								<textarea class="form-control" rows="3" maxlength="300"
+									name="comment" id="comment-${catchBook.bid}">${catchBook.comment}</textarea>
 								<br /> <input hidden name="bid" value="${catchBook.bid}"></input>
 								<input hidden name="apiID" value="${catchBook.apiID}"></input>
 
@@ -115,7 +117,7 @@
 									<button type="button" class="btn btn-sm btn-danger"
 										id="show-delete-catchbook-${catchBook.bid}">Delete</button>
 								</div>
-								
+
 
 								<div hidden id="catchbook-form-${catchBook.bid}-deletebuttons">
 									<div class="btn-group pull-right">
@@ -126,8 +128,8 @@
 											id="canceldelete-catchbook-${catchBook.bid}">Cancel</button>
 									</div>
 								</div>
-								
-								
+
+
 								<div hidden id="catchbook-form-${catchBook.bid}-caughtbuttons">
 									<label for="catchbook-form-${catchBook.bid}-rating">Rate</label><select
 										id="catchbook-form-${catchBook.bid}-rating" name="rating"
@@ -154,10 +156,11 @@
 									</div>
 
 								</div>
-								
+
 							</form>
 
-							<div class="btn-group pull-right" id="edit-caught-catchbook-${catchBook.bid}">
+							<div class="btn-group pull-right"
+								id="edit-caught-catchbook-${catchBook.bid}">
 								<button class="btn btn-sm btn-default"
 									id="edit-catchbook-${catchBook.bid}">Edit</button>
 								<button class="btn btn-sm btn-info"
