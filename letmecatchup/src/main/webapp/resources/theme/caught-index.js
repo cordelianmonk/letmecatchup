@@ -3,41 +3,41 @@
  */
 $(document).ready(function() {
 	// BOOK
-	$(".panel-heading").hover(function() {
-
-		if ($(this).data("clicked")) {
-			$("#" + this.id).css("background-color", "#20E897");
-		} else {
-			$("#" + this.id).css("background-color", "#ADF9DA");
-		}
+	$(".panel-heading" ).hover(function(){
+		   
+    	if ( $(this).data("clicked") ){
+    		$("#" + this.id ).css("background-color", "#49A7D5");
+    	} else {
+    		$("#" + this.id ).css("background-color", "#73BDE1");
+    	}
+}
+    	
+   , function(){
+	
+	if ( $(this).data("clicked") ){
+		$("#" + this.id  ).css("background-color", "#49A7D5");
+	} else {
+		$("#" + this.id ).css("background-color", "#F5F5F5");
 	}
-
-	, function() {
-
-		if ($(this).data("clicked")) {
-			$("#" + this.id).css("background-color", "#20E897");
-		} else {
-			$("#" + this.id).css("background-color", "#F5F5F5");
-		}
-
-	});
-
+	
+}); 
+	
 	$("[id*='panelheadtitle']").click(function() {
-
-		var id = this.id;
-		var shortID = id.substring(0, id.lastIndexOf("-"));
+		
+		var id = this.id; 
+		var shortID = id.substring(0, id.lastIndexOf("-") );
 		shortID = shortID + "-panel-body";
-
-		if (jQuery("#" + id).data('clicked')) {
-			$("#" + id).css("background-color", "#ADF9DA");
-			$("#" + shortID).hide();
-			$(this).data('clicked', false);
+		
+		if(jQuery( "#"+id ).data('clicked') ) {
+			$("#" + id  ).css("background-color", "#73BDE1");
+			$("#" + shortID ).hide();
+		    $(this).data('clicked', false);	    
 		} else {
-			$("#" + id).css("background-color", "#20E897");
-			$("#" + shortID).show();
+			$("#" + id  ).css("background-color", "#49A7D5");
+			$("#" + shortID ).show();
 			$(this).data('clicked', true);
 		}
-
+		
 	});
 
 	$("[id^='edit-caughtbook']").click(function() {

@@ -16,7 +16,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="CAUGHTBOOKS",uniqueConstraints = {
 		@UniqueConstraint(columnNames = "BID")})
-public class CaughtBook { 
+public class CaughtBook implements Comparable<CaughtBook> { 
 	
 	@Id
 	@Column
@@ -89,7 +89,7 @@ public class CaughtBook {
 		this.comment = comment;
 	}
 
-	public double getRating() {
+	public int getRating() {
 		return rating;
 	}
 
@@ -111,6 +111,13 @@ public class CaughtBook {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Override
+	public int compareTo(CaughtBook compareBook) {
+		int compareRating = ((CaughtBook) compareBook).getRating();
+		
+		return compareRating-this.rating;
 	}
 
 }

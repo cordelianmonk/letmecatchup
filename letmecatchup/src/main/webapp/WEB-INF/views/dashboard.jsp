@@ -13,8 +13,9 @@
 <link href="<c:url value="resources/animate.css" />" rel="stylesheet" />
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
-	
-<link href='http://fonts.googleapis.com/css?family=Lobster|Bitter:700' rel='stylesheet' type='text/css' />
+
+<link href='http://fonts.googleapis.com/css?family=Lobster|Bitter:700'
+	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 
@@ -29,9 +30,10 @@
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand">CatchMeUp</a>
+			<img class="pull-right" src="<c:url value="resources/64x64.png"/>"></img>
+			<a class="navbar-brand"></a>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
 				<!-- data that needs to appear or disappear, targeting the hamburger-navigation -->
@@ -64,8 +66,7 @@
 			</ul>
 
 			<div class="navbar-text navbar-right">
-				<a class="navbar-link" href="account_settings.html"> Account
-					Settings </a>
+				<a class="navbar-link" href="log_out.html">Log out</a>
 			</div>
 
 		</div>
@@ -77,11 +78,10 @@
 		<h1>Hello ${userName}!</h1>
 	</div>
 
-	<div class="container-fluid">
-		<p>Do you want to...</p>
+	<div class="container">
 		<div class="col-xs-12">
 			<div class="well titles" id="catch-booklist">
-				<p class="small text-muted">...catch up with your reading?</p>
+				<p class="small text-muted">Catch up with your reading?</p>
 				<h3 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchBookList}">
@@ -97,7 +97,7 @@
 
 		<div class="col-xs-12">
 			<div class="well titles" id="catch-movielist">
-				<p class="small text-muted">...catch a movie?</p>
+				<p class="small text-muted">Catch a movie?</p>
 				<h3 class="tlt">
 					<ul class="texts">
 						<c:if test="${!empty catchMovieList}">
@@ -112,34 +112,32 @@
 		</div>
 
 		<div class="col-xs-12">
-			<div class="well titles" id="caught-booklist">
-				<p class="small text-muted">...read this book again?</p>
-				<h3 class="tlt">
-					<ul class="texts">
-						<c:if test="${!empty caughtBookList}">
-							<c:forEach items="${caughtBookList}" var="caughtBook">
-								<li>${caughtBook.title}</li>
-							</c:forEach>
-						</c:if>
-					</ul>
-				</h3>
+			<div class="well titles-caught" id="caught-booklist">
+				<p class="small text-muted">Your &#9733 reads</p>
+
+				<ul class="texts">&#9733
+					<c:if test="${!empty caughtBookList}">
+						<c:forEach items="${caughtBookList}" var="caughtBook">
+							<li>${caughtBook.title} &#9733</li>
+						</c:forEach>
+					</c:if>
+				</ul>
 				<a href="caught_books.html" class="pull-right">more...</a>
 			</div>
 		</div>
 
-
 		<div class="col-xs-12">
-			<div class="well titles" id="caught-movielist">
-			<p class="small text-muted">...watch this movie again?</p>
-				<h3 class="tlt">
-					<ul class="texts">
-						<c:if test="${!empty caughtMovieList}">
-							<c:forEach items="${caughtMovieList}" var="caughtMovie">
-								<li>${caughtMovie.title}</li>
-							</c:forEach>
-						</c:if>
-					</ul>
-				</h3>
+			<div class="well titles-caught" id="caught-movielist">
+				<p class="small text-muted">Your &#9733 movies</p>
+
+				<ul class="texts">&#9733
+					<c:if test="${!empty caughtMovieList}">
+						<c:forEach items="${caughtMovieList}" var="caughtMovie">
+							<li>${caughtMovie.title} &#9733</li>
+						</c:forEach>
+					</c:if>
+				</ul>
+
 				<a href="caught_books.html" class="pull-right">more...</a>
 			</div>
 		</div>

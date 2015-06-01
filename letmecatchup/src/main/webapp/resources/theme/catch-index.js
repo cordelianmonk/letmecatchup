@@ -6,22 +6,21 @@ $(document).ready(function() {
 	$(".panel-heading" ).hover(function(){
 		   
     	if ( $(this).data("clicked") ){
-    		$("#" + this.id ).css("background-color", "#20E897");
+    		$("#" + this.id ).css("background-color", "#FF8F63");
     	} else {
-    		$("#" + this.id ).css("background-color", "#ADF9DA");
+    		$("#" + this.id ).css("background-color", "#FFA987");
     	}
 }
     	
    , function(){
 	
 	if ( $(this).data("clicked") ){
-		$("#" + this.id  ).css("background-color", "#20E897");
+		$("#" + this.id  ).css("background-color", "#FF8F63");
 	} else {
 		$("#" + this.id ).css("background-color", "#F5F5F5");
 	}
 	
 }); 
-	// BOOK 
 	
 	$("[id*='panelheadtitle']").click(function() {
 		
@@ -30,17 +29,18 @@ $(document).ready(function() {
 		shortID = shortID + "-panel-body";
 		
 		if(jQuery( "#"+id ).data('clicked') ) {
-			$("#" + id  ).css("background-color", "#ADF9DA");
+			$("#" + id  ).css("background-color", "#FFA987");
 			$("#" + shortID ).hide();
 		    $(this).data('clicked', false);	    
 		} else {
-			$("#" + id  ).css("background-color", "#20E897");
+			$("#" + id  ).css("background-color", "#FF8F63");
 			$("#" + shortID ).show();
 			$(this).data('clicked', true);
 		}
 		
 	});
 	
+	//BOOK
 	$("[id^='edit-catchbook']").click(function() {
 
 		var suffix = this.id.split("-")[2];
@@ -170,12 +170,15 @@ $(document).ready(function() {
 		$("#catchmovie-form-" + suffix + "-caughtbuttons").show();
 		
 		$("#edit-caught-catchmovie-"+suffix ).hide();
+		$("#catchmovie-form-" + suffix + "-rating").prop("disabled", false);
 		
 		$(function () { 
-			$('#catchmovie-form-star-rating-' + suffix).rateit( { max: 10, step: 1, backingfld: "#catchmovie-form-" + suffix + "-rating" } ); 
+			$('#catchmovie-form-star-rating-' + suffix).rateit( 
+					{ max: 10, 
+						step: 1, 
+						backingfld: "#catchmovie-form-" + suffix + "-rating" 
+						} ); 
 		});
-		
-		$("#edit-catchmovie-"+suffix ).prop("class", "btn btn-sm btn-default disabled");
 
 	});
 	

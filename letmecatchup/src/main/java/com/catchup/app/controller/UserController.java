@@ -17,9 +17,10 @@ import com.catchup.app.util.HashGeneratorUtils;
 public class UserController {
 	private UserService userService;
 	
-	@RequestMapping(value="account_settings.html")
-	public String allHome() {
-		return "userSettings";
+	@RequestMapping(value="log_out.html")
+	public String allHome(HttpSession session) {
+		session.invalidate();
+		return "redirect:index.html";
 	}
 	
 	@Autowired(required=true)

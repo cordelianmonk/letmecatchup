@@ -17,7 +17,7 @@
 	rel="stylesheet" />
 
 <link
-	href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster'
+	href='http://fonts.googleapis.com/css?family=Raleway:800,400|Lobster|Oswald'
 	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
@@ -33,9 +33,10 @@
 
 	<!-- NAVBAR -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand">CatchMeUp</a>
+		<img class="pull-right" src="<c:url value="resources/64x64.png"/>"></img>
+			<a class="navbar-brand"></a>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
 				<!-- data that needs to appear or disappear, targeting the hamburger-navigation -->
@@ -67,8 +68,7 @@
 			</ul>
 
 			<div class="navbar-text navbar-right">
-				<a class="navbar-link" href="account_settings.html"> Account
-					Settings </a>
+				<a class="navbar-link" href="log_out.html">Log out</a>
 			</div>
 
 		</div>

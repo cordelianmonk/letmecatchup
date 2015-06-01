@@ -4,12 +4,55 @@
 	height: 380px;
 	width: 500px;
 	margin: 0 auto;
-	margin-bottom: 50px;
 	font-family: 'Lobster', cursive;
+}
+
+.texts li {
+    display:inline;
+    font-family: 'Bitter', serif;
+}
+
+label{
+	font-family: 'Oswald', sans-serif;
+}
+
+button{
+	font-family: 'Oswald', sans-serif;
 }
 
 #app-name {
 	font-family: 'Lobster', cursive;
+}
+
+.navbar-inverse {
+	background-color: #046B9D;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	font-family: 'Lobster', cursive;
+}
+
+.navbar-inverse .navbar-link {
+	font-family: 'Lobster', cursive;
+}
+
+.dropdown-menu>li>a {
+	font-family: 'Lobster', cursive;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover,
+	.navbar-inverse .navbar-nav>.active>a:focus {
+	background-color: #3196C7;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,
+	.navbar-inverse .navbar-nav>.open>a:focus {
+	background-color: #3196C7;
+}
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus
+	{
+	background-color: #3196C7;
 }
 
 .search-area {
@@ -31,6 +74,10 @@
 	height: 200px;
 }
 
+.well titles-caught{
+	width: 100%;
+	height: 100%;
+}
 h3.tlt {
 	text-align: center;
 	font-family: 'Bitter', serif;
@@ -42,8 +89,8 @@ h3.tlt {
 
 .panel-heading {
 	font-family: 'Raleway', sans-serif;
-	font-style:normal;
-	font-weight:800;	
+	font-style: normal;
+	font-weight: 800;
 }
 
 .panel-body {

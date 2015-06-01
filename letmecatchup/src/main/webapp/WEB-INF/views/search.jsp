@@ -13,9 +13,11 @@
 
 <link href="<c:url value="resources/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
-	
-<link href='http://fonts.googleapis.com/css?family=Lobster|Droid+Serif|Raleway' rel='stylesheet' type='text/css' />
-	
+
+<link
+	href='http://fonts.googleapis.com/css?family=Lobster|Droid+Serif|Raleway|Oswald'
+	rel='stylesheet' type='text/css' />
+
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
 
 <link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
@@ -32,9 +34,10 @@
 
 	<!-- NAVIGATION BAR -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand">CatchMeUp</a>
+			<img class="pull-right" src="<c:url value="resources/64x64.png"/>"></img>
+			<a class="navbar-brand"></a>
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
 				<!-- data that needs to appear or disappear, targeting the hamburger-navigation -->
@@ -67,8 +70,7 @@
 			</ul>
 
 			<div class="navbar-text navbar-right">
-				<a class="navbar-link" href="account_settings.html"> Account
-					Settings </a>
+				<a class="navbar-link" href="log_out.html"> Log out</a>
 			</div>
 
 		</div>
@@ -79,8 +81,9 @@
 	<div class="top-greeting">
 		<h1>Search and add media here</h1>
 	</div>
-	<div class="container-fluid">
-		<h4>What would you like to do?</h4><br/>
+	<div class="container">
+		<h4>What would you like to do?</h4>
+		<br />
 		<div class="col-xs-12 col-md-12">
 			<div class="form-group">
 				<label for="select-action">Choose one from the selection</label> <select
@@ -94,7 +97,7 @@
 	</div>
 
 	<!-- SEARCH AREA -->
-	<div class="container-fluid">
+	<div class="container">
 		<div hidden class="search-area" id="search-area">
 			<div class="col-xs-12 col-md-12">
 				<div class="form-group">
@@ -123,7 +126,7 @@
 	</div>
 
 	<!-- ADD ONLY AREA -->
-	<div class="container-fluid">
+	<div class="container">
 		<div hidden class="add-only-area" id="add-only-area">
 
 			<div class="col-xs-12 col-md-6">
@@ -178,9 +181,9 @@
 				<div class="form-group">
 					<div class="col-xs-12">
 
-						<label for="title">Title</label><br /> <input autofocus class="form-control"
-							type="text" name="title" id="title"></input><br /> <label
-							for="comment">Comment</label><br />
+						<label for="title">Title</label><br /> <input autofocus
+							class="form-control" type="text" name="title" id="title"></input><br />
+						<label for="comment">Comment</label><br />
 						<textarea class="form-control" rows="5" maxlength="300"
 							placeholder="(300 characters or less)" name="comment"
 							id="comment"></textarea>
@@ -216,8 +219,8 @@
 			<!-- 1 / 3 -->
 			<div class="col-xs-12 col-md-3">
 				<div id="image"></div>
-				<div id="creator"></div>
 				<div id="link"></div>
+				<div id="creator"></div>
 				<div class="btn-group">
 					<button type="button" class="btn btn-sm btn-info"
 						id="searched-catch">Catch</button>
@@ -226,14 +229,15 @@
 				</div>
 				<!--  HIDDEN FORM -->
 				<div id="searched-form"></div>
-					
+
 			</div>
 			<!-- 2 / 3 -->
 			<div class="col-xs-12 col-md-5">
 				<h2 id="searched-title">Title</h2>
 				<p hidden id="searched-apikey"></p>
-				<div class="rateit" data-rateit-ispreset="true" 
-				data-rateit-readonly="true"  id="searched-rating"></div>
+				<div class="rateit" data-rateit-ispreset="true"
+					data-rateit-readonly="true" id="searched-rating"></div>
+				<br />
 				<!--  <h3 id="searched-rating">Rating</h3>  -->
 				<p id="searched-description">Description</p>
 			</div>
@@ -242,7 +246,8 @@
 				<div class="col-xs-12 col-md-4">
 					<div id="reviews"></div>
 				</div>
-				
+
+			</div>
 		</div>
 	</div>
 
