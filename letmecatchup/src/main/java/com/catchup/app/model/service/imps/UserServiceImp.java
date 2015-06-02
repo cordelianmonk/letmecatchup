@@ -43,4 +43,11 @@ public class UserServiceImp implements UserService {
 		return this.userDAO.getUserById(uid);
 	}
 
+	@Override
+	@Transactional
+	public void updateUser(User user) {
+		this.userDAO.updateUser(user);
+	}
+
+	
 }

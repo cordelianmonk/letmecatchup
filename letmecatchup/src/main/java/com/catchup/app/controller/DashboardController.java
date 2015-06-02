@@ -39,7 +39,6 @@ public class DashboardController {
 
 			if (caughtBook.getRating() > 7) {
 				sortedBookList.add(caughtBook);
-				System.out.println( caughtBook.getTitle() + "-" +caughtBook.getRating() );
 			}
 
 		}
@@ -51,8 +50,6 @@ public class DashboardController {
 
 			if (caughtMovie.getRating() > 7) {
 				sortedMovieList.add(caughtMovie);
-				System.out.println(caughtMovie.getTitle() + ": "
-						+ caughtMovie.getRating());
 			}
 			
 		}

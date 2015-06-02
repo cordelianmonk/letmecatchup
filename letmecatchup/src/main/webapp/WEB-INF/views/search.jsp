@@ -19,6 +19,7 @@
 	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
+<link href="<c:url value="resources/animate.css" />" rel="stylesheet" />
 
 <link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
 
@@ -68,6 +69,8 @@
 						<li><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
 					</ul></li>
+
+				<li><a href="user_settings.html">Settings</a></li>
 			</ul>
 
 			<div class="navbar-text navbar-right">
@@ -81,7 +84,7 @@
 	<!-- MAIN BODY -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12 animated bounceInRight">
+			<div class="col-xs-12 animated bounceInRight">
 				<div class="top-greeting ">
 					<h3>Search and add media here</h3>
 				</div>
@@ -90,9 +93,8 @@
 	</div>
 
 	<div class="search-field animated bounceInDown">
-		<div class="container-fluid">
-			<div class="col-xs-12 col-md-12">
-
+		<div class="container">
+			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="select-action">Choose one from the selection</label> <select
 						class="form-control" id="select-action" style="width: 250px">
@@ -244,7 +246,7 @@
 				</div>
 				<!-- 2 / 3 -->
 				<div class="col-xs-12 col-md-5">
-					<h2 id="searched-title">Title</h2>
+					<h4 id="searched-title">Title</h4>
 					<p hidden id="searched-apikey"></p>
 					<div class="rateit" data-rateit-ispreset="true"
 						data-rateit-readonly="true" id="searched-rating"></div>
@@ -261,15 +263,16 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="container footer">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="footer text-right"></div>
+		<div class="container footer">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="footer text-right"></div>
+				</div>
 			</div>
 		</div>
 	</div>
+
+
 
 </body>
 </html>

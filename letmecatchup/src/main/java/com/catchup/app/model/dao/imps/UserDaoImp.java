@@ -86,6 +86,12 @@ public class UserDaoImp implements UserDAO {
 		
 		return user;
 	}
+
+	@Override
+	public void updateUser(User user) {
+		Session session = factory.getCurrentSession();
+		session.update(user);
+	}
 	
 
 }

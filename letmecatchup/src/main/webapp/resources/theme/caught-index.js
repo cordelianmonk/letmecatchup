@@ -32,9 +32,13 @@ $(document).ready(function() {
 			$("#" + id  ).css("background-color", "#73BDE1");
 			$("#" + shortID ).removeClass("animated fadeIn");
 			$("#" + shortID ).hide();
+			$("#" + id  ).css("border-bottom-right-radius", "10px");
+			$("#" + id  ).css("border-bottom-left-radius", "10px");
 		    $(this).data('clicked', false);	    
 		} else {
 			$("#" + id  ).css("background-color", "#49A7D5");
+			$("#" + id  ).css("border-bottom-right-radius", "0px");
+			$("#" + id  ).css("border-bottom-left-radius", "0px");
 			$("#" + shortID ).show();
 			$("#" + shortID ).addClass("animated fadeIn");
 			$(this).data('clicked', true);
@@ -49,7 +53,6 @@ $(document).ready(function() {
 
 		$("#caughtbook-" + suffix + "-panelheadtitle").hide();
 		$("#caughtbook-" + suffix + "-comment").hide();
-		
 
 		var rating = +$("#caughtbook-set-rating-" + suffix).val();
 		$("#caughtbook-form-" + suffix + "-rating").prop("disabled", false);

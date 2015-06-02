@@ -10,5 +10,7 @@ public interface UserDAO {
 	public void addUser(User user);
 
 	public User getUserById(int uid);
+
+	public void updateUser(User user);
 	
 }

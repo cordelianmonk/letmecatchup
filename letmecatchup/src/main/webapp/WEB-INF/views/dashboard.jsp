@@ -48,6 +48,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="dash.html">Dashboard</a><span
 					class="sr-only">current</span></li>
+					
 				<li><a href="searchmedia.html">Search <span
 						class="glyphicon glyphicon-search" /></a></li>
 
@@ -64,6 +65,8 @@
 						<li><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
 					</ul></li>
+					
+					<li><a href="user_settings.html">Settings</a></li>
 			</ul>
 
 			<div class="navbar-text navbar-right">

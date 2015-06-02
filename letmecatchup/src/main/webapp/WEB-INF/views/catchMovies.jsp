@@ -66,6 +66,8 @@
 						<li><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
 					</ul></li>
+					
+					<li><a href="user_settings.html">Settings</a></li>
 			</ul>
 
 			<div class="navbar-text navbar-right">

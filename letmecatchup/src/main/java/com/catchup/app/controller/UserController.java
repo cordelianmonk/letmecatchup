@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,5 +59,78 @@ public class UserController {
 		return "redirect:/new.html";
 	}
 	
+	@RequestMapping(value="user_settings.html")
+	public String goToSettings(HttpSession session, Model model){
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("user", user);
+		return "userSettings";
+	}
+	
+	@RequestMapping(value="/editNames", method=RequestMethod.POST)
+	public String editNames( 
+			@RequestParam("firstname") String firstName,
+			@RequestParam("lastname") String lastName,
+			HttpSession session
+			)
+	{
+		User user = (User) session.getAttribute("user");
+		
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		
+		this.userService.updateUser(user);
+	
+		user = this.userService.getUserById( user.getUid() );
+		session.setAttribute("user", user);
+		
+		return "redirect:/user_settings.html";
+	}
+	
+	@RequestMapping(value="/editEmail", method=RequestMethod.POST)
+	public String editEmail( 
+			@RequestParam("email") String email,
+			HttpSession session
+			)
+	{
+		
+		if(email.length() <= 0 ){
+			return "redirect:/user_settings.html";
+		}
+		
+		User user = (User) session.getAttribute("user");
+		
+		user.setEmail(email);
+		
+		this.userService.updateUser(user);
+	
+		user = this.userService.getUserById( user.getUid() );
+		session.setAttribute("user", user);
+		
+		return "redirect:/user_settings.html";
+	}
+	
+	@RequestMapping(value="/changePassword", method=RequestMethod.POST)
+	public String changePassword( 
+			@RequestParam("password") String password,
+			HttpSession session
+			)
+	{
+		
+		if(password.length() <= 0 ){
+			return "redirect:/user_settings.html";
+		}
+		
+		User user = (User) session.getAttribute("user");
+
+		password=HashGeneratorUtils.generateSHA256(password);
+		user.setPassword(password);
+		
+		this.userService.updateUser(user);
+	
+		user = this.userService.getUserById( user.getUid() );
+		session.setAttribute("user", user);
+		
+		return "redirect:/user_settings.html";
+	}
 	
 }
