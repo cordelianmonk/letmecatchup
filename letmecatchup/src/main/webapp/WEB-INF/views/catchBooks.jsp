@@ -21,6 +21,7 @@
 	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
+<link href="<c:url value="resources/animate.css" />" rel="stylesheet" />
 
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="/resources/catch-index.js" />"></script>
@@ -50,7 +51,8 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search<span class="glyphicon glyphicon-search"/></a></li>
+				<li><a href="searchmedia.html">Search<span
+						class="glyphicon glyphicon-search" /></a></li>
 
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -78,7 +80,7 @@
 
 	<!-- BODY -->
 	<div class="container">
-		<div class="top-greeting">
+		<div class="top-greeting animated bounceInRight">
 			<h3>Your reading list</h3>
 		</div>
 	</div>
@@ -91,7 +93,7 @@
 					<div class="panel panel-default" id="catchbook-${catchBook.bid}">
 						<div class="panel-heading"
 							id="catchbook-${catchBook.bid}-panelheadtitle">
-							<h4>${catchBook.title}</h4>
+							<h4 class="animated flipInX">${catchBook.title}</h4>
 						</div>
 						<div hidden class="panel-body"
 							id="catchbook-${catchBook.bid}-panel-body">

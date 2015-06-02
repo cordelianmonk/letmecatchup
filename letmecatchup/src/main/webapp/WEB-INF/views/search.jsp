@@ -52,7 +52,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
 
-				<li class="active"><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
+				<li class="active"><a href="searchmedia.html">Search <span
+						class="glyphicon glyphicon-search" /></a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -79,180 +80,196 @@
 
 	<!-- MAIN BODY -->
 	<div class="container">
-		<div class="top-greeting">
-			<h3>Search and add media here</h3>
-		</div>
-	</div>
-	<div class="container">
-		<div class="col-xs-12 col-md-12">
-			<div class="form-group">
-				<label for="select-action">Choose one from the selection</label> <select
-					class="form-control" id="select-action" style="width: 250px">
-					<option selected="selected"></option>
-					<option value="search">Search and (maybe) save</option>
-					<option value="add">Just add</option>
-				</select>
+		<div class="row">
+			<div class="col-md-12 animated bounceInRight">
+				<div class="top-greeting ">
+					<h3>Search and add media here</h3>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- SEARCH AREA -->
-	<div class="container">
-		<div hidden class="search-area" id="search-area">
+	<div class="search-field animated bounceInDown">
+		<div class="container-fluid">
 			<div class="col-xs-12 col-md-12">
+
 				<div class="form-group">
-					<label for="mediatype">Select media type</label> <select
-						class="form-control" name="mediatype" id="search-mediatype"
-						style="width: 150px">
+					<label for="select-action">Choose one from the selection</label> <select
+						class="form-control" id="select-action" style="width: 250px">
 						<option selected="selected"></option>
-						<option value="book">Book</option>
-						<option value="movie">Movie</option>
+						<option value="search">Search and (maybe) save</option>
+						<option value="add">Just add</option>
 					</select>
 				</div>
-			</div>
-			<div hidden id="search-area-form" class="form-group">
-				<div class="col-xs-12 col-md-6">
-					<label for="title">Title</label><br /> <input autofocus
-						type="text" name="title" id="search-title" style="width: 80%"></input>
-					<button type="button" class="btn btn-sm btn-primary" id="search">Search</button>
-				</div>
 
-				<div id="search-writer-area" class="col-xs-12 col-md-6">
-					<label for="writer">Writer</label><br /> <input autofocus
-						type="text" name="writer" id="search-writer" style="width: 90%"></input>
-				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- ADD ONLY AREA -->
-	<div class="container">
-		<div hidden class="add-only-area" id="add-only-area">
 
-			<div class="col-xs-12 col-md-6">
-				<div class="form-group">
-					<label for="status">Select Status</label> <select
-						class="form-control" id="add-status" name="status"
-						style="width: 150px">
-						<option selected="selected"></option>
-						<option value="catch">Catch</option>
-						<option value="caught">Caught</option>
-					</select>
-				</div>
-			</div>
-
-			<form hidden action="addCatchMedia" method="post" id="add-catch-form">
+		<!-- SEARCH AREA -->
+		<div class="container-fluid">
+			<div hidden class="search-area" id="search-area">
 				<div class="col-xs-12 col-md-12">
 					<div class="form-group">
 						<label for="mediatype">Select media type</label> <select
-							class="form-control" id="mediatype" name="mediatype"
+							class="form-control" name="mediatype" id="search-mediatype"
 							style="width: 150px">
+							<option selected="selected"></option>
 							<option value="book">Book</option>
 							<option value="movie">Movie</option>
 						</select>
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="col-xs-12">
+				<div hidden id="search-area-form" class="form-group">
+					<div class="col-xs-12 col-md-6">
 						<label for="title">Title</label><br /> <input autofocus
-							type="text" name="title" id="title"></input><br /> <label
-							for="comment">Comment</label></br>
-						<textarea rows="5" maxlength="300"
-							placeholder="(300 characters or less)" name="comment"
-							id="comment" class="form-control"></textarea>
-						<input hidden name="apiID"></input> <br />
-						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+							type="text" name="title" id="search-title" style="width: 80%"></input>
+						<button type="button" class="btn btn-sm btn-primary" id="search">Search</button>
+					</div>
+
+					<div id="search-writer-area" class="col-xs-12 col-md-6">
+						<label for="writer">Writer</label><br /> <input autofocus
+							type="text" name="writer" id="search-writer" style="width: 90%"></input>
 					</div>
 				</div>
-			</form>
-
-			<form hidden action="addCaughtMedia" method="post"
-				id="add-caught-form">
-				<div class="col-xs-12 col-md-12">
-					<div class="form-group">
-						<label for="mediatype">Select media type</label> <select
-							class="form-control" id="mediatype" name="mediatype"
-							style="width: 150px">
-							<option value="book">Book</option>
-							<option value="movie">Movie</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-xs-12">
-
-						<label for="title">Title</label><br /> <input autofocus
-							class="form-control" type="text" name="title" id="title"></input><br />
-						<label for="comment">Comment</label><br />
-						<textarea class="form-control" rows="5" maxlength="300"
-							placeholder="(300 characters or less)" name="comment"
-							id="comment"></textarea>
-
-						<input hidden name="apiID"></input> <br /> <label for="rating">Rate</label>
-						<select class="form-control" id="rating" name="rating"
-							style="width: 80px">
-							<option selected="selected" value="0">0</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select>
-						<div class="rateit" data-rateit-backingfld="#rating"></div>
-						<br />
-						<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
-					</div>
-				</div>
-			</form>
+			</div>
 		</div>
-	</div>
 
-	<!-- INFO -->
-	<br />
-	<div hidden class="info-area" id="info-area">
+		<!-- ADD ONLY AREA -->
 		<div class="container">
-			<!-- 1 / 3 -->
-			<div class="col-xs-12 col-md-3">
-				<div id="image"></div>
-				<div id="link"></div>
-				<div id="creator"></div>
-				<div class="btn-group">
-					<button type="button" class="btn btn-sm btn-info"
-						id="searched-catch">Catch</button>
-					<button type="button" class="btn btn-sm btn-default"
-						id="searched-caught">Caught</button>
-				</div>
-				<!--  HIDDEN FORM -->
-				<div id="searched-form"></div>
+			<div hidden class="add-only-area" id="add-only-area">
 
-			</div>
-			<!-- 2 / 3 -->
-			<div class="col-xs-12 col-md-5">
-				<h2 id="searched-title">Title</h2>
-				<p hidden id="searched-apikey"></p>
-				<div class="rateit" data-rateit-ispreset="true"
-					data-rateit-readonly="true" id="searched-rating"></div>
-				<br />
-				<!--  <h3 id="searched-rating">Rating</h3>  -->
-				<p id="searched-description">Description</p>
-			</div>
-			<!-- 3/3 -->
-			<div>
-				<div class="col-xs-12 col-md-4">
-					<div id="reviews"></div>
+				<div class="col-xs-12 col-md-6">
+					<div class="form-group">
+						<label for="status">Select Status</label> <select
+							class="form-control" id="add-status" name="status"
+							style="width: 150px">
+							<option selected="selected"></option>
+							<option value="catch">Catch</option>
+							<option value="caught">Caught</option>
+						</select>
+					</div>
 				</div>
 
+				<form hidden action="addCatchMedia" method="post"
+					id="add-catch-form">
+					<div class="col-xs-12 col-md-12">
+						<div class="form-group">
+							<label for="mediatype">Select media type</label> <select
+								class="form-control" id="mediatype" name="mediatype"
+								style="width: 150px">
+								<option value="book">Book</option>
+								<option value="movie">Movie</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label for="title">Title</label><br /> <input autofocus
+								type="text" name="title" id="title"></input><br /> <label
+								for="comment">Comment</label></br>
+							<textarea rows="5" maxlength="300"
+								placeholder="(300 characters or less)" name="comment"
+								id="comment" class="form-control"></textarea>
+							<input hidden name="apiID"></input> <br />
+							<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+						</div>
+					</div>
+				</form>
+
+				<form hidden action="addCaughtMedia" method="post"
+					id="add-caught-form">
+					<div class="col-xs-12 col-md-12">
+						<div class="form-group">
+							<label for="mediatype">Select media type</label> <select
+								class="form-control" id="mediatype" name="mediatype"
+								style="width: 150px">
+								<option value="book">Book</option>
+								<option value="movie">Movie</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-12">
+
+							<label for="title">Title</label><br /> <input autofocus
+								class="form-control" type="text" name="title" id="title"></input><br />
+							<label for="comment">Comment</label><br />
+							<textarea class="form-control" rows="5" maxlength="300"
+								placeholder="(300 characters or less)" name="comment"
+								id="comment"></textarea>
+
+							<input hidden name="apiID"></input> <br /> <label for="rating">Rate</label>
+							<select class="form-control" id="rating" name="rating"
+								style="width: 80px">
+								<option selected="selected" value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+							<div class="rateit" data-rateit-backingfld="#rating"></div>
+							<br />
+							<button type="submit" class="btn btn-sm btn-primary" id="search">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- INFO -->
+		<br />
+		<div hidden class="info-area" id="info-area">
+			<div class="container">
+				<!-- 1 / 3 -->
+				<div class="col-xs-12 col-md-3">
+					<div id="image"></div>
+					<div id="link"></div>
+					<div id="creator"></div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-info"
+							id="searched-catch">Catch</button>
+						<button type="button" class="btn btn-sm btn-default"
+							id="searched-caught">Caught</button>
+					</div>
+					<!--  HIDDEN FORM -->
+					<div id="searched-form"></div>
+
+				</div>
+				<!-- 2 / 3 -->
+				<div class="col-xs-12 col-md-5">
+					<h2 id="searched-title">Title</h2>
+					<p hidden id="searched-apikey"></p>
+					<div class="rateit" data-rateit-ispreset="true"
+						data-rateit-readonly="true" id="searched-rating"></div>
+					<br />
+					<!--  <h3 id="searched-rating">Rating</h3>  -->
+					<p id="searched-description">Description</p>
+				</div>
+				<!-- 3/3 -->
+				<div>
+					<div class="col-xs-12 col-md-4">
+						<div id="reviews"></div>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
 
-
-
+	<div class="container footer">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="footer text-right"></div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>

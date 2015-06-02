@@ -57,6 +57,9 @@ public class DashboardController {
 			
 		}
 
+		Collections.sort(sortedBookList);
+		Collections.sort(sortedMovieList);
+		
 		model.addAttribute("caughtBookList", sortedBookList);
 
 		model.addAttribute("caughtMovieList", sortedMovieList);

@@ -21,6 +21,8 @@
 	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
+<link href="<c:url value="resources/animate.css" />" rel="stylesheet" />
+
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 
 <link href="<c:url value="resources/rateit.css" />" rel="stylesheet" />
@@ -78,7 +80,7 @@
 
 	<!-- NAVBAR END -->
 	<div class="container">
-		<div class="top-greeting">
+		<div class="top-greeting animated bounceInRight">
 			<h3>Books you've read</h3>
 		</div>
 	</div>
@@ -89,8 +91,8 @@
 					<div class="panel panel-default" id="caughtbook-${caughtBook.bid}">
 						<div class="panel-heading"
 							id="caughtbook-${caughtBook.bid}-panelheadtitle">
-							<h4>${caughtBook.title}</h4>
-							<div id="caughtbook-${caughtBook.bid}-star-rating" class="rateit"
+							<h4 class="animated flipInX">${caughtBook.title}</h4>
+							<div id="caughtbook-${caughtBook.bid}-star-rating" class="rateit animated flipInY"
 								data-rateit-ispreset="true" data-rateit-readonly="true"
 								data-rateit-value="${caughtBook.rating}" data-rateit-max="10"></div>
 						</div>

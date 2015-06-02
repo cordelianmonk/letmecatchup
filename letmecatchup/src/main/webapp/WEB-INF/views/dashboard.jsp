@@ -48,7 +48,8 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="dash.html">Dashboard</a><span
 					class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
+				<li><a href="searchmedia.html">Search <span
+						class="glyphicon glyphicon-search" /></a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -75,77 +76,117 @@
 
 	<!-- MAIN AREA -->
 	<div class="container">
-		<div class="top-greeting">
-			<h3>Hello ${userName}!</h3>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 animated bounceInRight">
+				<div class="top-greeting">
+					<h2>Hello ${userName}!</h2>
+				</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="container">
-		<div class="col-xs-12">
-			<div class="well titles" id="catch-booklist">
-				<p class="small text-muted">Catch up with your reading?</p>
-				<h4 class="tlt">
-					<ul class="texts">
-						<c:if test="${!empty catchBookList}">
-							<c:forEach items="${catchBookList}" var="catchBook">
-								<li>${catchBook.title}</li>
-							</c:forEach>
-						</c:if>
-					</ul>
-				</h4>
-				<a href="catch_books.html" class="pull-right">more...</a>
+		<div class="row dashboard-panel">
+			<div class="col-xs-12 col-md-10 col-md-offset-1 animated bounceInUp">
+				<div class="my-list well well-lg titles" id="catch-booklist">
+					<img class="top-right-img"
+						src="<c:url value="resources/128x128-book.png"/>"></img>
+
+					<p class="small text-muted">Catch up with your reading?</p>
+					<h4 class="tlt">
+						<ul class="texts">
+							<c:if test="${!empty catchBookList}">
+								<c:forEach items="${catchBookList}" var="catchBook">
+									<li>${catchBook.title}</li>
+								</c:forEach>
+							</c:if>
+						</ul>
+					</h4>
+					<div class="text-right">
+						<a href="catch_books.html" class="btn btn-default btn-xs"> <span
+							class="glyphicon glyphicon-chevron-right"></span> More
+						</a>
+					</div>
+
+				</div>
 			</div>
 		</div>
+	</div>
 
-		<div class="col-xs-12">
-			<div class="well titles" id="catch-movielist">
-				<p class="small text-muted">Catch a movie?</p>
-				<h4 class="tlt">
-					<ul class="texts">
-						<c:if test="${!empty catchMovieList}">
-							<c:forEach items="${catchMovieList}" var="catchMovie">
-								<li>${catchMovie.title}</li>
-							</c:forEach>
-						</c:if>
-					</ul>
-				</h4>
-				<a href="catch_movies.html" class="pull-right">more...</a>
+	<div class="container">
+		<div class="row dashboard-panel">
+			<div
+				class="col-xs-12 col-md-10 col-md-offset-1 animated bounceInDown">
+				<div class="my-list well well-lg titles" id="catch-movielist">
+					<img class="top-right-img"
+						src="<c:url value="resources/128x128-movie.png"/>"></img>
+
+					<p class="small text-muted">Catch a movie?</p>
+					<h4 class="tlt">
+						<ul class="texts">
+							<c:if test="${!empty catchMovieList}">
+								<c:forEach items="${catchMovieList}" var="catchMovie">
+									<li>${catchMovie.title}</li>
+								</c:forEach>
+							</c:if>
+						</ul>
+					</h4>
+					<div class="text-right">
+						<a href="catch_movies.html" class="btn btn-default btn-xs"> <span
+							class="glyphicon glyphicon-chevron-right"></span> More
+						</a>
+					</div>
+
+				</div>
 			</div>
 		</div>
+	</div>
 
-		<div class="col-xs-12">
-			<div class="well titles-caught" id="caught-booklist">
-				<p class="small text-muted">Your &#9733 reads</p>
 
-				<ul class="texts">
-					&#9733
-					<c:if test="${!empty caughtBookList}">
-						<c:forEach items="${caughtBookList}" var="caughtBook">
-							<li>${caughtBook.title}&#9733</li>
-						</c:forEach>
-					</c:if>
-				</ul>
-				<a href="caught_books.html" class="pull-right">more...</a>
+	<div class="container">
+		<div class="row dashboard-panel">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="col-xs-12 col-md-6 animated bounceInUp">
+					<div class="my-list well well-lg titles" id="caught-booklist">
+						<p class="small text-muted">Your &#9733 reads</p>
+
+						<ol class="texts">
+							<c:if test="${!empty caughtBookList}">
+								<c:forEach items="${caughtBookList}" var="caughtBook">
+									<li>${caughtBook.title} ${caughtBook.rating}&#9733</li>
+								</c:forEach>
+							</c:if>
+						</ol>
+						<div class="text-right">
+							<a href="caught_books.html" class="btn btn-default btn-xs"> <span
+								class="glyphicon glyphicon-chevron-right"></span> More
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-12 col-md-6 animated bounceInDown">
+					<div class="my-list well well-lg titles-caught"
+						id="caught-movielist">
+						<p class="small text-muted">Your &#9733 movies</p>
+
+						<ol class="texts">
+							<c:if test="${!empty caughtMovieList}">
+								<c:forEach items="${caughtMovieList}" var="caughtMovie">
+									<li>${caughtMovie.title} ${caughtMovie.rating}&#9733</li>
+								</c:forEach>
+							</c:if>
+						</ol>
+
+						<div class="text-right">
+							<a href="caught_movies.html" class="btn btn-default btn-xs"> <span
+								class="glyphicon glyphicon-chevron-right"></span> More
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-
-		<div class="col-xs-12">
-			<div class="well titles-caught" id="caught-movielist">
-				<p class="small text-muted">Your &#9733 movies</p>
-
-				<ul class="texts">
-					&#9733
-					<c:if test="${!empty caughtMovieList}">
-						<c:forEach items="${caughtMovieList}" var="caughtMovie">
-							<li>${caughtMovie.title}&#9733</li>
-						</c:forEach>
-					</c:if>
-				</ul>
-
-				<a href="caught_books.html" class="pull-right">more...</a>
-			</div>
-		</div>
-
 	</div>
 
 

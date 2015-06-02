@@ -21,6 +21,8 @@
 	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
+<link href="<c:url value="resources/animate.css" />" rel="stylesheet" />
+
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="/resources/caught-index.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
@@ -77,7 +79,7 @@
 
 	<!-- NAVBAR END -->
 	<div class="container">
-		<div class="top-greeting">
+		<div class="top-greeting animated bounceInRight">
 			<h3>Movies you've watched</h3>
 		</div>
 	</div>
@@ -91,8 +93,8 @@
 
 						<div class="panel-heading"
 							id="caughtmovie-${caughtMovie.mid}-panelheadtitle">
-							<h4>${caughtMovie.title}</h4>
-							<div id="caughtmovie-${caughtMovie.mid}-rating" class="rateit"
+							<h4 class="animated flipInX">${caughtMovie.title}</h4>
+							<div id="caughtmovie-${caughtMovie.mid}-rating" class="rateit animated flipInY"
 								data-rateit-ispreset="true" data-rateit-readonly="true"
 								data-rateit-value="${caughtMovie.rating}" data-rateit-max="10">
 							</div>

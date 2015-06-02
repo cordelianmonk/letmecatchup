@@ -30,11 +30,13 @@ $(document).ready(function() {
 		
 		if(jQuery( "#"+id ).data('clicked') ) {
 			$("#" + id  ).css("background-color", "#73BDE1");
+			$("#" + shortID ).removeClass("animated fadeIn");
 			$("#" + shortID ).hide();
 		    $(this).data('clicked', false);	    
 		} else {
 			$("#" + id  ).css("background-color", "#49A7D5");
 			$("#" + shortID ).show();
+			$("#" + shortID ).addClass("animated fadeIn");
 			$(this).data('clicked', true);
 		}
 		

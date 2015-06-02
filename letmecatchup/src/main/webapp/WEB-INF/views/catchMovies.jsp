@@ -21,6 +21,7 @@
 	rel='stylesheet' type='text/css' />
 
 <link href="<c:url value="resources/index.css" />" rel="stylesheet" />
+<link href="<c:url value="resources/animate.css" />" rel="stylesheet" />
 
 <script src="<c:url value="/resources/jquery-2.1.4.min.js" />"></script>
 <script src="<c:url value="resources/bootstrap/js/bootstrap.min.js" />"></script>
@@ -77,8 +78,8 @@
 	<!-- END OF NAVBAR -->
 
 	<!-- BODY -->
-	<div class="container">
-		<div class="top-greeting">
+		<div class="container">
+		<div class="top-greeting animated bounceInRight">
 			<h3>Your watch list</h3>
 		</div>
 	</div>
@@ -92,7 +93,7 @@
 					<div class="panel panel-default" id="catchmovie-${catchMovie.mid}">
 						<div class="panel-heading"
 							id="catchmovie-${catchMovie.mid}-panelheadtitle">
-							<h4>${catchMovie.title}</h4>
+							<h4 class="animated flipInX">${catchMovie.title}</h4>
 						</div>
 						<div hidden class="panel-body"
 							id="catchmovie-${catchMovie.mid}-panel-body">
