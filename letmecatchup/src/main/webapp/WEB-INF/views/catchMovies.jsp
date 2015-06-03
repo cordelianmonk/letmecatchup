@@ -66,8 +66,8 @@
 						<li><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
 					</ul></li>
-					
-					<li><a href="user_settings.html">Settings</a></li>
+
+				<li><a href="user_settings.html">Settings</a></li>
 			</ul>
 
 			<div class="navbar-text navbar-right">
@@ -80,10 +80,18 @@
 	<!-- END OF NAVBAR -->
 
 	<!-- BODY -->
-		<div class="container">
+	<div class="container">
 		<div class="top-greeting animated bounceInRight">
 			<h3>Your watch list</h3>
+			<img class="top-greeting-img"
+				src="<c:url value="resources/128x128-movie.png"/>"></img>
 		</div>
+		<c:if test="${!empty catchMovieMessage}">
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>${catchMovieMessage}</strong>
+			</div>
+		</c:if>
 	</div>
 
 	<div id="catch-movie-list">

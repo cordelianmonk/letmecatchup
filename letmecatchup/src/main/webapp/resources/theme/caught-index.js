@@ -56,6 +56,7 @@ $(document).ready(function() {
 
 		var rating = +$("#caughtbook-set-rating-" + suffix).val();
 		$("#caughtbook-form-" + suffix + "-rating").prop("disabled", false);
+		$("#caughtbook-form-" + suffix + "-rating").val(rating);
 
 		$(function() {
 			$('#caughtbook-form-edit-star-rating-' + suffix).rateit({

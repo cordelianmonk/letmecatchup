@@ -86,7 +86,8 @@ public class CatchController {
 			@RequestParam("bid") int bid,
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
-			HttpSession session) 
+			HttpSession session,
+			Model model) 
 	{	
 		User user = (User) session.getAttribute("user");
 		
@@ -98,21 +99,32 @@ public class CatchController {
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
-		return "redirect:catch_books.html";
+		
+		model.addAttribute("catchBookMessage", catchBook.getTitle() + " updated.");
+		model.addAttribute("catchBookList", user.getCatchBookList() );
+		
+		return "catchBooks";
 	}
 	
 	@RequestMapping(value="deleteCatchBook")
 	public String deleteCatchBook(
 			@RequestParam("bid") int bid,
-			HttpSession session)
+			HttpSession session,
+			Model model)
 	{
 		User user = (User) session.getAttribute("user");
+		CatchBook catchBook = this.catchBookService.searchCatchBookByID(bid);
+		String title = catchBook.getTitle();
 		
 		this.catchBookService.deleteCatchBook(bid);
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
-		return "redirect:catch_books.html";
+		
+		model.addAttribute("catchBookMessage", title + " deleted.");
+		model.addAttribute("catchBookList", user.getCatchBookList() );
+		
+		return "catchBooks";
 	}
 	
 	@RequestMapping(value="caughtCatchBook")
@@ -122,19 +134,24 @@ public class CatchController {
 			@RequestParam("comment") String comment,
 			@RequestParam("apiID") String apiID,
 			@RequestParam("rating") int rating,
-			HttpSession session
+			HttpSession session,
+			Model model
 			)
 	{
 		User user = (User) session.getAttribute("user");
 		java.sql.Date date = Date.valueOf( LocalDate.now() );
 		
 		this.caughtBookService.newCaughtBook(user, date, title, comment, apiID, rating);
+		
 		this.catchBookService.deleteCatchBook(bid);
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
 		
-		return "redirect:caught_books.html";
+		model.addAttribute("catchBookMessage", title + " added to Caught list.");
+		model.addAttribute("catchBookList", user.getCatchBookList() );
+		
+		return "catchBooks";
 	}
 	
 	@RequestMapping(value="updateCatchMovie")
@@ -142,7 +159,8 @@ public class CatchController {
 			@RequestParam("mid") int mid,
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
-			HttpSession session) 
+			HttpSession session,
+			Model model) 
 	{	
 		User user = (User) session.getAttribute("user");
 		
@@ -154,21 +172,33 @@ public class CatchController {
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
-		return "redirect:catch_movies.html";
+		
+		model.addAttribute("catchMovieMessage", title + " updated.");
+		model.addAttribute("catchMovieList", user.getCatchMovieList() );
+		
+		return "catchMovies";
 	}
 	
 	@RequestMapping(value="deleteCatchMovie")
 	public String deleteCatchMovie(
 			@RequestParam("mid") int mid,
-			HttpSession session)
+			HttpSession session,
+			Model model)
 	{
 		User user = (User) session.getAttribute("user");
+		
+		CatchMovie catchMovie = this.catchMovieService.searchMovieByID(mid);
+		String title = catchMovie.getTitle();
 		
 		this.catchMovieService.deleteCatchMovie(mid);
 		
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
-		return "redirect:catch_movies.html";
+		
+		model.addAttribute("catchMovieMessage", title + " deleted.");
+		model.addAttribute("catchMovieList", user.getCatchMovieList() );
+		
+		return "catchMovies";
 	}
 	
 	@RequestMapping(value="caughtCatchMovie")
@@ -178,7 +208,8 @@ public class CatchController {
 			@RequestParam("comment") String comment,
 			@RequestParam("apiID") String apiID,
 			@RequestParam("rating") int rating,
-			HttpSession session
+			HttpSession session,
+			Model model
 			)
 	{
 		User user = (User) session.getAttribute("user");
@@ -190,7 +221,10 @@ public class CatchController {
 		user = (User) this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user );
 		
-		return "redirect:caught_movies.html";
+		model.addAttribute("catchMovieMessage", title + " added to Caught list.");
+		model.addAttribute("catchMovieList", user.getCatchMovieList() );
+		
+		return "catchMovies";
 	}
 	
 

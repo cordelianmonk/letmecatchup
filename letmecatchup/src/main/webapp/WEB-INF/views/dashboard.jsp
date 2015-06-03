@@ -150,7 +150,9 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="col-xs-12 col-md-6 animated bounceInUp">
 					<div class="my-list well well-lg titles" id="caught-booklist">
-						<p class="lead text-muted">Your &#9733 reads</p>
+					<img class="top-left-img"
+						src="<c:url value="resources/128x128-closedbook.png"/>"></img>
+						<p class="lead text-muted pull-right">Your &#9733 reads</p><br/><br />
 
 						<ol class="texts">
 							<c:if test="${!empty caughtBookList}">
@@ -170,7 +172,9 @@
 				<div class="col-xs-12 col-md-6 animated bounceInDown">
 					<div class="my-list well well-lg titles-caught"
 						id="caught-movielist">
-						<p class="lead text-muted">Your &#9733 movies</p>
+						<img class="top-right-img"
+						src="<c:url value="resources/128x128-donemovie.png"/>"></img>
+						<p class="lead text-muted pull-left">Your &#9733 movies</p><br /><br/>
 
 						<ol class="texts">
 							<c:if test="${!empty caughtMovieList}">

@@ -67,8 +67,8 @@
 						<li><a href="caught_books.html">Books</a></li>
 						<li class="active"><a href="caught_movies.html">Movies</a></li>
 					</ul></li>
-					
-					<li><a href="user_settings.html">Settings</a></li>
+
+				<li><a href="user_settings.html">Settings</a></li>
 			</ul>
 
 			<div class="navbar-text navbar-right">
@@ -82,8 +82,16 @@
 	<!-- NAVBAR END -->
 	<div class="container">
 		<div class="top-greeting animated bounceInRight">
-			<h3>Movies you've watched</h3>
+			<h3>Your watched movies</h3>
+			<img class="top-greeting-img"
+				src="<c:url value="resources/128x128-donemovie.png"/>"></img>
 		</div>
+		<c:if test="${!empty caughtMovieMessage}">
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>${caughtMovieMessage}</strong>
+			</div>
+		</c:if>
 	</div>
 
 	<div id="caught-movie-list">
@@ -96,8 +104,9 @@
 						<div class="panel-heading"
 							id="caughtmovie-${caughtMovie.mid}-panelheadtitle">
 							<h4 class="animated flipInX">${caughtMovie.title}</h4>
-							<div id="caughtmovie-${caughtMovie.mid}-rating" class="rateit animated flipInY"
-								data-rateit-ispreset="true" data-rateit-readonly="true"
+							<div id="caughtmovie-${caughtMovie.mid}-rating"
+								class="rateit animated flipInY" data-rateit-ispreset="true"
+								data-rateit-readonly="true"
 								data-rateit-value="${caughtMovie.rating}" data-rateit-max="10">
 							</div>
 						</div>
@@ -109,12 +118,16 @@
 
 							<form hidden id="caughtmovie-form-${caughtMovie.mid}"
 								action="updateCaughtMovie" method="post">
+								
+								
 								<label for="title">Title</label><br /> <input
 									class="form-control" name="title" id="title-${caughtMovie.mid}"
-									value="${caughtMovie.title}"></input> <br /> <label
+									value="${caughtMovie.title}"></input> <br /> 
+									
+								<label
 									for="rating">Rating</label><br /> <select disabled="true"
 									id="caughtmovie-form-${caughtMovie.mid}-rating"
-									class="form-control" name="rating" style="width: 80px">
+									class="form-control" name="rating">
 									<option value="0">0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -128,11 +141,14 @@
 									<option value="10">10</option>
 								</select>
 								<div id="caughtmovie-edit-star-rating-${caughtMovie.mid}"></div>
-								<br />
-								<br /> <label for="comment">Comment</label><br />
+								<br /> <br /> 
+								
+								<label for="comment">Comment</label><br />
 								<textarea rows="3" maxlength="300" name="comment"
 									id="comment-${caughtMovie.mid}" class="form-control">${caughtMovie.comment}</textarea>
-								<br /> <input hidden name="mid" value="${caughtMovie.mid}"></input>
+								<br />
+								
+								 <input hidden name="mid" value="${caughtMovie.mid}"></input>
 								<input hidden name="apiID" value="${caughtMovie.apiID}"></input>
 
 								<div class="btn-group pull-right"
@@ -149,7 +165,7 @@
 									id="caughtmovie-form-${caughtMovie.mid}-deletebuttons">
 									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-danger"
-											formaction="deleteCaughtBook" id="delete-caughtmovie">Confirm
+											formaction="deleteCaughtMovie" id="delete-caughtmovie">Confirm
 											Delete</button>
 										<button type="button" class="btn btn-sm btn-default"
 											id="canceldelete-caughtmovie-${caughtMovie.mid}">Cancel</button>

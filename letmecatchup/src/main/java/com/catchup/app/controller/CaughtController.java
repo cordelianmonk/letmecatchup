@@ -66,7 +66,9 @@ public class CaughtController {
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
 			@RequestParam("rating") int rating,
-			HttpSession session) 
+			HttpSession session,
+			Model model
+			) 
 	{
 		CaughtBook caughtBook = this.caughtBookService.searchCaughtBookByID(bid);
 		caughtBook.setTitle(title);
@@ -78,15 +80,21 @@ public class CaughtController {
 		User user = (User) session.getAttribute("user");
 		user = this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user);
+		
+		model.addAttribute("caughtBookMessage", title + " updated.");
+		model.addAttribute("caughtBookList", user.getCaughtBookList() );
 	
-		return "redirect: caught_books.html";
+		return "caughtBooks";
 	}
 	
 	@RequestMapping(value="deleteCaughtBook")
 	public String deleteCaughtBook(
 			@RequestParam("bid") int bid,
-			HttpSession session)
+			HttpSession session,
+			Model model)
 	{
+		CaughtBook caughtBook = this.caughtBookService.searchCaughtBookByID(bid);
+		String title = caughtBook.getTitle(); 
 		
 		this.caughtBookService.deleteCaughtBook(bid);
 		
@@ -94,7 +102,10 @@ public class CaughtController {
 		user = this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user);
 		
-		return "redirect: caught_books.html";
+		model.addAttribute("caughtBookMessage", title + " deleted.");
+		model.addAttribute("caughtBookList", user.getCaughtBookList() );
+	
+		return "caughtBooks";
 	}
 	
 	@RequestMapping(value="updateCaughtMovie")
@@ -103,7 +114,8 @@ public class CaughtController {
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
 			@RequestParam("rating") int rating,
-			HttpSession session)
+			HttpSession session,
+			Model model)
 	{
 		CaughtMovie caughtMovie = this.caughtMovieService.searchCaughtMovieByID(mid);
 		caughtMovie.setTitle(title);
@@ -116,14 +128,21 @@ public class CaughtController {
 		user = this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user);
 		
-		return "redirect: caught_movies.html";
+		model.addAttribute("caughtMovieMessage", title + " updated.");
+		model.addAttribute("caughtMovieList", user.getCaughtMovieList() );
+		
+		return "caughtMovies";
 	}
 	
 	@RequestMapping(value="deleteCaughtMovie")
 	public String deleteCaughtMovie(
 			@RequestParam("mid") int mid,
-			HttpSession session)
+			HttpSession session,
+			Model model)
 	{
+		CaughtMovie caughtMovie = this.caughtMovieService.searchCaughtMovieByID(mid);
+		
+		String title = caughtMovie.getTitle();
 		
 		this.caughtMovieService.deleteCaughtMovie(mid);
 		
@@ -131,7 +150,10 @@ public class CaughtController {
 		user = this.userService.getUserById( user.getUid() );
 		session.setAttribute("user", user);
 		
-		return "redirect: caught_movies.html";
+		model.addAttribute("caughtMovieMessage", title + " deleted.");
+		model.addAttribute("caughtMovieList", user.getCaughtMovieList() );
+		
+		return "caughtMovies";
 	}
 	
 

@@ -37,9 +37,9 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-		<a class="navbar-brand"></a>
-			<img class="pull-left" src="<c:url value="resources/64x64.png"/>"></img>
-			
+			<a class="navbar-brand"></a> <img class="pull-left"
+				src="<c:url value="resources/64x64.png"/>"></img>
+
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#hamburger-navigation">
 				<!-- data that needs to appear or disappear, targeting the hamburger-navigation -->
@@ -68,8 +68,8 @@
 						<li class="active"><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
 					</ul></li>
-					
-					<li><a href="user_settings.html">Settings</a></li>
+
+				<li><a href="user_settings.html">Settings</a></li>
 			</ul>
 
 			<div class="navbar-text navbar-right">
@@ -83,8 +83,17 @@
 	<!-- NAVBAR END -->
 	<div class="container">
 		<div class="top-greeting animated bounceInRight">
-			<h3>Books you've read</h3>
+			<h3>Your read books</h3>
+			<img class="top-greeting-img"
+				src="<c:url value="resources/128x128-closedbook.png"/>"></img>
+			
 		</div>
+		<c:if test="${!empty caughtBookMessage}">
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>${caughtBookMessage}</strong>
+			</div>
+		</c:if>
 	</div>
 	<div id="caught-book-list">
 		<c:if test="${!empty caughtBookList}">
@@ -94,8 +103,9 @@
 						<div class="panel-heading"
 							id="caughtbook-${caughtBook.bid}-panelheadtitle">
 							<h4 class="animated flipInX">${caughtBook.title}</h4>
-							<div id="caughtbook-${caughtBook.bid}-star-rating" class="rateit animated flipInY"
-								data-rateit-ispreset="true" data-rateit-readonly="true"
+							<div id="caughtbook-${caughtBook.bid}-star-rating"
+								class="rateit animated flipInY" data-rateit-ispreset="true"
+								data-rateit-readonly="true"
 								data-rateit-value="${caughtBook.rating}" data-rateit-max="10"></div>
 						</div>
 						<div hidden class="panel-body"
@@ -108,9 +118,11 @@
 
 								<label for="title">Title</label><br /> <input name="title"
 									id="title-${caughtBook.bid}" value="${caughtBook.title}"
-									class="form-control"></input><br /> <label for="rating">Rating</label><select
+									class="form-control"></input><br />
+									
+									 <label for="rating">Rating</label><select
 									disabled="true" id="caughtbook-form-${caughtBook.bid}-rating"
-									class="form-control" name="rating" style="width: 80px">
+									class="form-control" name="rating">
 									<option value="0">0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -123,12 +135,16 @@
 									<option value="9">9</option>
 									<option value="10">10</option>
 								</select>
+								
 								<div id="caughtbook-form-edit-star-rating-${caughtBook.bid}"></div>
-								<br />
-								<br /> <label for="comment">Comment</label><br />
+								<br /> <br /> 
+								
+								<label for="comment">Comment</label><br />
 								<textarea rows="3" class="form-control" maxlength="300"
 									name="comment" id="comment-${caughtBook.bid}">${caughtBook.comment}</textarea>
-								<br /> <input hidden name="bid" value="${caughtBook.bid}"></input>
+								<br /> 
+								
+								<input hidden name="bid" value="${caughtBook.bid}"></input>
 								<input hidden name="apiID" value="${caughtBook.apiID}"></input>
 
 								<div class="btn-group pull-right"

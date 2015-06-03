@@ -7,6 +7,9 @@ $(document).ready(function() {
 	$("#select-action").val('');
 
 	$('#select-action').change(function() {
+		$("#search-title").val('');
+		$("#search-writer").val('');
+		
 		if ($("#select-action").val() == "search") {
 
 			$("#add-only-area").hide();
@@ -47,6 +50,10 @@ $(document).ready(function() {
 	});
 
 	$("#search-mediatype").change(function() {
+		
+		$("#search-title").val('');
+		$("#search-writer").val('');
+		
 		if ($("#search-mediatype").val() == "book") {
 
 			$("#search-area-form").show();
@@ -76,6 +83,11 @@ $(document).ready(function() {
 		$("#link").html('');
 		$("#image").html('');
 		$("#reviews").html('');
+		$("#searched-form").empty();
+		$("#searched-catch").show();
+		$("#searched-caught").show();
+		
+		$("#info-area").hide();
 		
 		var title = $("#search-title").val();
 		var writer = $("#search-writer").val();
@@ -93,16 +105,12 @@ $(document).ready(function() {
 
 	$("#searched-catch").click(function() {
 		generateCatchForm();
-		$("#searched-caught").prop("class", "btn btn-sm btn-default disabled");
+		$("#searched-caught").hide();
 	});
 
 	$("#searched-caught").click(function() {
 		generateCaughtForm();
-		$("#searched-catch").prop("class", "btn btn-sm btn-info disabled");
-	});
-
-	$("#searched-caught-cancel").click(function() {
-		$("#searched-catch").prop("class", "btn btn-sm btn-info");
+		$("#searched-catch").hide();
 	});
 
 });
@@ -177,9 +185,9 @@ function searchBook(title, writer) {
 											xml
 													.getElementsByTagName("reviews_widget")[0].textContent);
 							$("#goodreads-widget")[0].style.width = "100%";
-							$("#goodreads-widget")[0].style.height = "350px";
+							$("#goodreads-widget")[0].style.height = "450px";
 							$("#the_iframe")[0].style.width = "100%";
-							$("#the_iframe")[0].style.height = "350px";
+							$("#the_iframe")[0].style.height = "450px";
 							$("#info-area").show(); // VERY IMPORRANT
 						} else {
 							alert("No book found!");
@@ -266,7 +274,7 @@ function getMovieTrailer(movieID) {
 		success : function(data) {
 
 			if (data.results[0] == undefined) {
-				$("#reviews").html("<h3>No trailer found!</h3>");
+				$("#reviews").html("<h4>No trailer found.</h4>");
 				return;
 			}
 
@@ -361,11 +369,11 @@ function generateCatchForm() {
 							+ '"></input>'
 							+ '<textarea class="form-control" rows="5" maxlength="300" placeholder="(300 characters or less)" name="comment"></textarea>'
 							+ '<br/><div class="btn-group"><button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
-							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-catch-cancel">Cancel</button></div>'
+							+ '<button type="button" class="btn btn-sm btn-default" id="searched-catch-cancel">Cancel</button></div>'
 							+ '</form>');
 
 	$("#searched-catch-cancel").click(function() {
-		$("#searched-caught").prop("class", "btn btn-sm btn-default");
+		$("#searched-caught").show();
 		$("#searched-form").empty();
 	});
 
@@ -393,11 +401,11 @@ function generateCaughtForm() {
 							+ '<option value="9">9</option><option value="10">10</option></select>'
 							+ '<div id="star-rating"></div><br/>'
 							+ '<div class="btn-group"><button type="submit" class="btn btn-sm btn-primary" >Submit</button>'
-							+ '<button type="button" class="btn btn-sm btn-warning" id="searched-caught-cancel">Cancel</button>'
+							+ '<button type="button" class="btn btn-sm btn-default" id="searched-caught-cancel">Cancel</button>'
 							+ '</div></form>');
 
 	$("#searched-caught-cancel").click(function() {
-		$("#searched-catch").prop("class", "btn btn-sm btn-info");
+		$("#searched-catch").show();
 		$("#searched-form").empty();
 	});
 
