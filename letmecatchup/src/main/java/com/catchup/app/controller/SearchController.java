@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,28 +70,32 @@ public class SearchController {
 			@RequestParam("title") String title,
 			@RequestParam("comment") String comment,
 			@RequestParam("apiID") String apiID,
-			HttpSession session
+			HttpSession session,
+			Model model
 			)
 	{	
 		User user = (User) session.getAttribute("user");
 		java.sql.Date date = Date.valueOf( LocalDate.now() );
 		
 		switch(mediaType){
+		
 		case "book":
 			if( this.catchBookService.newCatchBook(user, date, title, comment, apiID) ){
-				System.out.println("Saved new to-read!");
 				
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
+				
+				model.addAttribute("searchMessage", "Saved new to-read!");
 				
 				return "search";
 			};
 		case "movie":
 			if(catchMovieService.newCatchMovie(user, date, title, comment, apiID) ){
-				System.out.println("Saved new to-watch!");
 				
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
+				
+				model.addAttribute("searchMessage", "Saved new to-watch!");
 				
 				return "search";
 				
@@ -108,7 +113,8 @@ public class SearchController {
 			@RequestParam("comment") String comment,
 			@RequestParam("apiID") String apiID,
 			@RequestParam("rating") int rating,
-			HttpSession session
+			HttpSession session, 
+			Model model
 			)
 	{	
 		User user = (User) session.getAttribute("user");
@@ -117,26 +123,25 @@ public class SearchController {
 		switch(mediaType){
 		case "book":
 			if( this.caughtBookService.newCaughtBook(user, date, title, comment, apiID, rating) ){
-				System.out.println("Saved read book!");
 				
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
+				
+				model.addAttribute("searchMessage", "Saved read book!");
 				
 				return "search";
 			};
 		case "movie":
 			if(caughtMovieService.newCaughtMovie(user, date, title, comment, apiID, rating) )
-			{
-				System.out.println("Saved watched book!");
-				
+			{	
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
 				
+				model.addAttribute("searchMessage", "Saved watched movie!");
 				return "search";
 				
 			};
 		}
-		
 		
 		return "search";
 		

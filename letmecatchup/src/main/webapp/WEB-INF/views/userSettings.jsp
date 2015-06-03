@@ -51,8 +51,7 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search<span
-						class="glyphicon glyphicon-search" /></a></li>
+				<li><a href="searchmedia.html">Search</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -85,72 +84,66 @@
 
 	<div class="container">
 		<div class="top-greeting animated bounceInRight">
-			<h3>Your settings</h3>
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+				<h3>Your details</h3>
+			</div>
 		</div>
 	</div>
 
 	<div class="container">
-		<div class="col-xs-12 col-md-10 col-md-offset-1 animated flipInY">
+		<div class="col-xs-12 col-md-6 col-md-offset-3 animated flipInY">
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="animated flipInX">User Details</h4>
-				</div>
 				<div class="panel-body">
 					<form method="post">
-						<label for="firstName">First Name</label><br /> <input disabled="true"
-							class="form-control" type="text" id="firstName" name="firstname"
-							value="${user.firstName}"></input><br /> 
-							
-							<label for="lastName">Last
-							Name</label><br /> <input disabled="true" class="form-control" type="text" id="lastName"
-							name="lastname" value="${user.lastName}"></input><br /> 
-							
-							<label
-							for="email">E-mail address</label><br /> 
-							<input disabled="true" class="form-control" type="text" id="email" name="email" value="${user.email}"></input><br />
-							
-							<label
-							for="password">Password</label><br /> 
-							<input disabled="true" class="form-control" type="password" id="password" name="password" placeholder="hidden"></input><br />
-							
-							<div class="btn-group pull-right" id="user-detail-buttons">
-									<button type="button" class="btn btn-sm btn-primary"
-										id="edit-names">Edit Names</button>
-									<button type="button" class="btn btn-sm btn-warning"
-										id="edit-email">Edit Email</button>
-									<button type="button" class="btn btn-sm btn-danger"
-										id="change-password">Change Password</button>
-								</div>
-								
-								<div hidden id="edit-name-buttons">
-									<div class="btn-group pull-right">
-										<button class="btn btn-sm btn-primary"
-											formaction="editNames">Save</button>
-										<button type="button" class="btn btn-sm btn-default"
-											id="cancel-edit-names">Cancel</button>
-									</div>
-								</div>
-								
-								<div hidden id="edit-email-buttons">
-									<div class="btn-group pull-right">
-										<button class="btn btn-sm btn-primary"
-											formaction="editEmail">Save</button>
-										<button type="button" class="btn btn-sm btn-default"
-											id="cancel-edit-email">Cancel</button>
-									</div>
-								</div>
-								
-								<div hidden id="change-password-buttons">
-									<div class="btn-group pull-right">
-										<button class="btn btn-sm btn-primary"
-											formaction="changePassword">Save</button>
-										<button type="button" class="btn btn-sm btn-default"
-											id="cancel-change-password">Cancel</button>
-									</div>
-								</div>
-							
+						<label for="firstName">First Name</label><br /> <input
+							disabled="true" class="form-control" type="text" id="firstName"
+							name="firstname" value="${user.firstName}"></input><br /> <label
+							for="lastName">Last Name</label><br /> <input disabled="true"
+							class="form-control" type="text" id="lastName" name="lastname"
+							value="${user.lastName}"></input><br /> <label for="email">E-mail
+							address</label><br /> <input disabled="true" class="form-control"
+							type="text" id="email" name="email" value="${user.email}"></input><br />
+
+						<label for="password">Password</label><br /> <input
+							disabled="true" class="form-control" type="password"
+							id="password" name="password" placeholder="hidden"></input><br />
+
+						<div class="btn-group pull-right" id="user-detail-buttons">
+							<button type="button" class="btn btn-sm btn-primary"
+								id="edit-names">Edit Name</button>
+							<button type="button" class="btn btn-sm btn-primary"
+								id="edit-email">Edit Email</button>
+							<button type="button" class="btn btn-sm btn-primary"
+								id="change-password">Change Password</button>
+						</div>
+
+						<div hidden id="edit-name-buttons">
+							<div class="btn-group pull-right">
+								<button class="btn btn-sm btn-primary" formaction="editNames">Save</button>
+								<button type="button" class="btn btn-sm btn-default"
+									id="cancel-edit-names">Cancel</button>
+							</div>
+						</div>
+
+						<div hidden id="edit-email-buttons">
+							<div class="btn-group pull-right">
+								<button class="btn btn-sm btn-primary" formaction="editEmail">Save</button>
+								<button type="button" class="btn btn-sm btn-default"
+									id="cancel-edit-email">Cancel</button>
+							</div>
+						</div>
+
+						<div hidden id="change-password-buttons">
+							<div class="btn-group pull-right">
+								<button class="btn btn-sm btn-primary"
+									formaction="changePassword">Save</button>
+								<button type="button" class="btn btn-sm btn-default"
+									id="cancel-change-password">Cancel</button>
+							</div>
+						</div>
+
 					</form>
-								
+
 
 				</div>
 

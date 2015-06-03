@@ -52,7 +52,7 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
+				<li><a href="searchmedia.html">Search</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -139,7 +139,7 @@
 									id="caughtmovie-form-${caughtMovie.mid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
 										id="update-caughtmovie">Save</button>
-									<button type="button" class="btn btn-sm btn-warning"
+									<button type="button" class="btn btn-sm btn-default"
 										id="canceledit-caughtmovie-${caughtMovie.mid}">Cancel</button>
 									<button type="button" class="btn btn-sm btn-danger"
 										id="show-delete-caughtmovie-${caughtMovie.mid}">Delete</button>
@@ -151,7 +151,7 @@
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCaughtBook" id="delete-caughtmovie">Confirm
 											Delete</button>
-										<button type="button" class="btn btn-sm btn-warning"
+										<button type="button" class="btn btn-sm btn-default"
 											id="canceldelete-caughtmovie-${caughtMovie.mid}">Cancel</button>
 									</div>
 								</div>

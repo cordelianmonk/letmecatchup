@@ -51,8 +51,7 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search<span
-						class="glyphicon glyphicon-search" /></a></li>
+				<li><a href="searchmedia.html">Search</a></li>
 
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -116,7 +115,7 @@
 									id="catchbook-form-${catchBook.bid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
 										id="update-catchbook">Save</button>
-									<button type="button" class="btn btn-sm btn-warning"
+									<button type="button" class="btn btn-sm btn-default"
 										id="canceledit-catchbook-${catchBook.bid}">Cancel</button>
 									<button type="button" class="btn btn-sm btn-danger"
 										id="show-delete-catchbook-${catchBook.bid}">Delete</button>
@@ -128,7 +127,7 @@
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCatchBook" id="delete-catchbook">Confirm
 											Delete</button>
-										<button type="button" class="btn btn-sm btn-warning"
+										<button type="button" class="btn btn-sm btn-default"
 											id="canceldelete-catchbook-${catchBook.bid}">Cancel</button>
 									</div>
 								</div>
@@ -155,7 +154,7 @@
 									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-primary"
 											formaction="caughtCatchBook" id="caught-catchbook">Save</button>
-										<button type="button" class="btn btn-sm btn-warning"
+										<button type="button" class="btn btn-sm btn-default"
 											id="cancelcaught-catchbook-${catchBook.bid}">Cancel</button>
 									</div>
 
@@ -167,8 +166,8 @@
 								id="edit-caught-catchbook-${catchBook.bid}">
 								<button class="btn btn-sm btn-default"
 									id="edit-catchbook-${catchBook.bid}">Edit</button>
-								<button class="btn btn-sm btn-info"
-									id="caught-catchbook-${catchBook.bid}">Caught!</button>
+								<button class="btn btn-sm btn-primary"
+									id="caught-catchbook-${catchBook.bid}">Caught</button>
 							</div>
 
 						</div>

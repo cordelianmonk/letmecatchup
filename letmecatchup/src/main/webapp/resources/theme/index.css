@@ -16,7 +16,7 @@ label{
 	font-family: 'Oswald', sans-serif;
 }
 
-button{
+.btn-group{
 	font-family: 'Oswald', sans-serif;
 }
 
@@ -42,17 +42,19 @@ button{
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover,
 	.navbar-inverse .navbar-nav>.active>a:focus {
-	background-color: #3196C7;
+	background-color: #7FC3E4;
+	 height:78px;
 }
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover,
 	.navbar-inverse .navbar-nav>.open>a:focus {
-	background-color: #3196C7;
+	background-color: #7FC3E4;
+	 height:78px;
 }
 
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus
 	{
-	background-color: #3196C7;
+	background-color: #7FC3E4;
 }
 
 .search-area {
@@ -65,7 +67,7 @@ button{
 }
 
 .top-greeting {
-	margin: 80px 0px 0px 10px;
+	margin: 90px 0px 0px 10px;
 	font-family: 'Lobster', cursive;
 }
 
@@ -205,3 +207,16 @@ body, html{
 	-o-border-radius: 10px;
 	border-radius: 10px;
 }
+
+.btn-primary{
+	background-color:#046B9D;
+}
+
+.btn-primary:hover, .btn-primary:active:hover, .btn-primary:focus {
+	background-color:#098BCA;
+}
+
+p.lead.text-muted {
+	font-family: 'Lobster', cursive;
+}
+	

@@ -18,22 +18,22 @@ import com.catchup.app.util.HashGeneratorUtils;
 public class UserController {
 	private UserService userService;
 	
-	@RequestMapping(value="log_out.html")
-	public String allHome(HttpSession session) {
-		session.invalidate();
-		return "redirect:index.html";
-	}
-	
 	@Autowired(required=true)
     @Qualifier(value="userService")
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
+	@RequestMapping(value="log_out.html")
+	public String allHome(HttpSession session) {
+		session.invalidate();
+		return "redirect:index.html";
+	}
+	
 	@RequestMapping(value="/checkUser", method=RequestMethod.POST)
 	public String checkUser( @RequestParam("email") String email,
 										@RequestParam("password") String password,
-										HttpSession session)
+										HttpSession session, Model model)
 	{
 		password=HashGeneratorUtils.generateSHA256(password);
 		User user = this.userService.validateUser(email, password);
@@ -43,20 +43,26 @@ public class UserController {
 			
 			return "redirect:/dash.html";
 		}
-			return "redirect:/index.html";
+		
+		model.addAttribute("loginErrorMessage", "User not found");
+			
+		return "home";
 	}
 
 	@RequestMapping(value="/newUser", method=RequestMethod.POST)
 	public String addUser( @RequestParam("firstname") String firstName,
 			@RequestParam("lastname") String lastName,
 			@RequestParam("email") String email,
-			@RequestParam("password") String password )
+			@RequestParam("password") String password ,
+			Model model)
 	{
-		
 		if ( userService.newUser(firstName, lastName, email, password) ){
-			return "redirect:/index.html";
+			model.addAttribute("registrationSuccessMessage", "Registration successful!");
+			return "home";
 		} 
-		return "redirect:/new.html";
+		
+		model.addAttribute("registrationErrorMessage","User already exists.");
+		return "newuser";
 	}
 	
 	@RequestMapping(value="user_settings.html")

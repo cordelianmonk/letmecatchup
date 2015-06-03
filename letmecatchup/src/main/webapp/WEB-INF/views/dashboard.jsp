@@ -49,8 +49,7 @@
 				<li class="active"><a href="dash.html">Dashboard</a><span
 					class="sr-only">current</span></li>
 					
-				<li><a href="searchmedia.html">Search <span
-						class="glyphicon glyphicon-search" /></a></li>
+				<li><a href="searchmedia.html">Search</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -95,7 +94,7 @@
 					<img class="top-right-img"
 						src="<c:url value="resources/128x128-book.png"/>"></img>
 
-					<p class="small text-muted">Catch up with your reading?</p>
+					<p class="lead text-muted">Catch up with your reading?</p>
 					<h4 class="tlt">
 						<ul class="texts">
 							<c:if test="${!empty catchBookList}">
@@ -124,7 +123,7 @@
 					<img class="top-right-img"
 						src="<c:url value="resources/128x128-movie.png"/>"></img>
 
-					<p class="small text-muted">Catch a movie?</p>
+					<p class="lead text-muted">Catch a movie?</p>
 					<h4 class="tlt">
 						<ul class="texts">
 							<c:if test="${!empty catchMovieList}">
@@ -151,12 +150,12 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="col-xs-12 col-md-6 animated bounceInUp">
 					<div class="my-list well well-lg titles" id="caught-booklist">
-						<p class="small text-muted">Your &#9733 reads</p>
+						<p class="lead text-muted">Your &#9733 reads</p>
 
 						<ol class="texts">
 							<c:if test="${!empty caughtBookList}">
 								<c:forEach items="${caughtBookList}" var="caughtBook">
-									<li>${caughtBook.title} ${caughtBook.rating}&#9733</li>
+									<li>${caughtBook.title}, rated ${caughtBook.rating}&#9733</li>
 								</c:forEach>
 							</c:if>
 						</ol>
@@ -171,12 +170,12 @@
 				<div class="col-xs-12 col-md-6 animated bounceInDown">
 					<div class="my-list well well-lg titles-caught"
 						id="caught-movielist">
-						<p class="small text-muted">Your &#9733 movies</p>
+						<p class="lead text-muted">Your &#9733 movies</p>
 
 						<ol class="texts">
 							<c:if test="${!empty caughtMovieList}">
 								<c:forEach items="${caughtMovieList}" var="caughtMovie">
-									<li>${caughtMovie.title} ${caughtMovie.rating}&#9733</li>
+									<li>${caughtMovie.title}, rated ${caughtMovie.rating}&#9733</li>
 								</c:forEach>
 							</c:if>
 						</ol>

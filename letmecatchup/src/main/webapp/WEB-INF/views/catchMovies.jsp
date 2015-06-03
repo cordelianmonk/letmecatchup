@@ -51,7 +51,7 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
+				<li><a href="searchmedia.html">Search</a></li>
 
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -116,7 +116,7 @@
 									id="catchmovie-form-${catchMovie.mid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
 										id="update-catchmovie">Save</button>
-									<button type="button" class="btn btn-sm btn-warning"
+									<button type="button" class="btn btn-sm btn-default"
 										id="canceledit-catchmovie-${catchMovie.mid}">Cancel</button>
 									<button type="button" class="btn btn-sm btn-danger"
 										id="show-delete-catchmovie-${catchMovie.mid}">Delete</button>
@@ -127,7 +127,7 @@
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCatchMovie" id="delete-catchmovie">Confirm
 											Delete</button>
-										<button type="button" class="btn btn-sm btn-warning"
+										<button type="button" class="btn btn-sm btn-default"
 											id="canceldelete-catchmovie-${catchMovie.mid}">Cancel</button>
 									</div>
 								</div>
@@ -155,7 +155,7 @@
 									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-primary"
 											formaction="caughtCatchMovie" id="caught-catchmovie">Save</button>
-										<button type="button" class="btn btn-sm btn-warning"
+										<button type="button" class="btn btn-sm btn-default"
 											id="cancelcaught-catchmovie-${catchMovie.mid}">Cancel</button>
 									</div>
 								</div>
@@ -164,8 +164,8 @@
 								id="edit-caught-catchmovie-${catchMovie.mid}">
 								<button class="btn btn-sm btn-default"
 									id="edit-catchmovie-${catchMovie.mid}">Edit</button>
-								<button class="btn btn-sm btn-info"
-									id="caught-catchmovie-${catchMovie.mid}">Caught!</button>
+								<button class="btn btn-sm btn-primary"
+									id="caught-catchmovie-${catchMovie.mid}">Caught</button>
 							</div>
 						</div>
 					</div>

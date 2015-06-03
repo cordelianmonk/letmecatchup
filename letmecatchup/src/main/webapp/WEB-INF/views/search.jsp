@@ -53,8 +53,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
 
-				<li class="active"><a href="searchmedia.html">Search <span
-						class="glyphicon glyphicon-search" /></a></li>
+				<li class="active"><a href="searchmedia.html">Search</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -82,6 +81,7 @@
 	</nav>
 
 	<!-- MAIN BODY -->
+
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 animated bounceInRight">
@@ -95,6 +95,12 @@
 	<div class="search-field animated bounceInDown">
 		<div class="container">
 			<div class="col-xs-12">
+				<c:if test="${!empty searchMessage}">
+					<div class="alert alert-dismissible alert-success">
+						<button type="button" class="close" data-dismiss="alert">x</button>
+						<strong>${searchMessage}</strong>
+					</div>
+				</c:if>
 				<div class="form-group">
 					<label for="select-action">Choose one from the selection</label> <select
 						class="form-control" id="select-action" style="width: 250px">

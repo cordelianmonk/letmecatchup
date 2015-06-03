@@ -69,9 +69,17 @@ $(document).ready(function() {
 	});
 
 	$("#search").click(function() {
-		// $("#info-area").empty();
+		
+		$("#searched-title").html('');
+		$("#searched-description").html('');
+		$("#creator").html('');
+		$("#link").html('');
+		$("#image").html('');
+		$("#reviews").html('');
+		
 		var title = $("#search-title").val();
 		var writer = $("#search-writer").val();
+		
 
 		if ($("#search-mediatype").val() == "book") {
 			searchBook(title, writer);

@@ -53,7 +53,7 @@
 
 			<ul class="nav navbar-nav">
 				<li><a href="dash.html">Dashboard</a><span class="sr-only">current</span></li>
-				<li><a href="searchmedia.html">Search <span class="glyphicon glyphicon-search"/></a></li>
+				<li><a href="searchmedia.html">Search</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Catch<span class="caret" /></a>
@@ -135,7 +135,7 @@
 									id="caughtbook-form-${caughtBook.bid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
 										id="update-caughtbook">Save</button>
-									<button type="button" class="btn btn-sm btn-warning"
+									<button type="button" class="btn btn-sm btn-default"
 										id="canceledit-caughtbook-${caughtBook.bid}">Cancel</button>
 									<button type="button" class="btn btn-sm btn-danger"
 										id="show-delete-caughtbook-${caughtBook.bid}">Delete</button>
@@ -146,7 +146,7 @@
 										<button class="btn btn-sm btn-danger"
 											formaction="deleteCaughtBook" id="delete-caughtbook">Confirm
 											Delete</button>
-										<button type="button" class="btn btn-sm btn-warning"
+										<button type="button" class="btn btn-sm btn-default"
 											id="canceldelete-caughtbook-${caughtBook.bid}">Cancel</button>
 									</div>
 								</div>
