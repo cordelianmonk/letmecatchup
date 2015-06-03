@@ -93,7 +93,13 @@
 		<c:if test="${!empty searchMessage}">
 			<div class="alert alert-dismissible alert-success">
 				<button type="button" class="close" data-dismiss="alert">x</button>
-				<strong>${searchMessage}</strong>
+				${searchMessage}
+			</div>
+		</c:if>
+		<c:if test="${!empty searchErrorMessage}">
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				${searchErrorMessage}
 			</div>
 		</c:if>
 	</div>

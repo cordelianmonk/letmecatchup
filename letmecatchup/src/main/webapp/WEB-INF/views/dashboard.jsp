@@ -172,9 +172,9 @@
 				<div class="col-xs-12 col-md-6 animated bounceInDown">
 					<div class="my-list well well-lg titles-caught"
 						id="caught-movielist">
-						<img class="top-right-img"
+						<img class="top-left-img"
 						src="<c:url value="resources/128x128-donemovie.png"/>"></img>
-						<p class="lead text-muted pull-left">Your &#9733 movies</p><br /><br/>
+						<p class="lead text-muted pull-right">Your &#9733 movies</p><br /><br/>
 
 						<ol class="texts">
 							<c:if test="${!empty caughtMovieList}">

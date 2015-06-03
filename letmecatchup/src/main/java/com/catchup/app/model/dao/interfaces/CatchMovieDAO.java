@@ -1,10 +1,11 @@
 package com.catchup.app.model.dao.interfaces;
 
 import com.catchup.app.model.items.CatchMovie;
+import com.catchup.app.model.items.User;
 
 public interface CatchMovieDAO {
 
-	public boolean catchMovieExists(String title);
+	public boolean catchMovieExists(String title, User user);
 
 	public void addCatchMovie(CatchMovie catchMovie);
 
@@ -13,5 +14,5 @@ public interface CatchMovieDAO {
 	public void updateMovie(CatchMovie catchMovie);
 
 	public void deleteCatchMovie(int mid);
-
+	
 }

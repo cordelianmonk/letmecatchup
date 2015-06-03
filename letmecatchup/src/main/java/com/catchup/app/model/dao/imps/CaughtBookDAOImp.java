@@ -1,11 +1,15 @@
 package com.catchup.app.model.dao.imps;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.catchup.app.model.dao.interfaces.CaughtBookDAO;
 import com.catchup.app.model.items.CaughtBook;
+import com.catchup.app.model.items.User;
 
 @Repository
 public class CaughtBookDAOImp implements CaughtBookDAO {
@@ -43,6 +47,24 @@ public class CaughtBookDAOImp implements CaughtBookDAO {
 			session.delete(caughtBook);
 		}
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean caughtBookExists(String title, User user) {
+		Session session = factory.getCurrentSession(); 
+		List<CaughtBook> books = new ArrayList<CaughtBook>();
+		 
+		books = session.createQuery("from CaughtBook where title=:title and user_uid=:user")
+			.setParameter("title", title)
+			.setParameter("user", user.getUid() )
+			.list();
+ 
+		if (books.size() > 0) {
+			return true;
+		} 
+		
+		return false;
 	}
 
 }

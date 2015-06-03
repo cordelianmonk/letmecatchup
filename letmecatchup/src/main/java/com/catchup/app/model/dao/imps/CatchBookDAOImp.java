@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.catchup.app.model.dao.interfaces.CatchBookDAO;
 import com.catchup.app.model.items.CatchBook;
+import com.catchup.app.model.items.User;
 
 @Repository
 public class CatchBookDAOImp implements CatchBookDAO{
@@ -18,15 +19,15 @@ public class CatchBookDAOImp implements CatchBookDAO{
 		this.factory = factory;
 	}
 
-	//TODO I think this needs to be revised. 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean catchBookExists(String title) {
+	public boolean catchBookExists(String title, User user) {
 		Session session = factory.getCurrentSession(); 
 		List<CatchBook> books = new ArrayList<CatchBook>();
 		 
-		books = session.createQuery("from CatchBook where title=:title")
+		books = session.createQuery("from CatchBook where title=:title and user_uid=:user")
 			.setParameter("title", title)
+			.setParameter("user", user.getUid() )
 			.list();
  
 		if (books.size() > 0) {

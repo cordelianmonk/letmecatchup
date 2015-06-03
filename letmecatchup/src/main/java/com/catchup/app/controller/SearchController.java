@@ -80,26 +80,36 @@ public class SearchController {
 		switch(mediaType){
 		
 		case "book":
+			
 			if( this.catchBookService.newCatchBook(user, date, title, comment, apiID) ){
 				
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
 				
-				model.addAttribute("searchMessage", "Saved new to-read!");
+				model.addAttribute("searchMessage", "<strong>" + title + "</strong> saved to your Catch Book list.");
 				
 				return "search";
-			};
+				
+			} else {
+				model.addAttribute("searchErrorMessage", "<strong>" + title + "</strong> already exists in your Catch Book list.");
+				return "search";
+			}
+			
 		case "movie":
 			if(catchMovieService.newCatchMovie(user, date, title, comment, apiID) ){
 				
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
 				
-				model.addAttribute("searchMessage", "Saved new to-watch!");
+				model.addAttribute("searchMessage", "<strong>" + title + "</strong> saved to your Catch Movie list.");
 				
 				return "search";
 				
-			};
+			} else {
+				model.addAttribute("searchErrorMessage", "<strong>" + title + "</strong> already exists in your Catch Movie list.");
+				return "search";
+			}
+			
 		}
 		
 		return "search";
@@ -127,20 +137,33 @@ public class SearchController {
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
 				
-				model.addAttribute("searchMessage", "Saved read book!");
+				model.addAttribute("searchMessage", "<strong>" + title + "</strong> saved to Caught Book list.");
 				
 				return "search";
-			};
+				
+			} else {
+				
+				model.addAttribute("searchErrorMessage", "<strong>" + title + "</strong> already exists in your Caught Book list.");
+				return "search";
+				
+			}
 		case "movie":
+			
 			if(caughtMovieService.newCaughtMovie(user, date, title, comment, apiID, rating) )
 			{	
 				user = this.userService.getUserById( user.getUid() );
 				session.setAttribute("user", user );
 				
-				model.addAttribute("searchMessage", "Saved watched movie!");
+				model.addAttribute("searchMessage", "<strong>" + title + "</strong> saved to Caught Movie list.");
 				return "search";
 				
-			};
+			} else {
+				
+				model.addAttribute("searchErrorMessage", "<strong>" + title + "</strong> already exists in your Caught Movie list.");
+				return "search";
+				
+			}
+			
 		}
 		
 		return "search";

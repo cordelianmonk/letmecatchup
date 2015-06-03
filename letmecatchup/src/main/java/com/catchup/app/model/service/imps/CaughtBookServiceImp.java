@@ -23,6 +23,10 @@ public class CaughtBookServiceImp implements CaughtBookService {
 	public boolean newCaughtBook(User user, Date date, String title,
 		String comment, String apiID, int rating) {
 		
+		if(this.caughtBookDAO.caughtBookExists(title, user)){
+			return false;
+		}
+		
 		CaughtBook caughtBook = new CaughtBook(user, date, title, comment, apiID, rating);
 		
 		this.caughtBookDAO.addCaughtBook(caughtBook);

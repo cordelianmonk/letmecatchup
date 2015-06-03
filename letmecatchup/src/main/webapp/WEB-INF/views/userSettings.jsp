@@ -88,6 +88,18 @@
 				<h3>Your details</h3>
 			</div>
 		</div>
+		<c:if test="${!empty userMessage}">
+			<div class="alert alert-dismissible alert-success">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>${userMessage}</strong>
+			</div>
+		</c:if>
+		<c:if test="${!empty userErrorMessage}">
+			<div class="alert alert-dismissible alert-danger">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>${userErrorMessage}</strong>
+			</div>
+		</c:if>
 	</div>
 
 	<div class="container">

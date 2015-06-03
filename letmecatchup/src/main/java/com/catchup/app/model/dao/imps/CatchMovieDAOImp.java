@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.catchup.app.model.dao.interfaces.CatchMovieDAO;
 import com.catchup.app.model.items.CatchMovie;
+import com.catchup.app.model.items.User;
 
 @Repository
 public class CatchMovieDAOImp implements CatchMovieDAO {
@@ -20,12 +21,13 @@ public class CatchMovieDAOImp implements CatchMovieDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean catchMovieExists(String title) {
+	public boolean catchMovieExists(String title, User user) {
 		Session session = factory.getCurrentSession(); 
 		List<CatchMovie> list = new ArrayList<CatchMovie>();
 		 
-		list = session.createQuery("from CatchMovie where title=:title")
+		list = session.createQuery("from CatchMovie where title=:title and user_uid=:user")
 			.setParameter("title", title)
+			.setParameter("user", user.getUid() )
 			.list();
  
 		if (list.size() > 0) {

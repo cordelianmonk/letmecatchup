@@ -24,6 +24,10 @@ public class CatchMovieServiceImp implements CatchMovieService {
 	public boolean newCatchMovie(User user, Date date, String title,
 			String comment, String apiID) {
 		
+		if (this.catchMovieDAO.catchMovieExists(title, user) ){
+			return false;
+		}
+		
 		CatchMovie catchMovie = new CatchMovie(user, date, title, comment, apiID);
 		this.catchMovieDAO.addCatchMovie(catchMovie);
 		return true;
