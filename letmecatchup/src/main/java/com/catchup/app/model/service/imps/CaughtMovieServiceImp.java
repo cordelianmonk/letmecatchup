@@ -23,7 +23,7 @@ public class CaughtMovieServiceImp implements CaughtMovieService {
 	public boolean newCaughtMovie(User user, Date date, String title,
 			String comment, String apiID, int rating) {
 		
-		if( this.caughtMovieDAO.caughtMovieExists(title, user)){
+		if( this.caughtMovieDAO.caughtMovieExists(title, apiID, user)){
 			return false;
 		}
 		

@@ -15,43 +15,58 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="USERS", uniqueConstraints={@UniqueConstraint(columnNames={"UID"})})
+@Table(name = "USERS", uniqueConstraints = { @UniqueConstraint(columnNames = { "UID" }) })
 public class User {
-	
+
 	@Id
 	@Column
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int uid;
-	
+
 	@Column
 	private String firstName;
-	
+
 	@Column
 	private String lastName;
-	
+
 	@Column
 	private String email;
-	
+
 	@Column
 	private String password;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="user_uid")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_uid")
 	private List<CatchBook> catchBookList;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="user_uid")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_uid")
 	private List<CaughtBook> caughtBookList;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="user_uid")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_uid")
 	private List<CatchMovie> catchMovieList;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="user_uid")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_uid")
 	private List<CaughtMovie> caughtMovieList;
-	
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_uid")
+	private List<CatchSeries> catchSeriesList;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_uid")
+	private List<CaughtSeries> caughtSeriesList;
+
 	public User() {
+	}
+
+	public User(String firstName, String lastName, String email, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
 	}
 
 	public int getUid() {
@@ -126,11 +141,20 @@ public class User {
 		this.caughtMovieList = caughtMovieList;
 	}
 
-	public User(String firstName, String lastName, String email, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
+	public List<CatchSeries> getCatchSeriesList() {
+		return catchSeriesList;
 	}
-	
+
+	public void setCatchSeriesList(List<CatchSeries> catchSeriesList) {
+		this.catchSeriesList = catchSeriesList;
+	}
+
+	public List<CaughtSeries> getCaughtSeriesList() {
+		return caughtSeriesList;
+	}
+
+	public void setCaughtSeriesList(List<CaughtSeries> caughtSeriesList) {
+		this.caughtSeriesList = caughtSeriesList;
+	}
+
 }

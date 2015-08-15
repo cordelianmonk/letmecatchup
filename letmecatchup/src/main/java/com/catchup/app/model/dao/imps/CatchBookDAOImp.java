@@ -21,15 +21,22 @@ public class CatchBookDAOImp implements CatchBookDAO{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean catchBookExists(String title, User user) {
+	public boolean catchBookExists(String title, String apiID, User user) {
 		Session session = factory.getCurrentSession(); 
 		List<CatchBook> books = new ArrayList<CatchBook>();
-		 
-		books = session.createQuery("from CatchBook where title=:title and user_uid=:user")
-			.setParameter("title", title)
-			.setParameter("user", user.getUid() )
-			.list();
- 
+		
+		if( apiID.length()>0 ){
+			books = session.createQuery("from CatchBook where apiID=:apiID and user_uid=:user")
+					.setParameter("apiID", apiID)
+					.setParameter("user", user.getUid() )
+					.list();
+		} else {
+			books = session.createQuery("from CatchBook where title=:title and user_uid=:user")
+					.setParameter("title", title)
+					.setParameter("user", user.getUid() )
+					.list();
+		}
+		
 		if (books.size() > 0) {
 			return true;
 		} 

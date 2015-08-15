@@ -7,12 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.catchup.app.model.dao.interfaces.CaughtMovieDAO;
-import com.catchup.app.model.items.CaughtMovie;
+import com.catchup.app.model.dao.interfaces.CaughtSeriesDAO;
+import com.catchup.app.model.items.CaughtSeries;
 import com.catchup.app.model.items.User;
 
 @Repository
-public class CaughtMovieDAOImp implements CaughtMovieDAO {
+public class CaughtSeriesDAOImp implements CaughtSeriesDAO {
 	private SessionFactory factory;
 
 	public void setFactory(SessionFactory factory) {
@@ -20,58 +20,57 @@ public class CaughtMovieDAOImp implements CaughtMovieDAO {
 	}
 
 	@Override
-	public void addCaughtMovie(CaughtMovie caughtMovie) {
+	public void addCaughtSeries(CaughtSeries caughtSeries) {
 		Session session = factory.getCurrentSession();
-		session.persist(caughtMovie);
+		session.persist(caughtSeries);
+
 	}
 
 	@Override
-	public CaughtMovie searchCaughtMovieByID(int mid) {
+	public CaughtSeries searchCaughtSeriesByID(int sid) {
 		Session session = factory.getCurrentSession();
-		return (CaughtMovie) session.get(CaughtMovie.class, new Integer(mid));
+		return (CaughtSeries)session.get(CaughtSeries.class, new Integer(sid));
 	}
 
 	@Override
-	public void updateCaughtMovie(CaughtMovie caughtMovie) {
+	public void updateCaughtSeries(CaughtSeries caughtSeries) {
 		Session session = factory.getCurrentSession();
-		session.update(caughtMovie);
+		session.update(caughtSeries);
 	}
 
 	@Override
-	public void deleteCaughtMovie(int mid) {
+	public void deleteCaughtSeries(int sid) {
 		Session session = factory.getCurrentSession();
-		CaughtMovie caughtMovie = (CaughtMovie) session.get(CaughtMovie.class,
-				new Integer(mid));
-
-		if (caughtMovie != null) {
-			session.delete(caughtMovie);
+		CaughtSeries caughtSeries = (CaughtSeries)session.get(CaughtSeries.class, new Integer(sid));
+		
+		if(caughtSeries != null){
+			session.delete(caughtSeries);
 		}
 
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean caughtMovieExists(String title, String apiID, User user) {
+	public boolean caughtSeriesExists(String title, String apiID, User user) {
 		Session session = factory.getCurrentSession();
-		List<CaughtMovie> list = new ArrayList<CaughtMovie>();
+		List<CaughtSeries> list = new ArrayList<CaughtSeries>();
 
-		if (apiID.length() > 0) {
-
+		if(apiID.length() > 0){
 			list = session
 					.createQuery(
-							"from CaughtMovie where apiID=:apiID and user_uid=:user")
+							"from CaughtSeries where apiID=:apiID and user_uid=:user")
 					.setParameter("apiID", apiID)
 					.setParameter("user", user.getUid())
 					.list();
-
 		} else {
 			list = session
 					.createQuery(
-							"from CaughtMovie where title=:title and user_uid=:user")
+							"from CaughtSeries where title=:title and user_uid=:user")
 					.setParameter("title", title)
 					.setParameter("user", user.getUid())
 					.list();
 		}
+		
 
 		if (list.size() > 0) {
 			return true;

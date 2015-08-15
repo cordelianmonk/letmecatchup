@@ -5,14 +5,14 @@ import com.catchup.app.model.items.User;
 
 public interface CaughtMovieDAO {
 
-public void addCaughtMovie(CaughtMovie caughtMovie);
+	public void addCaughtMovie(CaughtMovie caughtMovie);
 
-public CaughtMovie searchCaughtMovieByID(int mid);
+	public CaughtMovie searchCaughtMovieByID(int mid);
 
-public void updateCaughtMovie(CaughtMovie caughtMovie);
+	public void updateCaughtMovie(CaughtMovie caughtMovie);
 
-public void deleteCaughtMovie(int mid);
+	public void deleteCaughtMovie(int mid);
 
-public boolean caughtMovieExists(String title, User user);
+	public boolean caughtMovieExists(String title, String apiID, User user);
 
 }

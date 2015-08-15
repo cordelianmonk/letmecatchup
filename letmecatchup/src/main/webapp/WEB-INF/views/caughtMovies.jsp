@@ -59,6 +59,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="catch_books.html">Books</a></li>
 						<li><a href="catch_movies.html">Movies</a></li>
+						<li><a href="catch_series.html">Series</a></li>
 					</ul></li>
 
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
@@ -66,6 +67,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="caught_books.html">Books</a></li>
 						<li class="active"><a href="caught_movies.html">Movies</a></li>
+						<li><a href="caught_series.html">Series</a></li>
 					</ul></li>
 
 				<li><a href="user_settings.html">Settings</a></li>
@@ -99,24 +101,24 @@
 			<c:forEach items="${caughtMovieList}" var="caughtMovie">
 				<div class="container">
 					<div class="panel panel-default"
-						id="caughtmovie-${caughtMovie.mid}">
+						id="caught-${caughtMovie.mid}">
 
 						<div class="panel-heading"
-							id="caughtmovie-${caughtMovie.mid}-panelheadtitle">
+							id="caught-${caughtMovie.mid}-panelheadtitle">
 							<h4 class="animated flipInX">${caughtMovie.title}</h4>
-							<div id="caughtmovie-${caughtMovie.mid}-rating"
+							<div id="caught-${caughtMovie.mid}-rating"
 								class="rateit animated flipInY" data-rateit-ispreset="true"
 								data-rateit-readonly="true"
 								data-rateit-value="${caughtMovie.rating}" data-rateit-max="10">
 							</div>
 						</div>
 						<div hidden class="panel-body"
-							id="caughtmovie-${caughtMovie.mid}-panel-body">
-							<input hidden id="caughtmovie-set-rating-${caughtMovie.mid}"
+							id="caught-${caughtMovie.mid}-panel-body">
+							<input hidden id="caught-set-rating-${caughtMovie.mid}"
 								value="${caughtMovie.rating}"></input>
-							<h5 id="caughtmovie-${caughtMovie.mid}-comment">${caughtMovie.comment}</h5>
+							<h5 id="caught-${caughtMovie.mid}-comment">${caughtMovie.comment}</h5>
 
-							<form hidden id="caughtmovie-form-${caughtMovie.mid}"
+							<form hidden id="caught-form-${caughtMovie.mid}"
 								action="updateCaughtMovie" method="post">
 								
 								
@@ -126,7 +128,7 @@
 									
 								<label
 									for="rating">Rating</label><br /> <select disabled="true"
-									id="caughtmovie-form-${caughtMovie.mid}-rating"
+									id="caught-form-${caughtMovie.mid}-rating"
 									class="form-control" name="rating">
 									<option value="0">0</option>
 									<option value="1">1</option>
@@ -140,7 +142,7 @@
 									<option value="9">9</option>
 									<option value="10">10</option>
 								</select>
-								<div id="caughtmovie-edit-star-rating-${caughtMovie.mid}"></div>
+								<div id="caught-form-edit-star-rating-${caughtMovie.mid}"></div>
 								<br /> <br /> 
 								
 								<label for="comment">Comment</label><br />
@@ -152,30 +154,30 @@
 								<input hidden name="apiID" value="${caughtMovie.apiID}"></input>
 
 								<div class="btn-group pull-right"
-									id="caughtmovie-form-${caughtMovie.mid}-editbuttons">
+									id="caught-form-${caughtMovie.mid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
-										id="update-caughtmovie">Save</button>
+										id="update-caught">Save</button>
 									<button type="button" class="btn btn-sm btn-default"
-										id="canceledit-caughtmovie-${caughtMovie.mid}">Cancel</button>
+										id="canceledit-caught-${caughtMovie.mid}">Cancel</button>
 									<button type="button" class="btn btn-sm btn-danger"
-										id="show-delete-caughtmovie-${caughtMovie.mid}">Delete</button>
+										id="show-delete-caught-${caughtMovie.mid}">Delete</button>
 								</div>
 
 								<div hidden
-									id="caughtmovie-form-${caughtMovie.mid}-deletebuttons">
+									id="caught-form-${caughtMovie.mid}-deletebuttons">
 									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-danger"
-											formaction="deleteCaughtMovie" id="delete-caughtmovie">Confirm
+											formaction="deleteCaughtMovie" id="delete-caught">Confirm
 											Delete</button>
 										<button type="button" class="btn btn-sm btn-default"
-											id="canceldelete-caughtmovie-${caughtMovie.mid}">Cancel</button>
+											id="canceldelete-caught-${caughtMovie.mid}">Cancel</button>
 									</div>
 								</div>
 							</form>
 
-							<div id="edit-caughtmovie-button-${caughtMovie.mid}">
+							<div id="edit-caught-button-${caughtMovie.mid}">
 								<button class="btn btn-sm btn-default pull-right"
-									id="edit-caughtmovie-${caughtMovie.mid}">Edit</button>
+									id="edit-caught-${caughtMovie.mid}">Edit</button>
 							</div>
 
 						</div>

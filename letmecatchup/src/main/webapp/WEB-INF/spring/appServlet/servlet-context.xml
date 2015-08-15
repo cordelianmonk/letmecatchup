@@ -46,6 +46,8 @@
 				<beans:value>com.catchup.app.model.items.CaughtBook</beans:value>
 				<beans:value>com.catchup.app.model.items.CatchMovie</beans:value>
 				<beans:value>com.catchup.app.model.items.CaughtMovie</beans:value>
+				<beans:value>com.catchup.app.model.items.CatchSeries</beans:value>
+				<beans:value>com.catchup.app.model.items.CaughtSeries</beans:value>
             </beans:list>
             
         </beans:property>
@@ -87,6 +89,14 @@
     <beans:bean id="catchMovieService" class="com.catchup.app.model.service.imps.CatchMovieServiceImp">
         <beans:property name="catchMovieDAO" ref="catchMovieDAO"></beans:property>
     </beans:bean>
+    
+    <beans:bean id="catchSeriesDAO" class="com.catchup.app.model.dao.imps.CatchSeriesDAOImp">
+        <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="catchSeriesService" class="com.catchup.app.model.service.imps.CatchSeriesServiceImp">
+        <beans:property name="catchSeriesDAO" ref="catchSeriesDAO"></beans:property>
+    </beans:bean>
 	
 	<beans:bean id="caughtBookDAO" class="com.catchup.app.model.dao.imps.CaughtBookDAOImp">
         <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
@@ -102,6 +112,14 @@
     
     <beans:bean id="caughtMovieService" class="com.catchup.app.model.service.imps.CaughtMovieServiceImp">
         <beans:property name="caughtMovieDAO" ref="caughtMovieDAO"></beans:property>
+    </beans:bean>
+    
+     <beans:bean id="caughtSeriesDAO" class="com.catchup.app.model.dao.imps.CaughtSeriesDAOImp">
+        <beans:property name="factory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="caughtSeriesService" class="com.catchup.app.model.service.imps.CaughtSeriesServiceImp">
+        <beans:property name="caughtSeriesDAO" ref="caughtSeriesDAO"></beans:property>
     </beans:bean>
 	
 </beans:beans>

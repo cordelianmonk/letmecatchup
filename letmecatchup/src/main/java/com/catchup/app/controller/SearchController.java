@@ -17,16 +17,20 @@ import com.catchup.app.model.items.CatchBook;
 import com.catchup.app.model.items.User;
 import com.catchup.app.model.service.interfaces.CatchBookService;
 import com.catchup.app.model.service.interfaces.CatchMovieService;
+import com.catchup.app.model.service.interfaces.CatchSeriesService;
 import com.catchup.app.model.service.interfaces.CaughtBookService;
 import com.catchup.app.model.service.interfaces.CaughtMovieService;
+import com.catchup.app.model.service.interfaces.CaughtSeriesService;
 import com.catchup.app.model.service.interfaces.UserService;
 
 @Controller
 public class SearchController {
 	private CatchBookService catchBookService;
 	private CatchMovieService catchMovieService;
+	private CatchSeriesService catchSeriesService;
 	private CaughtBookService caughtBookService;
 	private CaughtMovieService caughtMovieService;
+	private CaughtSeriesService caughtSeriesService;
 	private UserService userService;
 	
 	@RequestMapping(value = "searchmedia.html")
@@ -47,6 +51,12 @@ public class SearchController {
 	}
 	
 	@Autowired(required=true)
+    @Qualifier(value="catchSeriesService")
+	public void setCatchSeriesService(CatchSeriesService catchSeriesService) {
+		this.catchSeriesService = catchSeriesService;
+	}
+	
+	@Autowired(required=true)
     @Qualifier(value="caughtBookService")
 	public void setCaughtBookService(CaughtBookService caughtBookService) {
 		this.caughtBookService = caughtBookService;
@@ -58,6 +68,12 @@ public class SearchController {
 		this.caughtMovieService = caughtMovieService;
 	}
 	
+	@Autowired(required=true)
+    @Qualifier(value="caughtSeriesService")
+	public void setCaughtSeriesService(CaughtSeriesService caughtSeriesService) {
+		this.caughtSeriesService = caughtSeriesService;
+	}
+
 	@Autowired(required=true)
     @Qualifier(value="userService")
 	public void setUserService(UserService userService) {
@@ -107,6 +123,22 @@ public class SearchController {
 				
 			} else {
 				model.addAttribute("searchErrorMessage", "<strong>" + title + "</strong> already exists in your Catch Movie list.");
+				return "search";
+			}
+			
+		case "series":
+			
+			if(catchSeriesService.newCatchSeries(user, date, title, comment, apiID) ){
+				
+				user = this.userService.getUserById( user.getUid() );
+				session.setAttribute("user", user );
+				
+				model.addAttribute("searchMessage", "<strong>" + title + "</strong> saved to your Catch Series list.");
+				
+				return "search";
+				
+			} else {
+				model.addAttribute("searchErrorMessage", "<strong>" + title + "</strong> already exists in your Catch Series list.");
 				return "search";
 			}
 			
@@ -163,6 +195,23 @@ public class SearchController {
 				return "search";
 				
 			}
+			
+		case "series":
+			
+			if(caughtSeriesService.newCaughtSeries(user, date, title, comment, apiID, rating) )
+			{	
+				user = this.userService.getUserById( user.getUid() );
+				session.setAttribute("user", user );
+				
+				model.addAttribute("searchMessage", "<strong>" + title + "</strong> saved to Caught Series list.");
+				return "search";
+				
+			} else {
+				
+				model.addAttribute("searchErrorMessage", "<strong>" + title + "</strong> already exists in your Caught Series list.");
+				return "search";
+			}
+			
 			
 		}
 		

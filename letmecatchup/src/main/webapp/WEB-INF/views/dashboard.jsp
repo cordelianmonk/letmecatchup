@@ -56,6 +56,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="catch_books.html">Books</a></li>
 						<li><a href="catch_movies.html">Movies</a></li>
+						<li><a href="catch_series.html">Series</a></li>
 					</ul></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -63,6 +64,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
+						<li><a href="caught_series.html">Series</a></li>
 					</ul></li>
 					
 					<li><a href="user_settings.html">Settings</a></li>

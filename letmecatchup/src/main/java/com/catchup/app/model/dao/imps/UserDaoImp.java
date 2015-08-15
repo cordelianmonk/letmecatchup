@@ -37,6 +37,8 @@ public class UserDaoImp implements UserDAO {
 			Hibernate.initialize( user.getCatchMovieList() );
 			Hibernate.initialize( user.getCaughtBookList() );
 			Hibernate.initialize( user.getCaughtMovieList() );
+			Hibernate.initialize( user.getCatchSeriesList() );
+			Hibernate.initialize( user.getCaughtSeriesList() );
 			
 			return user;
 			
@@ -83,6 +85,8 @@ public class UserDaoImp implements UserDAO {
 		Hibernate.initialize( user.getCatchMovieList() );
 		Hibernate.initialize( user.getCaughtBookList() );
 		Hibernate.initialize( user.getCaughtMovieList() );
+		Hibernate.initialize( user.getCatchSeriesList() );
+		Hibernate.initialize( user.getCaughtSeriesList() );
 		
 		return user;
 	}

@@ -5,7 +5,7 @@ import com.catchup.app.model.items.User;
 
 public interface CatchMovieDAO {
 
-	public boolean catchMovieExists(String title, User user);
+	public boolean catchMovieExists(String title, String apiID, User user);
 
 	public void addCatchMovie(CatchMovie catchMovie);
 

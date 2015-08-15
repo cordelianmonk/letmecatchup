@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function() {
-	// BOOK
+	
 	$(".panel-heading" ).hover(function(){
 		   
     	if ( $(this).data("clicked") ){
@@ -46,110 +46,110 @@ $(document).ready(function() {
 		
 	});
 
-	$("[id^='edit-caughtbook']").click(function() {
+	$("[id^='edit-caught']").click(function() {
 
 		var suffix = this.id.split("-")[2];
-		$("#caughtbook-form-" + suffix).show();
+		$("#caught-form-" + suffix).show();
 
-		$("#caughtbook-" + suffix + "-panelheadtitle").hide();
-		$("#caughtbook-" + suffix + "-comment").hide();
+		$("#caught-" + suffix + "-panelheadtitle").hide();
+		$("#caught-" + suffix + "-comment").hide();
 
-		var rating = +$("#caughtbook-set-rating-" + suffix).val();
-		$("#caughtbook-form-" + suffix + "-rating").prop("disabled", false);
-		$("#caughtbook-form-" + suffix + "-rating").val(rating);
+		var rating = +$("#caught-set-rating-" + suffix).val();
+		$("#caught-form-" + suffix + "-rating").prop("disabled", false);
+		$("#caught-form-" + suffix + "-rating").val(rating);
 
 		$(function() {
-			$('#caughtbook-form-edit-star-rating-' + suffix).rateit({
+			$('#caught-form-edit-star-rating-' + suffix).rateit({
 				max : 10,
 				step : 1,
-				backingfld : "#caughtbook-form-" + suffix + "-rating",
+				backingfld : "#caught-form-" + suffix + "-rating",
 				value : rating
 			});
 		});
 
-		$("#edit-caughtbook-button-" + suffix).hide();
+		$("#edit-caught-button-" + suffix).hide();
 	});
 
-	$("[id^='canceledit-caughtbook']").click(function() {
+	$("[id^='canceledit-caught']").click(function() {
 
 		var suffix = this.id.split("-")[2];
-		$("#caughtbook-form-" + suffix).hide();
+		$("#caught-form-" + suffix).hide();
 
-		$("#caughtbook-" + suffix + "-panelheadtitle").show();
-		$("#caughtbook-" + suffix + "-comment").show();
-		$("#caughtbook-" + suffix + "-rating").show();
+		$("#caught-" + suffix + "-panelheadtitle").show();
+		$("#caught-" + suffix + "-comment").show();
+		$("#caught-" + suffix + "-rating").show();
 
-		$("#edit-caughtbook-button-" + suffix).show();
+		$("#edit-caught-button-" + suffix).show();
 
 	});
 
-	$("[id^='show-delete-caughtbook']").click(function() {
+	$("[id^='show-delete-caught']").click(function() {
 
 		var suffix = this.id.split("-")[3];
-		$("#caughtbook-form-" + suffix + "-deletebuttons").show();
-		$("#caughtbook-form-" + suffix + "-editbuttons").hide();
+		$("#caught-form-" + suffix + "-deletebuttons").show();
+		$("#caught-form-" + suffix + "-editbuttons").hide();
 
 	});
 
-	$("[id^='canceldelete-caughtbook']").click(function() {
+	$("[id^='canceldelete-caught']").click(function() {
 		var suffix = this.id.split("-")[2];
-		$("#caughtbook-form-" + suffix + "-deletebuttons").hide();
-		$("#caughtbook-form-" + suffix + "-editbuttons").show();
+		$("#caught-form-" + suffix + "-deletebuttons").hide();
+		$("#caught-form-" + suffix + "-editbuttons").show();
 	});
 
 	// MOVIE
-	$("[id^='edit-caughtmovie']").click(function() {
-
-		var suffix = this.id.split("-")[2];
-		$("#caughtmovie-form-" + suffix).show();
-
-		$("#caughtmovie-" + suffix + "-panelheadtitle").hide();
-		$("#caughtmovie-" + suffix + "-comment").hide();
-		$("#caughtmovie-" + suffix + "-rating").hide();
-
-		var rating = +$("#caughtmovie-set-rating-" + suffix).val();
-		$("#caughtmovie-form-" + suffix + "-rating").prop("disabled", false);
-		$("#caughtmovie-form-" + suffix + "-rating").val(rating);
-		
-		$(function () { 
-			$('#caughtmovie-edit-star-rating-' + suffix).rateit( 
-					{ max: 10, 
-						step: 1, 
-						backingfld: "#caughtmovie-form-" + suffix + "-rating",
-						value: rating
-						} ); 
-		});
-
-
-		$("#edit-caughtmovie-button-" + suffix).hide();
-
-	});
-
-	$("[id^='canceledit-caughtmovie']").click(function() {
-
-		var suffix = this.id.split("-")[2];
-		$("#caughtmovie-form-" + suffix).hide();
-
-		$("#caughtmovie-" + suffix + "-panelheadtitle").show();
-		$("#caughtmovie-" + suffix + "-comment").show();
-		$("#caughtmovie-" + suffix + "-rating").show();
-
-		$("#edit-caughtmovie-button-" + suffix).show();
-
-	});
-
-	$("[id^='show-delete-caughtmovie']").click(function() {
-
-		var suffix = this.id.split("-")[3];
-		$("#caughtmovie-form-" + suffix + "-deletebuttons").show();
-		$("#caughtmovie-form-" + suffix + "-editbuttons").hide();
-
-	});
-
-	$("[id^='canceldelete-caughtmovie']").click(function() {
-		var suffix = this.id.split("-")[2];
-		$("#caughtmovie-form-" + suffix + "-deletebuttons").hide();
-		$("#caughtmovie-form-" + suffix + "-editbuttons").show();
-	});
+//	$("[id^='edit-caughtmovie']").click(function() {
+//
+//		var suffix = this.id.split("-")[2];
+//		$("#caughtmovie-form-" + suffix).show();
+//
+//		$("#caughtmovie-" + suffix + "-panelheadtitle").hide();
+//		$("#caughtmovie-" + suffix + "-comment").hide();
+//		$("#caughtmovie-" + suffix + "-rating").hide();
+//
+//		var rating = +$("#caughtmovie-set-rating-" + suffix).val();
+//		$("#caughtmovie-form-" + suffix + "-rating").prop("disabled", false);
+//		$("#caughtmovie-form-" + suffix + "-rating").val(rating);
+//		
+//		$(function () { 
+//			$('#caughtmovie-edit-star-rating-' + suffix).rateit( 
+//					{ max: 10, 
+//						step: 1, 
+//						backingfld: "#caughtmovie-form-" + suffix + "-rating",
+//						value: rating
+//						} ); 
+//		});
+//
+//
+//		$("#edit-caughtmovie-button-" + suffix).hide();
+//
+//	});
+//
+//	$("[id^='canceledit-caughtmovie']").click(function() {
+//
+//		var suffix = this.id.split("-")[2];
+//		$("#caughtmovie-form-" + suffix).hide();
+//
+//		$("#caughtmovie-" + suffix + "-panelheadtitle").show();
+//		$("#caughtmovie-" + suffix + "-comment").show();
+//		$("#caughtmovie-" + suffix + "-rating").show();
+//
+//		$("#edit-caughtmovie-button-" + suffix).show();
+//
+//	});
+//
+//	$("[id^='show-delete-caughtmovie']").click(function() {
+//
+//		var suffix = this.id.split("-")[3];
+//		$("#caughtmovie-form-" + suffix + "-deletebuttons").show();
+//		$("#caughtmovie-form-" + suffix + "-editbuttons").hide();
+//
+//	});
+//
+//	$("[id^='canceldelete-caughtmovie']").click(function() {
+//		var suffix = this.id.split("-")[2];
+//		$("#caughtmovie-form-" + suffix + "-deletebuttons").hide();
+//		$("#caughtmovie-form-" + suffix + "-editbuttons").show();
+//	});
 
 });

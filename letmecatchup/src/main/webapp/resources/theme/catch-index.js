@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
 	
+	//PANEL FUNCTIONS
 	$(".panel-heading" ).hover(function(){
 		   
     	if ( $(this).data("clicked") ){
@@ -46,163 +47,80 @@ $(document).ready(function() {
 		
 	});
 	
-	//BOOK
-	$("[id^='edit-catchbook']").click(function() {
+	//BUTTON FUNCTIONS
+	$("[id^='edit-catch']").click(function() {
 
 		var suffix = this.id.split("-")[2];
-		$("#catchbook-form-" + suffix).show();
+		$("#catch-form-" + suffix).show();
 		
 		
-		$("#catchbook-" + suffix +"-panelheadtitle").hide();
-		$("#catchbook-" + suffix +"-comment").hide();
+		$("#catch-" + suffix +"-panelheadtitle").hide();
+		$("#catch-" + suffix +"-comment").hide();
 		
-		$("#edit-caught-catchbook-"+suffix ).hide();
+		$("#edit-caught-catch-"+suffix ).hide();
 	});
 
-	$("[id^='canceledit-catchbook']").click(function() {
+	$("[id^='canceledit-catch']").click(function() {
 
 		var suffix = this.id.split("-")[2];
-		$("#catchbook-form-" + suffix).hide();
-		$("#catchbook-" + suffix +"-panelheadtitle").show();
-		$("#catchbook-" + suffix +"-comment").show();
+		$("#catch-form-" + suffix).hide();
+		$("#catch-" + suffix +"-panelheadtitle").show();
+		$("#catch-" + suffix +"-comment").show();
 		
-		$("#edit-caught-catchbook-"+suffix ).show();
+		$("#edit-caught-catch-"+suffix ).show();
 
 	});
 	
-	$("[id^='show-delete-catchbook']").click(function() {
+	$("[id^='show-delete-catch']").click(function() {
 		var suffix = this.id.split("-")[3];
-		$("#catchbook-form-" + suffix + "-deletebuttons").show();
-		$("#catchbook-form-" + suffix + "-editbuttons").hide();
+		$("#catch-form-" + suffix + "-deletebuttons").show();
+		$("#catch-form-" + suffix + "-editbuttons").hide();
 	});
 	
 	
-	$("[id^='canceldelete-catchbook']").click(function() {
+	$("[id^='canceldelete-catch']").click(function() {
 
 		var suffix = this.id.split("-")[2];
-		$("#catchbook-form-" + suffix + "-deletebuttons").hide();
-		$("#catchbook-form-" + suffix + "-editbuttons").show();
+		$("#catch-form-" + suffix + "-deletebuttons").hide();
+		$("#catch-form-" + suffix + "-editbuttons").show();
 
 	});
 
-	$("[id^='caught-catchbook']").click(function() {
+	$("[id^='caught-catch']").click(function() {
 
 		var suffix = this.id.split("-")[2];
-		$("#catchbook-form-" + suffix).show();
+		$("#catch-form-" + suffix).show();
 		
-		$("#catchbook-" + suffix +"-panelheadtitle").hide();
-		$("#catchbook-" + suffix +"-comment").hide();
+		$("#catch-" + suffix +"-panelheadtitle").hide();
+		$("#catch-" + suffix +"-comment").hide();
 		
-		$("#catchbook-form-" + suffix + "-editbuttons").hide();
-		$("#catchbook-form-" + suffix + "-caughtbuttons").show();
+		$("#catch-form-" + suffix + "-editbuttons").hide();
+		$("#catch-form-" + suffix + "-caughtbuttons").show();
 		
-		$("#catchbook-form-" + suffix + "-rating").prop("disabled", false);
+		$("#catch-form-" + suffix + "-rating").prop("disabled", false);
 		
 		$(function () { 
-			$('#catchbook-form-star-rating-' + suffix).rateit( { max: 10, step: 1, backingfld: "#catchbook-form-" + suffix + "-rating" } ); 
+			$('#catch-form-star-rating-' + suffix).rateit( { max: 10, step: 1, backingfld: "#catch-form-" + suffix + "-rating" } ); 
 		});
 		
-		$("#edit-caught-catchbook-"+suffix ).hide();
+		$("#edit-caught-catch-"+suffix ).hide();
 
 	});
 	
-	$("[id^='cancelcaught-catchbook']").click(function() {
+	$("[id^='cancelcaught-catch']").click(function() {
 
 		var suffix = this.id.split("-")[2];
-		$("#catchbook-form-" + suffix).hide();
+		$("#catch-form-" + suffix).hide();
 		
-		$("#catchbook-" + suffix +"-panelheadtitle").show();
-		$("#catchbook-" + suffix +"-comment").show();
+		$("#catch-" + suffix +"-panelheadtitle").show();
+		$("#catch-" + suffix +"-comment").show();
 		
-		$("#catchbook-form-" + suffix + "-editbuttons").show();
-		$("#catchbook-form-" + suffix + "-caughtbuttons").hide();
+		$("#catch-form-" + suffix + "-editbuttons").show();
+		$("#catch-form-" + suffix + "-caughtbuttons").hide();
 		
-		$("#catchbook-form-" + suffix + "-rating").prop("disabled", true);
+		$("#catch-form-" + suffix + "-rating").prop("disabled", true);
 
-		$("#edit-caught-catchbook-"+suffix ).show();
-	});
-	
-	//MOVIE
-	$("[id^='edit-catchmovie']").click(function() {
-
-		var suffix = this.id.split("-")[2];
-		$("#catchmovie-form-" + suffix).show();
-		
-		$("#catchmovie-" + suffix +"-panelheadtitle").hide();
-		$("#catchmovie-" + suffix +"-comment").hide();
-		
-		$("#edit-caught-catchmovie-"+suffix ).hide();
-
-	});
-
-	$("[id^='canceledit-catchmovie']").click(function() {
-
-		var suffix = this.id.split("-")[2];
-		$("#catchmovie-form-" + suffix).hide();
-		
-		$("#catchmovie-" + suffix +"-panelheadtitle").show();
-		$("#catchmovie-" + suffix +"-comment").show();
-		
-		$("#edit-caught-catchmovie-"+suffix ).show();
-
-	});
-	
-	$("[id^='show-delete-catchmovie']").click(function() {
-		var suffix = this.id.split("-")[3];
-		
-		$("#catchmovie-form-" + suffix + "-editbuttons").hide();
-		$("#catchmovie-form-" + suffix + "-deletebuttons").show();
-		
-	});
-	
-	
-	$("[id^='canceldelete-catchmovie']").click(function() {
-
-		var suffix = this.id.split("-")[2];
-		$("#catchmovie-form-" + suffix + "-deletebuttons").hide();
-		$("#catchmovie-form-" + suffix + "-editbuttons").show();
-
-	});
-
-	$("[id^='caught-catchmovie']").click(function() {
-
-		var suffix = this.id.split("-")[2];
-		$("#catchmovie-form-" + suffix).show();
-		
-		$("#catchmovie-" + suffix +"-panelheadtitle").hide();
-		$("#catchmovie-" + suffix +"-comment").hide();
-		
-		$("#catchmovie-form-" + suffix + "-editbuttons").hide();
-		$("#catchmovie-form-" + suffix + "-caughtbuttons").show();
-		
-		$("#edit-caught-catchmovie-"+suffix ).hide();
-		$("#catchmovie-form-" + suffix + "-rating").prop("disabled", false);
-		
-		$(function () { 
-			$('#catchmovie-form-star-rating-' + suffix).rateit( 
-					{ max: 10, 
-						step: 1, 
-						backingfld: "#catchmovie-form-" + suffix + "-rating" 
-						} ); 
-		});
-
-	});
-	
-	$("[id^='cancelcaught-catchmovie']").click(function() {
-
-		var suffix = this.id.split("-")[2];
-		$("#catchmovie-form-" + suffix).hide();
-		
-		$("#catchmovie-" + suffix +"-panelheadtitle").show();
-		$("#catchmovie-" + suffix +"-comment").show();
-		
-		$("#catchmovie-form-" + suffix + "-editbuttons").show();
-		$("#catchmovie-form-" + suffix + "-caughtbuttons").hide();
-		
-		$("#catchmovie-form-" + suffix + "-rating").prop("disabled", true);
-		
-		$("#edit-caught-catchmovie-"+suffix ).show();
-
+		$("#edit-caught-catch-"+suffix ).show();
 	});
 	
 });

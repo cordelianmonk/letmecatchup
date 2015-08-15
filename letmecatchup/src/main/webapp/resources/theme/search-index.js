@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 			$("#info-area").hide();
 
-		} else if (($("#search-mediatype").val() == "movie")) {
+		} else if ( $("#search-mediatype").val() == "movie" || $("#search-mediatype").val() == "series" ) {
 			$("#search-area-form").show();
 			$("#search-writer-area").hide();
 

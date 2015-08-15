@@ -5,7 +5,7 @@ import com.catchup.app.model.items.User;
 
 public interface CatchBookDAO {
 
-	public boolean catchBookExists(String title, User user);
+	public boolean catchBookExists(String title, String apiID, User user);
 
 	public void addCatchBook(CatchBook catchBook);
 

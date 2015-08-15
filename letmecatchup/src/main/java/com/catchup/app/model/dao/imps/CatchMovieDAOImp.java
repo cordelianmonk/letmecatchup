@@ -14,26 +14,39 @@ import com.catchup.app.model.items.User;
 @Repository
 public class CatchMovieDAOImp implements CatchMovieDAO {
 	private SessionFactory factory;
-	
+
 	public void setFactory(SessionFactory factory) {
 		this.factory = factory;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean catchMovieExists(String title, User user) {
-		Session session = factory.getCurrentSession(); 
+	public boolean catchMovieExists(String title, String apiID, User user) {
+		Session session = factory.getCurrentSession();
 		List<CatchMovie> list = new ArrayList<CatchMovie>();
-		 
-		list = session.createQuery("from CatchMovie where title=:title and user_uid=:user")
-			.setParameter("title", title)
-			.setParameter("user", user.getUid() )
-			.list();
- 
+
+		if (apiID.length() > 0) {
+
+			list = session
+					.createQuery(
+							"from CatchMovie where apiID=:apiID and user_uid=:user")
+					.setParameter("apiID", apiID)
+					.setParameter("user", user.getUid()).list();
+
+		} else {
+
+			list = session
+					.createQuery(
+							"from CatchMovie where title=:title and user_uid=:user")
+					.setParameter("title", title)
+					.setParameter("user", user.getUid()).list();
+
+		}
+
 		if (list.size() > 0) {
 			return true;
-		} 
-		
+		}
+
 		return false;
 	}
 
@@ -42,34 +55,32 @@ public class CatchMovieDAOImp implements CatchMovieDAO {
 		Session session = factory.getCurrentSession();
 		session.persist(catchMovie);
 		session.flush();
-		
+
 	}
 
 	@Override
 	public CatchMovie searchMovieByID(int mid) {
 		Session session = factory.getCurrentSession();
-		return (CatchMovie) session.get(CatchMovie.class, new Integer(mid) );
+		return (CatchMovie) session.get(CatchMovie.class, new Integer(mid));
 	}
 
 	@Override
 	public void updateMovie(CatchMovie catchMovie) {
 		Session session = factory.getCurrentSession();
 		session.update(catchMovie);
-		
+
 	}
 
 	@Override
 	public void deleteCatchMovie(int mid) {
 		Session session = factory.getCurrentSession();
-		CatchMovie catchMovie = (CatchMovie) session.get(CatchMovie.class, new Integer (mid) );
-		
-		if(catchMovie != null){
+		CatchMovie catchMovie = (CatchMovie) session.get(CatchMovie.class,
+				new Integer(mid));
+
+		if (catchMovie != null) {
 			session.delete(catchMovie);
 		}
-		
+
 	}
-
-
-	
 
 }

@@ -60,6 +60,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="catch_books.html">Books</a></li>
 						<li><a href="catch_movies.html">Movies</a></li>
+						<li><a href="catch_series.html">Series</a></li>
 					</ul></li>
 
 				<li class="active" class="dropdown"><a class="dropdown-toggle"
@@ -67,6 +68,7 @@
 					<ul class="dropdown-menu">
 						<li class="active"><a href="caught_books.html">Books</a></li>
 						<li><a href="caught_movies.html">Movies</a></li>
+						<li><a href="caught_series.html">Series</a></li>
 					</ul></li>
 
 				<li><a href="user_settings.html">Settings</a></li>
@@ -99,21 +101,21 @@
 		<c:if test="${!empty caughtBookList}">
 			<c:forEach items="${caughtBookList}" var="caughtBook">
 				<div class="container">
-					<div class="panel panel-default" id="caughtbook-${caughtBook.bid}">
+					<div class="panel panel-default" id="caught-${caughtBook.bid}">
 						<div class="panel-heading"
-							id="caughtbook-${caughtBook.bid}-panelheadtitle">
+							id="caught-${caughtBook.bid}-panelheadtitle">
 							<h4 class="animated flipInX">${caughtBook.title}</h4>
-							<div id="caughtbook-${caughtBook.bid}-star-rating"
+							<div id="caught-${caughtBook.bid}-star-rating"
 								class="rateit animated flipInY" data-rateit-ispreset="true"
 								data-rateit-readonly="true"
 								data-rateit-value="${caughtBook.rating}" data-rateit-max="10"></div>
 						</div>
 						<div hidden class="panel-body"
-							id="caughtbook-${caughtBook.bid}-panel-body">
-							<input hidden id="caughtbook-set-rating-${caughtBook.bid}"
+							id="caught-${caughtBook.bid}-panel-body">
+							<input hidden id="caught-set-rating-${caughtBook.bid}"
 								value="${caughtBook.rating}"></input>
-							<h5 id="caughtbook-${caughtBook.bid}-comment">${caughtBook.comment}</h5>
-							<form hidden id="caughtbook-form-${caughtBook.bid}"
+							<h5 id="caught-${caughtBook.bid}-comment">${caughtBook.comment}</h5>
+							<form hidden id="caught-form-${caughtBook.bid}"
 								action="updateCaughtBook" method="post">
 
 								<label for="title">Title</label><br /> <input name="title"
@@ -121,7 +123,7 @@
 									class="form-control"></input><br />
 									
 									 <label for="rating">Rating</label><select
-									disabled="true" id="caughtbook-form-${caughtBook.bid}-rating"
+									disabled="true" id="caught-form-${caughtBook.bid}-rating"
 									class="form-control" name="rating">
 									<option value="0">0</option>
 									<option value="1">1</option>
@@ -136,7 +138,7 @@
 									<option value="10">10</option>
 								</select>
 								
-								<div id="caughtbook-form-edit-star-rating-${caughtBook.bid}"></div>
+								<div id="caught-form-edit-star-rating-${caughtBook.bid}"></div>
 								<br /> <br /> 
 								
 								<label for="comment">Comment</label><br />
@@ -148,29 +150,29 @@
 								<input hidden name="apiID" value="${caughtBook.apiID}"></input>
 
 								<div class="btn-group pull-right"
-									id="caughtbook-form-${caughtBook.bid}-editbuttons">
+									id="caught-form-${caughtBook.bid}-editbuttons">
 									<button type="submit" class="btn btn-sm btn-primary"
-										id="update-caughtbook">Save</button>
+										id="update-caught">Save</button>
 									<button type="button" class="btn btn-sm btn-default"
-										id="canceledit-caughtbook-${caughtBook.bid}">Cancel</button>
+										id="canceledit-caught-${caughtBook.bid}">Cancel</button>
 									<button type="button" class="btn btn-sm btn-danger"
-										id="show-delete-caughtbook-${caughtBook.bid}">Delete</button>
+										id="show-delete-caught-${caughtBook.bid}">Delete</button>
 								</div>
 
-								<div hidden id="caughtbook-form-${caughtBook.bid}-deletebuttons">
+								<div hidden id="caught-form-${caughtBook.bid}-deletebuttons">
 									<div class="btn-group pull-right">
 										<button class="btn btn-sm btn-danger"
-											formaction="deleteCaughtBook" id="delete-caughtbook">Confirm
+											formaction="deleteCaughtBook" id="delete-caught">Confirm
 											Delete</button>
 										<button type="button" class="btn btn-sm btn-default"
-											id="canceldelete-caughtbook-${caughtBook.bid}">Cancel</button>
+											id="canceldelete-caught-${caughtBook.bid}">Cancel</button>
 									</div>
 								</div>
 							</form>
 
-							<div id="edit-caughtbook-button-${caughtBook.bid}">
+							<div id="edit-caught-button-${caughtBook.bid}">
 								<button class="btn btn-sm btn-default pull-right"
-									id="edit-caughtbook-${caughtBook.bid}">Edit</button>
+									id="edit-caught-${caughtBook.bid}">Edit</button>
 							</div>
 
 						</div>

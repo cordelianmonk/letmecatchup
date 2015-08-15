@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.catchup.app.model.dao.interfaces.CatchMovieDAO;
-import com.catchup.app.model.items.CatchBook;
 import com.catchup.app.model.items.CatchMovie;
 import com.catchup.app.model.items.User;
 import com.catchup.app.model.service.interfaces.CatchMovieService;
@@ -24,7 +23,7 @@ public class CatchMovieServiceImp implements CatchMovieService {
 	public boolean newCatchMovie(User user, Date date, String title,
 			String comment, String apiID) {
 		
-		if (this.catchMovieDAO.catchMovieExists(title, user) ){
+		if (this.catchMovieDAO.catchMovieExists(title, apiID, user) ){
 			return false;
 		}
 		

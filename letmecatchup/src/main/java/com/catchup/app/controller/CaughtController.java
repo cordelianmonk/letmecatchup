@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.catchup.app.model.items.CaughtBook;
 import com.catchup.app.model.items.CaughtMovie;
+import com.catchup.app.model.items.CaughtSeries;
 import com.catchup.app.model.items.User;
 import com.catchup.app.model.service.interfaces.CaughtBookService;
 import com.catchup.app.model.service.interfaces.CaughtMovieService;
+import com.catchup.app.model.service.interfaces.CaughtSeriesService;
 import com.catchup.app.model.service.interfaces.UserService;
 
 @Controller
@@ -21,6 +23,7 @@ public class CaughtController {
 	private UserService userService;
 	private CaughtBookService caughtBookService;
 	private CaughtMovieService caughtMovieService;
+	private CaughtSeriesService caughtSeriesService;
 	
 	@Autowired(required=true)
     @Qualifier(value="userService")
@@ -40,6 +43,12 @@ public class CaughtController {
 		this.caughtMovieService = caughtMovieService;
 	}
 	
+	@Autowired(required=true)
+    @Qualifier(value="caughtSeriesService")
+	public void setCaughtSeriesService(CaughtSeriesService caughtSeriesService) {
+		this.caughtSeriesService = caughtSeriesService;
+	}
+
 	@RequestMapping(value="caught_books.html")
 	public String booksHome(HttpSession session, Model model) {
 		
@@ -58,6 +67,16 @@ public class CaughtController {
 		model.addAttribute("caughtMovieList", user.getCaughtMovieList() );
 		
 		return "caughtMovies";
+	}
+	
+	@RequestMapping(value="caught_series.html") 
+	public String seriesHome(HttpSession session, Model model) {
+		
+		User user = (User) session.getAttribute("user");
+		
+		model.addAttribute("caughtSeriesList", user.getCaughtSeriesList() );
+		
+		return "caughtSeries";
 	}
 	
 	@RequestMapping(value="updateCaughtBook")
@@ -147,7 +166,9 @@ public class CaughtController {
 		this.caughtMovieService.deleteCaughtMovie(mid);
 		
 		User user = (User) session.getAttribute("user");
+		
 		user = this.userService.getUserById( user.getUid() );
+		
 		session.setAttribute("user", user);
 		
 		model.addAttribute("caughtMovieMessage", title + " deleted.");
@@ -156,5 +177,56 @@ public class CaughtController {
 		return "caughtMovies";
 	}
 	
+	//Series
+	@RequestMapping(value="updateCaughtSeries")
+	public String updateCaughtSeries(
+			@RequestParam("sid") int sid,
+			@RequestParam("title") String title,
+			@RequestParam("comment") String comment,
+			@RequestParam("rating") int rating,
+			HttpSession session,
+			Model model)
+	{
+		CaughtSeries caughtSeries = this.caughtSeriesService.searchCaughtSeriesByID(sid);
+		caughtSeries.setTitle(title);
+		caughtSeries.setComment(comment);
+		caughtSeries.setRating(rating);
+		
+		this.caughtSeriesService.updateCaughtSeries(caughtSeries);
+		
+		User user = (User) session.getAttribute("user");
+		user = this.userService.getUserById( user.getUid() );
+		session.setAttribute("user", user);
+		
+		model.addAttribute("caughtSeriesMessage", title + " updated.");
+		model.addAttribute("caughtSeriesList", user.getCaughtSeriesList() );
+		
+		return "caughtSeries";
+	}
+	
+	@RequestMapping(value="deleteCaughtSeries")
+	public String deleteCaughtSeries(
+			@RequestParam("sid") int sid,
+			HttpSession session,
+			Model model)
+	{
+		CaughtSeries caughtSeries = this.caughtSeriesService.searchCaughtSeriesByID(sid);
+		
+		String title = caughtSeries.getTitle();
+		
+		this.caughtSeriesService.deleteCaughtSeries(sid);
+		
+		User user = (User) session.getAttribute("user");
+		
+		user = this.userService.getUserById( user.getUid() );
+		
+		session.setAttribute("user", user);
+		
+		model.addAttribute("caughtSeriesMessage", title + " deleted.");
+		model.addAttribute("caughtSeriesList", user.getCaughtSeriesList() );
+		
+		return "caughtSeries";
+	}
+
 
 }

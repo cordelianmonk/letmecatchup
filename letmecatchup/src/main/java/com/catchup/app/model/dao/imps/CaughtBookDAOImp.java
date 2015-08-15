@@ -51,14 +51,23 @@ public class CaughtBookDAOImp implements CaughtBookDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean caughtBookExists(String title, User user) {
+	public boolean caughtBookExists(String title, String apiID, User user) {
 		Session session = factory.getCurrentSession(); 
 		List<CaughtBook> books = new ArrayList<CaughtBook>();
 		 
-		books = session.createQuery("from CaughtBook where title=:title and user_uid=:user")
-			.setParameter("title", title)
-			.setParameter("user", user.getUid() )
-			.list();
+		if(apiID.length() > 0){
+			books = session.createQuery("from CaughtBook where apiID=:apiID and user_uid=:user")
+					.setParameter("apiID", apiID)
+					.setParameter("user", user.getUid() )
+					.list();
+		} else {
+			books = session.createQuery("from CaughtBook where title=:title and user_uid=:user")
+					.setParameter("title", title)
+					.setParameter("user", user.getUid() )
+					.list();
+		}
+		
+		
  
 		if (books.size() > 0) {
 			return true;

@@ -13,6 +13,6 @@ public interface CaughtBookDAO {
 
 	public void deleteCaughtBook(int bid);
 
-	public boolean caughtBookExists(String title, User user);
+	public boolean caughtBookExists(String title, String apiID, User user);
 
 }
